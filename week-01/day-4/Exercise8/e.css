@@ -6,5 +6,15 @@ div {
   border: 2px solid;
   padding: 40px;
   width: 200px;
-  background-image: duck.png
+  background-image: url("duck.png");
+  background-repeat: no-repeat;
+}
+#leftd{
+  background-position: left;
+}
+#centerd{
+  background-position: center;
+}
+#rightd{
+  background-position: bottom right;
 }
