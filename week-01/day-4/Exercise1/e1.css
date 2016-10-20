@@ -3,7 +3,6 @@ div {
   background: yellow;
   border: 4px solid;
   padding: 20px;
-
   margin: 10px;
   font-size: 40;
 }
@@ -11,5 +10,4 @@ p {
   color: red;
   font-size:30px;
     margin: 0px;
-
 }
