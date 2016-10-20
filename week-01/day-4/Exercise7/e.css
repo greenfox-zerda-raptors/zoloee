@@ -1,0 +1,22 @@
+body{
+  font-size: 18px;
+}
+.vonal {
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  padding: 20px;
+}
+div:hover{
+   background-color:gold;
+}
+.also {
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-bottom: 0px solid;
+  padding: 20px;
+}
+
+.alulhely {
+  padding-bottom: 0px;
+}
