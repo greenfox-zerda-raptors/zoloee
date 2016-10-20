@@ -1,0 +1,22 @@
+h1{
+  color: blue;
+}
+h2{
+  color: gold;
+}
+.vme li{
+  list-style-type: square;
+  color: blue;
+}
+
+.nested li{
+  color: black;
+  list-style-type: inherit;
+}
+.disc{
+  list-style-type: disc;
+}
+
+li.pirosalma{
+  color: red;
+}

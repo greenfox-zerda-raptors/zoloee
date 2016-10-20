@@ -1,0 +1,26 @@
+.greenbox {
+  color: green;
+  background: yellow;
+  width: 248px;
+  border: 20px solid;
+  padding: 0px;
+  margin: 10px;
+}
+div {
+  color: black;
+  border: 4px solid;
+  padding: 20px;
+  font-size:30px;
+  margin: 0px
+  font-size: 30px;
+}
+p {
+    margin: 0px;
+    color: blue;
+}
+.blueback {
+  background: aqua;
+}
+.blueback p{
+  color: red;
+}
