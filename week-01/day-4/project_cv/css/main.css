@@ -1,0 +1,23 @@
+body{
+  background-image: url("../img/Vader-op72-s.png");
+  background-repeat: no-repeat;
+}
+
+.cvtitle1{
+  padding-left: 250px;
+  padding-top: 280px;
+  font-size: 35px;
+  font-family: 'Abril Fatface', cursive;
+}
+.cvtitle1 p{
+  margin: 0px;
+}
+.cvtitle2{
+  padding-left: 250px;
+  padding-top: 0px;
+  font-size: 70px;
+  font-family: 'Abril Fatface', cursive;
+}
+.cvtitle2 p{
+  margin: 0px;
+}
