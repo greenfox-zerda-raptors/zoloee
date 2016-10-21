@@ -1,23 +1,48 @@
+
+/*------- annulate browser's boxing things -----*/
 body{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.kep{
   background-image: url("../img/Vader-op72-s.png");
   background-repeat: no-repeat;
+  height: 452px;
 }
 
 .cvtitle1{
-  padding-left: 250px;
-  padding-top: 280px;
+  padding-left: 290px;
+  padding-top: 320px;
   font-size: 35px;
   font-family: 'Abril Fatface', cursive;
+  color: #222;
 }
 .cvtitle1 p{
   margin: 0px;
+  line-height: 1em;
 }
 .cvtitle2{
-  padding-left: 250px;
+  padding-left: 290px;
   padding-top: 0px;
+  padding-bottom: 10px;
   font-size: 70px;
   font-family: 'Abril Fatface', cursive;
+  color: #222;
+  line-height: 0.9em;
 }
 .cvtitle2 p{
   margin: 0px;
+}
+.szoveg{
+  font-family:  'Josefin Sans', sans-serif;
+  color: #222;
+  font-size: 1.6em;
+  padding-left: 290px;
+  padding-top: 40px;
+}
+.szoveg li{
+  font-size: 0.9em;
+  line-height: 1.4em;
 }
