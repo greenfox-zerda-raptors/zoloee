@@ -1,0 +1,26 @@
+.wrapper{
+  max-width: 256px;
+  background-color: #fff;
+  margin: auto;
+}
+.left{
+  float:left;
+  width: 96px;
+  margin: 0 18px 18px 0;
+}
+.right{
+  float: right;
+  width: 96px;
+  margin: 0 0 18px 18px;
+}
+.text{
+  text-align: justify;
+}
+.text:after{
+    position: relative;
+    display: block;
+    content: "";
+    height: 2px;
+    background-color: #242424;
+    /*width: 100%;*/
+}

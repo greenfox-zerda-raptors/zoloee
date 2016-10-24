@@ -1,0 +1,76 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.wrapper{
+}
+/*.flex-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+}*/
+.header{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: aqua;
+  /*width: 100%;*/
+  margin: 20px;
+  height: 100px;
+}
+/*---clear the float of the sidebars and main*/
+/*.main-wrapper::after{
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}*/
+
+.main-wrapper{
+  display: flex;
+  flex-direction: row;
+  background-color: grey;
+  flex-wrap: nowrap;
+  /*height: 100px;*/
+  margin: 20px;
+
+  /*align-content: space-around;*/
+}
+
+.left-sidebar{
+  min-width: 60px;
+  height: 600px;
+  background-color: orange;
+}
+.main-content{
+  /*position: relative; /*--- to add the blace box as relative to its container*/*/
+  background-color: red;
+  min-width: 60px;
+  height: 600px;
+  /*margin: 0 5% 0 5%;*/
+}
+.black-box{
+  content:"";
+  /*position: absolute;*/
+  bottom: 0px;
+  right: 0px;
+  min-width: 10px;
+  min-height: 10px;
+  margin: 10% 10% 10% 10%;
+  background-color: black;
+}
+.right-sidebar{
+  background-color: purple;
+  min-width: 60px;
+  height: 600px;
+}
+.footer{
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100px;
+  margin: 20px;
+}
