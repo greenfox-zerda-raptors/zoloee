@@ -1,3 +1,9 @@
+*{
+padding: 0;
+margin: 0;
+border: 0;
+}
+
 body{
   font-family: 'Merriweather Sans', sans-serif;
   font-weight: lighter;
@@ -37,7 +43,7 @@ label{
   margin: 10px 0 4px 0;
 }
 input{
-  /*display: block;*/
+  display: block;
   padding: 5px;
   border-radius: 3px;
   border-style:solid;
@@ -46,21 +52,32 @@ input{
   width: 100%;
 }
 .evnem{
-  padding: 20px;
-  background-color: red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
+
+    /*padding: 20px;
+    background-color: red;*/
+
+}
+/*.ev{
+  min-width: 300px;
+}*/
+input#ev{
+  width: 50px;
 }
 
-.nem{
-  /*float:left;
-  clear:none;*/
+/*.nem{
+  min-width: 300px;
+}*/
+.nem p{
+  font-size: 0.8em;
+  margin: 10px 0 4px 0;
 }
 
-
-.nem label{
+input.nem,label.nem{
   display: inline;
-  /*float:left;*/
+  width: auto;
 }
-
-.nem input{
-  display: inline;
-}
+/*--- a radio ne legyen 100% szelessegu----*/
