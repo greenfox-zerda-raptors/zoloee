@@ -11,21 +11,38 @@ body{
 }
 form{
   background-color: #DCD6CD;
-  padding: 56px 100px 56px 10px;
+  padding: 56px 100px 56px 100px;
 }
+
 h2{
   color: #4F4863;
 }
+
 .columns:after{
   clear: both;
 }
+
 .columns{
-  margin: 40px;
+  /*margin: 40px;*/
+  display: flex;
+  flex-flow: row wrap;
+    /*flex-direction: row;
+      flex-wrap: wrap;*/
+
+
+
 }
+
 .datablock{
   margin: 20px 0 20px 0;
   /*padding-bottom: 20px;*/
+  flex: 1 0 240px;
+    /*flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 240px;*/
+  padding-right: 1rem;
 }
+
 .datablock h1{
   font-size: 1em;
   color: white;
@@ -40,8 +57,9 @@ label{
   display: block;
   font-weight: bold;
   font-size: 0.8em;
-  margin: 10px 0 4px 0;
+  margin: 12px 0 2px 0;
 }
+
 input{
   display: block;
   padding: 5px;
@@ -50,34 +68,44 @@ input{
   border-color: #ACA8AF;
   border-width:thin;
   width: 100%;
+  margin: 0px;
+  padding: 7px 0px 7px 0px;
+  text-indent: 7px;
 }
+
 .evnem{
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content:space-between;
-
-    /*padding: 20px;
-    background-color: red;*/
-
+  }
+.ev{
+  flex: 0 0 40%;
 }
-/*.ev{
-  min-width: 300px;
-}*/
 input#ev{
   width: 50px;
+  /*padding-right: 1rem;*/
 }
 
-/*.nem{
-  min-width: 300px;
-}*/
-.nem p{
+.neme{
+  flex: 0 0 50%;
+  /*padding: 5px;*/
+
+}
+.neme p{
   font-size: 0.8em;
-  margin: 10px 0 4px 0;
+  font-weight: bold;
+  margin: 12px 0 2px 0;
 }
 
-input.nem,label.nem{
-  display: inline;
-  width: auto;
+input.nem{
+  display: inline-block;
+  width: auto; /*--- a radio ne legyen 100% szelessegu----*/
 }
-/*--- a radio ne legyen 100% szelessegu----*/
+
+label.nem{
+  display: inline-block;
+  margin: 6px;
+  /*padding-left: 2px;*/
+  /*min-width: 30px;*/
+    /*--- a radio ne legyen 100% szelessegu----*/
+  font-weight: normal;
+  /*padding: 5px;*/
+}

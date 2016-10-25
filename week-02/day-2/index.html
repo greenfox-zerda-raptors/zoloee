@@ -11,46 +11,58 @@
       <h2>Profil</h2>
       <div class="columns">
         <div class="datablock">
-            <h1>
-              Személyes adatok
-            </h1>
-            <div>
-              <label for="name">Név</label>
-              <input id="name" type="text" name="nev_teljes">
+          <h1>
+            Személyes adatok
+          </h1>
+          <div>
+            <label for="name">Név</label>
+            <input id="name" type="text" name="nev_teljes">
+          </div>
+          <div class=evnem>
+            <div class=ev>
+              <label for="ev">Születési éved</label>
+              <input id="ev" type="text" name="szuletesi_ev" placeholder="pl.1981">
             </div>
-            <div class=evnem>
-              <div class=ev>
-                <label for="ev">Születési éved</label>
-                <input id="ev" type="text" name="szuletesi_ev">
-              </div>
-              <div class=nem>
-                <p>
-                  Nem
-                </p>
-                <input class="nem" type="radio" name="gender"  value="2" id="no">
-                <label class="nem" for="no">
-                  No
-                </label>
-                <input class="nem" type="radio" name="gender"  value="1" id="ferfi">
-                <label class="nem" for="ferfi">
-                  Ferfi
-                </label>
-              </div>
+            <div class=neme>
+              <p>
+                Nemed
+              </p>
+              <input class="nem" type="radio" name="gender"  value="2" id="no">
+              <label class="nem" for="no">
+                Nő
+              </label>
+              <input class="nem" type="radio" name="gender"  value="1" id="ferfi">
+              <label class="nem" for="ferfi">
+                Férfi
+              </label>
             </div>
-            <div class="datablock">
-                <h1>
-                  Személyes adatok
-                </h1>
-                <div>
-                  <label for="name">Név</label>
-                  <input id="name" type="text" name="nev_teljes">
-                </div>
-                <div class=evnem>
-                  <div class=ev>
-                    <label for="ev">Születési éved</label>
-                    <input name="ev" type="text" value="">
-                  </div>
-                </div>
+          </div>
+        </div>
+
+        <div class="datablock">
+          <h1>
+            Kapcsolat
+          </h1>
+          <div>
+            <label for="telnumber">Telefonszám</label>
+            <input id="telnumber" type="text" name="telnumber" placeholder="+36 -- --- ---">
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" type="text" name="email" placeholder="nev@domain.hu">
+          </div>
+          <div>
+            <label for="fbprof">Facebook profilod</label>
+            <input id="fbprof" type="text" name="fbprof" placeholder="http://facebook.com/..." />
+          </div>
+          <div>
+            <label for="twitter">Twitter profilod</label>
+            <input id="twitter" type="text" name="twitter" placeholder="http://twitter.com/..." />
+          </div>
+          <div>
+            <label for="haz">Milyen hazban laksz?</label>
+            <input id="haz" type="drpopdown" name="haz" placeholder="Válassz típust!" />
+          </div>
         </div>
 
       </div>
