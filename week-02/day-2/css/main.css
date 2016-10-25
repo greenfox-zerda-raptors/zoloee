@@ -1,0 +1,66 @@
+body{
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: lighter;
+  color: #48415E;
+}
+form{
+  background-color: #DCD6CD;
+  padding: 56px 100px 56px 10px;
+}
+h2{
+  color: #4F4863;
+}
+.columns:after{
+  clear: both;
+}
+.columns{
+  margin: 40px;
+}
+.datablock{
+  margin: 20px 0 20px 0;
+  /*padding-bottom: 20px;*/
+}
+.datablock h1{
+  font-size: 1em;
+  color: white;
+  font-weight: lighter;
+  margin: 0;
+  padding: 12px;
+  background: #938C97;
+  border-radius: 3px;
+}
+
+label{
+  display: block;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin: 10px 0 4px 0;
+}
+input{
+  /*display: block;*/
+  padding: 5px;
+  border-radius: 3px;
+  border-style:solid;
+  border-color: #ACA8AF;
+  border-width:thin;
+  width: 100%;
+}
+.evnem{
+  padding: 20px;
+  background-color: red;
+}
+
+.nem{
+  /*float:left;
+  clear:none;*/
+}
+
+
+.nem label{
+  display: inline;
+  /*float:left;*/
+}
+
+.nem input{
+  display: inline;
+}

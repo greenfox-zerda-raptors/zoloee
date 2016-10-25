@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+    <title>formos feladat</title>
+  </head>
+  <body>
+    <form action="/myform" method="post">
+      <h2>Profil</h2>
+      <div class="columns">
+        <div class="datablock">
+            <h1>
+              Személyes adatok
+            </h1>
+            <div>
+              <label for="name">Név</label>
+              <input id="name" type="text" name="nev_teljes">
+            </div>
+            <div class=evnem>
+              <div class=ev>
+                <label for="ev">Születési éved</label>
+                <input name="ev" type="text" value="">
+              </div>
+              <div class=nem>
+                <p>
+                  Nem
+                </p>
+                <input type="radio" name="gender"  value="2" id="no">
+                <label for="no">No</label>
+
+                <input type="radio" name="gender"  value="1" id="ferfi">
+                <label for="ferfi">Ferfi</label>
+
+              </div>
+            </div>
+            <div class="datablock">
+                <h1>
+                  Személyes adatok
+                </h1>
+                <div>
+                  <label for="name">Név</label>
+                  <input id="name" type="text" name="nev_teljes">
+                </div>
+                <div class=evnem>
+                  <div class=ev>
+                    <label for="ev">Születési éved</label>
+                    <input name="ev" type="text" value="">
+                  </div>
+                </div>
+        </div>
+
+      </div>
+    </form>
+  </body>
+</html>
