@@ -2,6 +2,9 @@
 padding: 0;
 margin: 0;
 border: 0;
+/*font-size: 0.8em;
+font-weight: bold;
+margin: 12px 0 2px 0;*/
 }
 
 body{
@@ -13,9 +16,14 @@ form{
   background-color: #DCD6CD;
   padding: 56px 100px 56px 100px;
 }
-
+p{
+ font-size: 0.8em;
+ font-weight: bold;
+ margin: 12px 0 2px 0;
+}
 h2{
   color: #4F4863;
+  margin-bottom: 20px;
 }
 
 .columns:after{
@@ -34,7 +42,7 @@ h2{
 }
 
 .datablock{
-  margin: 20px 0 20px 0;
+  margin: 0px 0 20px 0;
   /*padding-bottom: 20px;*/
   flex: 1 0 240px;
     /*flex-grow: 1;
@@ -60,7 +68,7 @@ label{
   margin: 12px 0 2px 0;
 }
 
-input{
+input, textarea{
   display: block;
   padding: 5px;
   border-radius: 3px;
@@ -89,11 +97,11 @@ input#ev{
   /*padding: 5px;*/
 
 }
-.neme p{
+/*.neme p{
   font-size: 0.8em;
   font-weight: bold;
   margin: 12px 0 2px 0;
-}
+}*/
 
 input.nem{
   display: inline-block;
@@ -109,3 +117,52 @@ label.nem{
   font-weight: normal;
   /*padding: 5px;*/
 }
+/*label.favorites{
+  display: block;
+}*/
+input[type="checkbox"] {
+  display: inline;
+  width: auto;
+  font-size: 140%;
+  margin: 0 4px 8px 0;
+
+}
+.favorites {
+    /*float: left;*/
+  font-size: 0.8em;
+  font-weight: lighter;
+  margin: 10px 4px 4px 0;
+}
+.checkb1{
+  float: left;
+  margin-right: 10%;
+}
+.checkb2{
+  margin: 0 0 5px 0;
+}
+input[type="button"]{
+  width:220px;
+  height: 37;
+}
+textarea{
+  width: 100%;
+}
+#introduction{
+  /*height: 50px;*/
+}
+
+.bottompart{
+  display: flex;
+  flex-direction: column;
+  padding-right: 16px;
+
+  font-weight: lighter;
+}
+input.bottompart{
+  font-size: 0.8em;
+}
+
+/*input.acceptpolicy{
+  font-size: 0.3em;
+  font-weight: lighter;
+}*/

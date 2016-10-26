@@ -9,62 +9,93 @@
   <body>
     <form action="/myform" method="post">
       <h2>Profil</h2>
-      <div class="columns">
-        <div class="datablock">
-          <h1>
-            Személyes adatok
-          </h1>
-          <div>
-            <label for="name">Név</label>
-            <input id="name" type="text" name="nev_teljes">
-          </div>
-          <div class=evnem>
-            <div class=ev>
-              <label for="ev">Születési éved</label>
-              <input id="ev" type="text" name="szuletesi_ev" placeholder="pl.1981">
+      <div class="columns-bottom">
+        <div class="columns">
+          <div class="datablock">
+            <h1>
+              Személyes adatok
+            </h1>
+            <div>
+              <label for="name">Név</label>
+              <input id="name" type="text" name="nev_teljes">
             </div>
-            <div class=neme>
-              <p>
-                Nemed
-              </p>
-              <input class="nem" type="radio" name="gender"  value="2" id="no">
-              <label class="nem" for="no">
-                Nő
-              </label>
-              <input class="nem" type="radio" name="gender"  value="1" id="ferfi">
-              <label class="nem" for="ferfi">
-                Férfi
-              </label>
+            <div class=evnem>
+              <div class=ev>
+                <label for="ev">Születési éved</label>
+                <input id="ev" type="text" name="szuletesi_ev" placeholder="pl.1981">
+              </div>
+              <div class=neme>
+                <p>
+                  Nemed
+                </p>
+                <input class="nem" type="radio" name="gender"  value="2" id="no">
+                <label class="nem" for="no">
+                  Nő
+                </label>
+                <input class="nem" type="radio" name="gender"  value="1" id="ferfi">
+                <label class="nem" for="ferfi">
+                  Férfi
+                </label>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="datablock">
-          <h1>
-            Kapcsolat
-          </h1>
-          <div>
+            <label for="favorites">Milyen márkákat szeretsz?</label>
+            <div class="favorites">
+              <div class="checkb1">
+                <input type="checkbox" id="cbox1" value="Adidas">Adidas<br>
+                <input type="checkbox" id="cbox2" value="Apple">Apple<br>
+                <input type="checkbox" id="cbox3" value="Coca-Cola">Coca-Cola<br>
+                <input type="checkbox" id="cbox4" value="Mazda">Mazda<br>
+                <input type="checkbox" id="cbox5" value="Nike">Nike<br>
+              </div>
+              <div class="checkb2">
+                <input type="checkbox" id="cbox7" value="Opel">Opel<br>
+                <input type="checkbox" id="cbox6" value="Ray-Ban">Ray-Ban<br>
+                <input type="checkbox" id="cbox8" value="Starbucks">Starbucks<br>
+                <input type="checkbox" id="cbox9" value="Tesla">Tesla<br>
+                <input type="checkbox" id="cbox10" value="Yahoo">Yahoo<br>
+              </div>
+              <div class="note">Többet is választhatsz!</div>
+            </div>
+          </div>
+          <div class="datablock">
+            <h1>
+              Kapcsolat
+            </h1>
             <label for="telnumber">Telefonszám</label>
             <input id="telnumber" type="text" name="telnumber" placeholder="+36 -- --- ---">
-          </div>
-          <div>
             <label for="email">E-mail</label>
             <input id="email" type="text" name="email" placeholder="nev@domain.hu">
-          </div>
-          <div>
             <label for="fbprof">Facebook profilod</label>
             <input id="fbprof" type="text" name="fbprof" placeholder="http://facebook.com/..." />
-          </div>
-          <div>
             <label for="twitter">Twitter profilod</label>
             <input id="twitter" type="text" name="twitter" placeholder="http://twitter.com/..." />
-          </div>
-          <div>
-            <label for="haz">Milyen hazban laksz?</label>
-            <input id="haz" type="drpopdown" name="haz" placeholder="Válassz típust!" />
+            <label for="haz">Milyen házban laksz?</label>
+            <input id="haz" type="dropdown" name="haz" placeholder="Válassz típust!" />
           </div>
         </div>
+        <div class="bottompart">
+        <!-- <p></p> -->
+          <label for="introduction">Bemutatkozás</label>
+          <!-- <input id="introduction" type="textarea" rows="20" name="introduction" placeholder="Írj magadról pár mondatot!" /> -->
+          <textarea id="introduction" rows="10" name="introduction" placeholder="Írj magadról pár mondatot!" /></textarea>
+          <label for="cvupload">CV feltöltése</label>
+          <input id="cvupload" type="button" name="cvupload" value="FILE KIVÁLASZTÁSA" >
 
+
+          <input type="checkbox" id="acceptpolicy" value="c">Elfogadom a felhasználásl felteleket!<br>
+
+
+          <!-- <checkbox id="acceptpolicy" name="acceptpolicy">s</checkbox> -->
+
+
+
+
+
+
+
+
+        </div>
       </div>
     </form>
   </body>
