@@ -1,0 +1,65 @@
+html {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.button{
+  font-family: 'Open Sans', sans-serif;
+  display:inline-block;
+  width: 340px;
+  line-height: 2;
+  margin: 5px;
+  border-style:solid;
+  border-width: 3px;
+  font-size:3em;
+  font-weight: lighter;
+  text-decoration:none;
+  text-align: center;
+  text-shadow: 0px -3px 1px rgba(150, 150, 150, 0.6);
+  /*text-shadow: 0px -3px 10px rgba(150, 150, 150, 2);*/
+  /*box-shadow: 0 0 7px grey;*/
+  color: #EEF7FA;
+  box-shadow: 0px 0px 3px 2px RGBA(205, 211, 214, 1)
+
+}
+/*a[id="1"]{
+  color: RGBA(212, 212, 212, 1.00);
+  background: linear-gradient(to bottom,#FFFFFF 0%,#DEDEDE 100%);
+}*/
+a[id="1"]{
+  border-color: #D4D4D4;
+  color: #838383;
+  background: linear-gradient(to bottom,#FFFFFF 0%,#DEDEDE 100%);
+  /*box-shadow: 0px 0px 4px 1px RGBA(205, 211, 214, 1.00)*/
+}
+a[id="2"]{
+  border-color: RGBA(16, 121, 150, 0.7);
+  background: linear-gradient(to bottom,#1EB5E2 0%,#158EB1 100%);
+  /*box-shadow: 0px 0px 4px 1px RGBA(164, 204, 218, 0.75);*/
+}
+a[id="3"]{
+  border-color: RGBA(91, 129, 21, 0.7);
+  background: linear-gradient(to bottom,RGBA(145, 205, 39, 1.00) 0%,RGBA(109, 156, 27, 1.00) 100%);
+  /*box-shadow: 0px 0px 4px 1px RGBA(164, 204, 218, 0.75);*/
+}
+p{
+  font-weight: bold;
+}
+button{
+  width: 340px;
+  height: 100px;
+  margin: 5px;
+  border-style:solid;
+  box-shadow: 0 0 7px grey;
+  font-size: 3em;
+  font-weight: 200;
+    /*---itt miert lesz vekonyabb?*/
+  text-shadow: 0px -3px 10px rgba(150, 150, 150, 1);
+}
+
+button[name="1"]{
+  background: linear-gradient(to bottom,#FFFFFF 0%,#DEDEDE 100%);
+}
