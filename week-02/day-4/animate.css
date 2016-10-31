@@ -1,0 +1,53 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+  background-color: #333333;
+}
+#wrapper{
+  margin: auto;
+    /* ettol kerul horizontalisan kozepre*/
+  padding-top: 200px;
+  padding-bottom: 200px;
+    /* ettol kerul vertikaliran kozepre*/
+  /*border: 1px solid red;*/
+}
+.feliratnak{
+  width: 80px;
+  margin: auto;
+  text-align: center;
+    /* ettol lesz benne kozepen a felirat*/
+  /*background-color: red;*/
+}
+span{
+  position: relative;
+    /*-- ez kell hogy eloterbe jojjon a szoveg --*/
+  line-height: 80px;
+    /*-- ez kell hogy a spanban vertikalisan kozepen legyen a szoveg --*/
+  font-family: 'Open Sans', sans-serif;
+}
+.box{
+  position: absolute;
+    /*-- ez kell hogy eloterbe jojjon a szoveg (span)--*/
+  width: 80px;
+  height: 80px;
+  border: 2px hidden;
+    /*-- ez kell hogy a pozicio ne legyen elcsuszva a befordulo piroshoz kepest*/
+  border-radius: 3px;
+}
+.white{
+  transform: rotateZ(45deg);
+  background-color: white;
+}
+.red{
+   border: 2px solid tomato;
+   transition: 0.3s;
+}
+.feliratnak:hover .red {
+  /*-- azert a feliratnak containerre kell tenni, hogy span-ra erve ne resetelje -- */
+ transform: rotate(45deg);
+}
