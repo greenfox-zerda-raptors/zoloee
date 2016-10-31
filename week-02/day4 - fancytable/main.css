@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box;
+    /*----a border mindig a fix mereten belul van*/
+  font-family: 'Open Sans', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+        /*----a border mindig a fix mereten belul van*/
+}
+
+body{
+  background-color: RGBA(67, 150, 233, 1.00);
+}
+#tablewrap{
+  /*font-weight: 100;*/
+  width: 500px;
+    /*ez hatarozza meg az egesz tablazat szelesseget - inherittel*/
+  height: auto;
+  border-radius: 5px;
+    /*sarkak lekerekitese*/
+  margin: 40px;
+  overflow: hidden;
+    /*--kell a lekerekitett sarkakhoz --- DE MIERT?*/
+}
+table{
+  width: inherit;
+  color: RGBA(176, 183, 190, 1.00);
+  text-align: left;
+  font-size: 1.5em;
+  border-collapse: collapse;
+  border: 1px hidden #343A45;
+    /*---a hidden -tol nem latszik korben a border*/
+}
+th{
+  background-color: black;
+  font-weight: 100;
+  padding: 1em;
+  border: 2px solid #343A45;
+}
+td{
+  font-weight: 100;
+  padding: 1em;
+  color: RGBA(112, 116, 139, 1.00);
+  /*background-color: RGBA(235, 235, 235, 1.00);*/
+  border-right: 1px solid #9EA7AF;
+    /*---azert csak a jobb oldali, mert a folso/also folulirna a ROW-ban definialtat----*/
+}
+tr{
+  background-color: #FFFFFF;
+  border: 1px solid #9EA7AF;
+    /*itt def a sorok keretet. Az oldaso a main div hiddenje miatt nem latszik*/
+}
+tr:nth-child(1){
+  border-top-width: 4px;
+    /*---az elso sor folso borderja szelesebb*/
+}
+
+tr:nth-child(odd){
+  background-color: #EBEBEB;
+}
