@@ -41,7 +41,7 @@ public class Workshop03{
                 System.out.println();
             }
         } while (x != 0);
-
+        //System.out.println("Bye!");  <--- a Bye itt jobb lenne a vegen, mint az ifben
     } //main
 } //Workshop03
 
