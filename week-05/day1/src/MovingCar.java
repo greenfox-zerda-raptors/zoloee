@@ -5,11 +5,8 @@ import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
  */
 public class MovingCar {
 
-
-
     private int sizeEngine;
     private String color;
-
     private int kmOdometer;
     private String typeCar;
 
@@ -38,10 +35,16 @@ public class MovingCar {
         return typeCar;
     }
 
-    public MovingCar() { //constructor
-        this.sizeEngine = 1600;
+    //constructors with different arguments
+
+    public MovingCar(String typeCar, int sizeEngine, String color, String kmOdometer) {
+        if this.sizeEngine = 1600;
         this.color = "red";
+
     }
+
+
+
 
     public void drive(int kms){
 
