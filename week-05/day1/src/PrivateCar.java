@@ -31,12 +31,12 @@ public class PrivateCar {
     public String getColor(){
         return color;
     }
-//    public int getKmOdometer(){
-//        return kmOdometer;
-//    }
-//    public String getTypeCar(){
-//        return typeCar;
-//    }
+    public int getKmOdometer(){
+        return kmOdometer;
+    }
+    public String getTypeCar(){
+        return typeCar;
+    }
 
     public PrivateCar() { //constructor
         this.sizeEngine = 1600;

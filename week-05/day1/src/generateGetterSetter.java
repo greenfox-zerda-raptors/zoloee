@@ -1,7 +1,7 @@
 /**
  * Created by zoloe on 2016. 11. 14..
  */
-
+/*
 public class PrivateCar2 {
 // Generate popup in Osx = command+N
 
@@ -20,3 +20,4 @@ public class PrivateCar2 {
     private String typeCar;
 
 }
+*/
