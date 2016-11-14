@@ -59,4 +59,8 @@ public class MovingCar {
         System.out.println();
         System.out.println();
     }
+
+    public String toString(){
+        return "This " + this.typeCar + " is " + this.color + ", has" + this.sizeEngine + " cc engine and clocked " + this.kmOdometer + " km's.";
+    }
 }

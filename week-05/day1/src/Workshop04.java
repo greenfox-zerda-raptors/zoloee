@@ -39,6 +39,11 @@ public class Workshop04 {
         cars[0].drive(15);
         cars[1].drive(49);
         cars[2].drive(1200);
+
+        for (MovingCar car :cars) { //foreach by Sopi / thx
+            System.out.println(car.toString());
+        }
+
     }
 }
 
