@@ -53,6 +53,7 @@ public class Workshop17again {
 
         int counter = 0;
         String yesno = "";
+
         while (!((Objects.equals(yesno, "y") || Objects.equals(yesno, "n")))){
             System.out.println("Writing from " + fileSource + " to " + fileDest);
             System.out.println("Press y to confirm, n to abort.");
