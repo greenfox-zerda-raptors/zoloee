@@ -7,16 +7,13 @@ import music.Instrument1;
 public class ElectricGuitar extends StringedInstrument {
 
     public ElectricGuitar(int numberOfStrings) {
-        this.numberOfStrings = numberOfStrings;
+        this.numberOfStrings = numberOfStrings;this.sound = "Twang";
     }
 
     public ElectricGuitar(){
         this(6);
     }
 
-    @Override
-    public void play(){
-        System.out.println(String.format(formatForPlay,this.getClass().getSimpleName(),this.numberOfStrings,"twangs"));
-    }
+
 
 }

@@ -11,9 +11,8 @@ public class Violin extends StringedInstrument {
 
     public Violin(int numberOfStrings) {
         this.numberOfStrings = numberOfStrings;
+        this.sound = "screech";
     }
 
-    public void play(){
-        System.out.println(String.format(formatForPlay,this.getClass().getSimpleName(),this.numberOfStrings,"Screech"));
-    }
+
 }

@@ -6,14 +6,9 @@ import music.StringedInstrument;
 public class ElectricBassGuitar extends StringedInstrument{
     public ElectricBassGuitar(int numberOfStrings) {
         this.numberOfStrings=numberOfStrings;
+        this.sound = "Duum-duum-duum";
     }
-
     public ElectricBassGuitar() {
         this(4);
     }
-
-    public void play(){
-        System.out.println(String.format(formatForPlay,this.getClass().getSimpleName(),this.numberOfStrings,"Duum-duum-duum"));
-    }
-
  }

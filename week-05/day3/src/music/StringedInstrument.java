@@ -5,8 +5,13 @@ package music;
  */
 abstract public class StringedInstrument extends Instrument1{
     public int numberOfStrings;
-    protected final String formatForPlay = "%s, a %d-stringed instrument that %s\n";
+    public String sound;
+    final String formatForPlay = "%s, a %d-stringed instrument that %s\n";
 
 
-    public abstract void play();
+    public void play(){
+        System.out.printf(formatForPlay, name, numberOfStrings, sound);
+    };
+
+
 }
