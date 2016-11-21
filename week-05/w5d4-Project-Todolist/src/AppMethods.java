@@ -6,8 +6,12 @@ public class AppMethods {
     public static String ErrHand(Exception e) {
         switch (e.getClass().getSimpleName()) {
             case "ArrayIndexOutOfBoundsException" : {
-                return "pls give an argument for the command";
+                return "pls use an argument for this command";
             }
-        }return "fuckit";
+            case "IndexOutOfBoundsException" : {
+                return "pls use a valid index";
+            }
+
+        }return "fuckit. Unhandled: " + e;
     }
 }

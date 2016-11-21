@@ -35,10 +35,13 @@ public class TodoList {
         todos.add(new TodoItem(Desc));
     }
 
-    public void removeTodo(int i){
-        todos.remove(i);
+    public void removeTodo(int index){
+        todos.remove(index);
     }
 
+    public String size(){
+        return Integer.toString(todos.size());
+    }
 
 
 }

@@ -1,11 +1,12 @@
 import todolistP.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * Created by zoloe on 2016. 11. 17..
  */
-public class pApp {
+public class App {
     static Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -28,9 +29,10 @@ public class pApp {
                         break;
                     }
                     case "a": {
-
+                        if (command[1].equals("")) { //azert kell hogy ha ures stringet ad meg, ne jojjon letre uj todo item ures desccel
+                            throw new ArrayIndexOutOfBoundsException();
+                        }
                         myList.addTodo(command[1]);
-
                         break;
                     }
                     case "q": {
@@ -38,12 +40,7 @@ public class pApp {
                         break;
                     }
                     case "r": {
-                        if (command.length < 2 || command[1].equals(" ")) { //ide mas vizsgalat is kell (is.numeric?
-
-                            System.out.println(" failed - no index");
-                        } else {
-                            myList.removeTodo(Integer.getInteger(command[1]));
-                        }
+                        myList.removeTodo(Integer.parseInt(command[1])-1);
                         break;
                     }
                     default: {
@@ -53,6 +50,7 @@ public class pApp {
                 }// switch
             }catch (Exception e){
                 System.out.println(AppMethods.ErrHand(e));
+                System.out.println("valid indexes: 1 - " + myList.size() );
 
             }//catch
 
