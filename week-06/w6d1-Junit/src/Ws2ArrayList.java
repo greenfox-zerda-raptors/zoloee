@@ -6,13 +6,20 @@ import java.util.Arrays;
  */
 public class Ws2ArrayList {
 
-public static void main(String[] args){
-    ArrayList<Integer> myIntList = new ArrayList(Arrays.asList(1,5,7,8));
-    System.out.println(Sum(myIntList));
+//public static void main(String[] args){
+    ArrayList<Integer> myIntList = new ArrayList<>();
+//    System.out.println(Sum(myIntList));
+//
+//}
 
-}
+    public Ws2ArrayList() {
+    }
 
-    public static Integer Sum(ArrayList<Integer> myIntList) {
+    public void setMyIntList(ArrayList<Integer> myIntList) {
+        this.myIntList = myIntList;
+    }
+
+    public Integer Sum(ArrayList<Integer> myIntList) {
         Integer sum = 0;
         for (Integer i :
                 myIntList) {

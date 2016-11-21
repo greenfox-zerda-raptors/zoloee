@@ -11,8 +11,17 @@ import static org.junit.Assert.*;
 public class Ws2ArrayListTest {
     @Test
     public void sum() throws Exception {
+
+        Ws2ArrayList myWs2 = new Ws2ArrayList();
         ArrayList<Integer> myIntList = new ArrayList(Arrays.asList(1,5,7,8));
-        assertEquals(21,sum());
+        myWs2.setMyIntList(myIntList);
+        Integer sum2 = 0;
+        for (Integer i :
+                myIntList) {
+            sum2 = sum2 + i;
+        }
+
+        assertEquals(sum2, myWs2.Sum(myIntList));
     }
 
 }
