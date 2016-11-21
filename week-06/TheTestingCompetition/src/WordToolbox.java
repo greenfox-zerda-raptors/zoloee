@@ -15,7 +15,7 @@ import com.greenfox.lesson.junit.*;
     public int countHowMany(char charToFind){
         int sum = 0;
         for (int i = 0; i < stringHeld.length(); i++) {
-            if (stringHeld.charAt(i) == charToFind){
+            if (Character.toUpperCase(stringHeld.charAt(i)) == Character.toUpperCase(charToFind)){
                 sum = sum + 1;
             }
         }
