@@ -10,25 +10,24 @@ import static org.junit.Assert.*;
  * Created by zoloe on 2016. 11. 21..
  */
 public class Ws2ArrayListTest {
+
+    private Ws2ArrayList myWs2 = new Ws2ArrayList();
+
     @Test
     public void sum() throws Exception {
-        Ws2ArrayList myWs2 = new Ws2ArrayList();
         ArrayList<Integer> myIntList = new ArrayList(Arrays.asList(1,5,7,8));
-        myWs2.setMyIntList(myIntList);
         assertEquals(tSum(myIntList), myWs2.Sum(myIntList));
     }
 
     @Test
     public void sumIfEmpty() throws Exception {
         ArrayList<Integer> myEmptyList = new ArrayList<>();
-        Ws2ArrayList myWs2 = new Ws2ArrayList();
         assertEquals(tSum(myEmptyList), myWs2.Sum(myEmptyList));
     }
 
     @Test
     public void sumIfOneElement() throws Exception {
         ArrayList<Integer> myIntList = new ArrayList(Arrays.asList(3));
-        Ws2ArrayList myWs2 = new Ws2ArrayList();
         assertEquals(tSum(myIntList), myWs2.Sum(myIntList));
     }
 
@@ -37,7 +36,6 @@ public class Ws2ArrayListTest {
     public void sumIfNull() throws Exception {
         Integer[] arr = null;
         ArrayList<Integer> myNulledList = new ArrayList(Arrays.asList(arr));
-        Ws2ArrayList myWs2 = new Ws2ArrayList();
         assertEquals(tSum(myNulledList), myWs2.Sum(myNulledList));
     }
 
