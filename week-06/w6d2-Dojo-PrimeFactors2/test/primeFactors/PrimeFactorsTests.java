@@ -50,6 +50,6 @@ public class PrimeFactorsTests {
     }
     @Test
     public void testNine() throws Exception{
-        assertEquals(list(3,3,3), PrimeFactors.generate(9));
+        assertEquals(list(3,3), PrimeFactors.generate(9));
     }
 }

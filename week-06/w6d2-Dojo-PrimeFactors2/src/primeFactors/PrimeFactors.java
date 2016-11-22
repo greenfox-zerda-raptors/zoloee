@@ -38,13 +38,17 @@ public class PrimeFactors {
 //            result.add(n);
 //        }
         int candidate = 2;
-        while ( n % candidate == 0 ) {
-            result.add(candidate);
-            n /=candidate;
+        while ( n > 1 ) {
+            while ( n % candidate == 0 ) {
+                result.add(candidate);
+                n /= candidate;
+            }
+            candidate++;
         }
         if ( n > 1 ) {
             result.add(n);
         }
+
         return result;
     }
 }
