@@ -45,9 +45,9 @@ public class PrimeFactors {
             }
             candidate++;
         }
-        if ( n > 1 ) {
-            result.add(n);
-        }
+//        if ( n > 1 ) { -- ez torolheto, mert a while-bol csak 1-nel jovnk ki
+//            result.add(n);
+//        }
 
         return result;
     }
