@@ -48,8 +48,8 @@ public class PrimeFactors {
 //        if ( n > 1 ) { -- ez torolheto, mert a while-bol csak 1-nel jovnk ki
 //            result.add(n);
 //        }
-        int candidate = 2;
-        for ( ; n > 1; candidate++ ){
+
+        for ( int candidate = 2; n > 1; candidate++ ){
             for( ; n % candidate == 0; n /= candidate){ //nem kell kezdeti feltetel, mert az n mar be van allitva
                 result.add(candidate);
             }
@@ -57,7 +57,6 @@ public class PrimeFactors {
         }
 // while to for moriczka pelda ide
 // vegtelen for( ; ; )
-
 
         return result;
     }
