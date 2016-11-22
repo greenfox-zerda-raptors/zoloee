@@ -30,5 +30,18 @@ public class PrimeFactorsTests {
         assertEquals(list(2), PrimeFactors.generate(2));
     }
 
+    @Test
+    public void testThree() throws Exception{
+        assertEquals(list(3), PrimeFactors.generate(3));
+    }
 
+    @Test
+    public void testFour() throws Exception{
+        assertEquals(list(2,2), PrimeFactors.generate(4));
+    }
+    // 5-r nem nezzuk, mert prim
+    @Test
+    public void testSix() throws Exception{
+        assertEquals(list(2,3), PrimeFactors.generate(6));
+    }
 }
