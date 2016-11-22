@@ -30,9 +30,17 @@ public class PrimeFactors {
 //        if ( n > 1 ) {
 //            result.add(n);
 //        }
-        while ( n % 2 == 0 ) {
-            result.add(2);
-            n /=2;
+//        while ( n % 2 == 0 ) {
+//            result.add(2);
+//            n /=2;
+//        }
+//        if ( n > 1 ) {
+//            result.add(n);
+//        }
+        int candidate = 2;
+        while ( n % candidate == 0 ) {
+            result.add(candidate);
+            n /=candidate;
         }
         if ( n > 1 ) {
             result.add(n);
