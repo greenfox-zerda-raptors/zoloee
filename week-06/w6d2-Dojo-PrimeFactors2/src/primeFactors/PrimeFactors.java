@@ -37,17 +37,27 @@ public class PrimeFactors {
 //        if ( n > 1 ) {
 //            result.add(n);
 //        }
-        int candidate = 2;
-        while ( n > 1 ) {
-            while ( n % candidate == 0 ) {
-                result.add(candidate);
-                n /= candidate;
-            }
-            candidate++;
-        }
+//        int candidate = 2;
+//        while ( n > 1 ) {
+//            while ( n % candidate == 0 ) {
+//                result.add(candidate);
+//                n /= candidate;
+//            }
+//            candidate++;
+//        }
 //        if ( n > 1 ) { -- ez torolheto, mert a while-bol csak 1-nel jovnk ki
 //            result.add(n);
 //        }
+        int candidate = 2;
+        for ( ; n > 1; candidate++ ){
+            for( ; n % candidate == 0; n /= candidate){ //nem kell kezdeti feltetel, mert az n mar be van allitva
+                result.add(candidate);
+            }
+//            candidate++;
+        }
+// while to for moriczka pelda ide
+// vegtelen for( ; ; )
+
 
         return result;
     }
