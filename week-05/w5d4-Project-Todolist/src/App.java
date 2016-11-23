@@ -15,7 +15,7 @@ public class App {
 //        myList.listTodos();
 
         String[] command = {" "," "};
-            //initialize commands string to get it empty for the while condition
+            //initialize commands string to get it empty for  the while condition
 
         while (!command[0].equals("q")) {
             System.out.println(); //add an empty line to look nicer

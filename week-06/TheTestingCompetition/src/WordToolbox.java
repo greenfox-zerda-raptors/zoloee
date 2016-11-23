@@ -36,7 +36,7 @@ import com.greenfox.lesson.junit.*;
 
     @Override
     public String getS() {
-        return null;
+        return this.stringHeld;
     }
 
     @Override
