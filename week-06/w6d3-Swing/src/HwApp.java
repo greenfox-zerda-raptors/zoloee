@@ -8,7 +8,8 @@ public class HwApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new HelloWorld();
+//                new HelloWorld();
+                new Counter();
             }
         });
     }
