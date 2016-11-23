@@ -29,7 +29,7 @@ public class Counter extends JFrame implements ActionListener {
     }
 
 
-    @Override
+    @Override //Az Action Listener izejet overrideoljuk
     public void actionPerformed(ActionEvent e) {
         mouseClicks++;
         cLabel.setText("Pressed: " + mouseClicks);
