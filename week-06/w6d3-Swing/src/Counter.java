@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Counter extends JFrame implements ActionListener {
     int mouseClicks = 0;
     JLabel cLabel = new JLabel("Pressed: null");
-
+        //ez ket field azert van kozvetlen a class-ban, hogy az Action Listener elerje
     //init Jframe with default empty constructor:
     public Counter() throws HeadlessException {
 
@@ -19,9 +19,19 @@ public class Counter extends JFrame implements ActionListener {
         JPanel cPanel = new JPanel();
 
         JButton cButton = new JButton("Press me!");
-        cButton.addActionListener(this);
+        JButton cResetButton = new JButton("Reset");
+
+        cButton.setActionCommand("Click");
+        cResetButton.setActionCommand("Reset");
+
+        cButton.addActionListener(this); //az action listener ezen ovjektumon belul kerul implementalasra
+        cResetButton.addActionListener(this);
+
         cPanel.add(cButton);
+        cPanel.add(cResetButton);
+
         cPanel.add(cLabel);
+
         this.add(cPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
@@ -31,7 +41,17 @@ public class Counter extends JFrame implements ActionListener {
 
     @Override //Az Action Listener izejet overrideoljuk
     public void actionPerformed(ActionEvent e) {
-        mouseClicks++;
+        String command = e.getActionCommand(); //ezzel vizsgaljuk hogy melyik gombt nyomtak meg
+        switch (command){
+            case "Click" : {
+                mouseClicks++;
+                break;
+            }
+            case "Reset" : {
+                mouseClicks = 0;
+                break;
+            }default: break;
+        }
         cLabel.setText("Pressed: " + mouseClicks);
     }
 }
