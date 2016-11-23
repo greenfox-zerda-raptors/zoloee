@@ -8,9 +8,13 @@ public class HelloWorld extends JFrame{
 
     public HelloWorld() throws HeadlessException {
 
-        this.setSize(400,400);
         this.setTitle("aaaaaaaarrrrrggggghhhhhhh");
+
+        this.pack();
+        this.setSize(400,400);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
+            // a fonti 4 kozepre rakja
         JPanel myPanel = new JPanel();
         JLabel label1 = new JLabel("Hereby I greet you, Zolo!\n");
         JLabel label2 = new JLabel("yolo");
@@ -31,18 +35,13 @@ public class HelloWorld extends JFrame{
             myPanel.add(labels[i]);
             i++;
         }
-    }
 
-    public HelloWorld(GraphicsConfiguration gc) {
-        super(gc);
+    this.setLocation(3, 3);
+    Toolkit tk = Toolkit.getDefaultToolkit();
+    Dimension screenDim = tk.getScreenSize();
+//    Dimension myFrameDim = this.getBounds();
+    int x = (int) ((screenDim.getWidth() - this.getWidth()) / 2);
+    int y = (int) ((screenDim.getHeight() - this.getHeight()) / 2);
+    this.setLocation(x, y);
     }
-
-    public HelloWorld(String title) throws HeadlessException {
-        super(title);
-    }
-
-    public HelloWorld(String title, GraphicsConfiguration gc) {
-        super(title, gc);
-    }
-
 }
