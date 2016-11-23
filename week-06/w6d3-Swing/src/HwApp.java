@@ -9,8 +9,10 @@ public class HwApp {
             @Override
             public void run() {
 //                new HelloWorld();
-                new Counter();
+//                new Counter();
+                new UIControls();
             }
+
         });
     }
 }
