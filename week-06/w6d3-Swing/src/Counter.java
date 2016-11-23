@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 /**
  * Created by zoloe on 2016. 11. 23..
  */
-public class Counter extends JFrame{
-     int mouseClicks = 0;
+public class Counter extends JFrame implements ActionListener {
+    int mouseClicks = 0;
+    JLabel cLabel = new JLabel("Pressed: null");
+
     //init Jframe with default empty constructor:
     public Counter() throws HeadlessException {
 
@@ -15,20 +17,21 @@ public class Counter extends JFrame{
 
         //init Jpanel:
         JPanel cPanel = new JPanel();
-        JLabel cLabel = new JLabel("Pressed: null");
+
         JButton cButton = new JButton("Press me!");
-        cButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mouseClicks++;
-                cLabel.setText("Pressed: " + mouseClicks);
-            }
-        });
+        cButton.addActionListener(this);
         cPanel.add(cButton);
         cPanel.add(cLabel);
         this.add(cPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        mouseClicks++;
+        cLabel.setText("Pressed: " + mouseClicks);
     }
 }
