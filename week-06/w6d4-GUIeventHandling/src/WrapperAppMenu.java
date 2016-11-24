@@ -22,16 +22,18 @@ public class WrapperAppMenu extends JFrame implements ActionListener {
 
         myMenubar.add(fileMenu);
         fileMenu.add(exitMenuItem);
-        setJMenuBar(myMenubar);
+        setJMenuBar(myMenubar); //ez volt az uj
 
         exitMenuItem.addActionListener(this);
 
-        Box box = Box.createVerticalBox();
-        this.add(box, BorderLayout.CENTER);
-        this.setSize(400, 400);
+//        Box box = Box.createVerticalBox();
+//        this.add(box, BorderLayout.CENTER);
+        JPanel ImagePanel = new ImagePanel();
+        this.add(ImagePanel);
+        this.setSize(600, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
+//        this.setResizable(false);
         this.setVisible(true);
     }// WrapperAppMenu()
 }// class WrapperAppMenu
