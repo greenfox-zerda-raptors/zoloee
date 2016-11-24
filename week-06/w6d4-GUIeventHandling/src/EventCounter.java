@@ -6,15 +6,18 @@ import java.awt.*;
  */
 public class EventCounter extends JFrame {
     public EventCounter() throws HeadlessException {
-    JTextField TextField = new JTextField(20);
-    JLabel mCount = new JLabel("-");
-       JLabel nameMcount = new JLabel("Mouse counter:");
-    JLabel kCount = new JLabel("-");
+        JTextField TextField = new JTextField(20);
+        JLabel mCount = new JLabel("-");
+        JLabel nameMcount = new JLabel("Mouse counter:");
+        nameMcount.setLabelFor(mCount);
+        JLabel kCount = new JLabel("-");
         JLabel nameKcount = new JLabel("Keyboard counter:");
-    JLabel wCount = new JLabel("-");
+        nameKcount.setLabelFor(kCount);
+        JLabel wCount = new JLabel("-");
         JLabel nameWcount = new JLabel("Window counter:");
+        nameWcount.setLabelFor(nameWcount);
 
-    Box ecBox = Box.createVerticalBox();
+        Box ecBox = Box.createVerticalBox();
 
         ecBox.add(Box.createVerticalStrut(10));
         ecBox.add(TextField);
