@@ -10,7 +10,8 @@ public class App {
             @Override
             public void run() {
 
-                new EventCounter();
+//                new EventCounter();
+                new WrapperAppMenu();
             }
 
         });
