@@ -5,27 +5,29 @@ import java.awt.event.*;
 /**
  * Created by zoloe on 2016. 11. 24..
  */
-public class EventCounter extends JFrame implements KeyListener {
+public class EventCounter extends JFrame {
+    int counterKcount = 0;
     int counterMcount = 0;
     int counterWcount = 0;
+    JTextField TextField = new JTextField(20);
     JLabel mCount = new JLabel("-");
+
+    JLabel kCount = new JLabel("-");
+
     JLabel wCount = new JLabel("-");
 
-    public EventCounter() throws HeadlessException i {
-        int counterKcount = 0;
-        JTextField TextField = new JTextField(20);
-        JLabel kCount = new JLabel("-");
 
-        JLabel nameKcount = new JLabel("Keyboard counter:");
-        nameKcount.setLabelFor(kCount);
+
+    public EventCounter() throws HeadlessException {
 
         JLabel nameMcount = new JLabel("Mouse counter:");
         nameMcount.setLabelFor(mCount);
-
+        JLabel nameKcount = new JLabel("Keyboard counter:");
+        nameKcount.setLabelFor(kCount);
         JLabel nameWcount = new JLabel("Window counter:");
         nameWcount.setLabelFor(nameWcount);
 
-        TextField.addKeyListener(this);
+        TextField.addKeyListener(new ListenForKeys());
         this.addMouseListener(new ListenForMouse());
         this.addWindowListener(new listenForWindow());
 
@@ -53,42 +55,27 @@ public class EventCounter extends JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
+    }
+
+    private class ListenForKeys implements KeyListener{
         @Override
-        public void keyPressed(KeyEvent) {
+        public void keyPressed(KeyEvent e) {
 //            setCounter(counterKcount,kCount);  // valamiert ez csak egyszer fut
             counterKcount++;
             kCount.setText(Integer.toString(counterKcount));
         }
 
         @Override
-        public void keyReleased(KeyEvent) {
+        public void keyReleased(KeyEvent e) {
             counterKcount++;
             kCount.setText(Integer.toString(counterKcount));
         }
 
         @Override
-        public void keyTyped(KeyEvent) {
-        }
+        public void keyTyped(KeyEvent e) {
 
-//    private class ListenForKeys implements KeyListener{
-//        @Override
-//        public void keyPressed(KeyEvent e) {
-////            setCounter(counterKcount,kCount);  // valamiert ez csak egyszer fut
-//            counterKcount++;
-//            kCount.setText(Integer.toString(counterKcount));
-//        }
-//
-//        @Override
-//        public void keyReleased(KeyEvent e) {
-//            counterKcount++;
-//            kCount.setText(Integer.toString(counterKcount));
-//        }
-//
-//        @Override
-//        public void keyTyped(KeyEvent e) {
-//
-//        }
-//    }
+        }
+    }
     private void setCounter(int counter, JLabel label){
         counter++;
         label.setText(Integer.toString(counter));
