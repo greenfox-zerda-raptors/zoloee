@@ -35,5 +35,7 @@ public class WrapperAppMenu extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
 //        this.setResizable(false);
         this.setVisible(true);
+
+
     }// WrapperAppMenu()
 }// class WrapperAppMenu
