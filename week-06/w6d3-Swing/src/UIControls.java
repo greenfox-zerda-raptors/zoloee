@@ -39,7 +39,7 @@ public class UIControls extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
+//        this.setResizable(false);
         this.setVisible(true);
     }
     @Override
