@@ -14,7 +14,7 @@ public class App {
                 //Turn off metal's use of bold fonts
 //                UIManager.put("swing.boldMetal", Boolean.FALSE);
 
-                new MemoryFrame();
+                new MemoryGameFrame();
             }
         });
     }

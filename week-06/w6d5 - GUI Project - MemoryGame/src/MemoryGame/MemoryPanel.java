@@ -2,25 +2,42 @@ package MemoryGame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by zoloe on 2016. 11. 25..
  */
 public class MemoryPanel extends JPanel {
-    private Image myImage1;
-    private Image myImage2;
+    // arraylist of images
+    // majd kesobb megcsinalni, hogy magatol olvassa be a kepeket, es ahhoz igazitsa a meretet
+
+    private ImageIcon closedCardIcon;
+
+    private String filePathNameSlash = "./images/";
+    private String imageFileNames = ("image1.png,image2.png,image3.png,image4.png"); //ebben kell tarolni a kepneveket
+    private ArrayList<JButton> cards = new ArrayList<>(); // kartyak = array list of buttons
+
     public MemoryPanel(){
-        super(new GridLayout(2,2));
-//        myImage1 = Toolkit.getDefaultToolkit().createImage("image1.png");
-//        myImage2 = Toolkit.getDefaultToolkit().createImage("image1.png");
+       closedCardIcon = new ImageIcon("closed.JPG");
+       // imageket berakni a cardsba
+       String[] separatedImageFilenames = imageFileNames.split(",");
 
-    }// MemoryPanel
+       for (int i = 0; i <separatedImageFilenames.length; i++){
+           Icon tempIcon = new ImageIcon(filePathNameSlash + separatedImageFilenames[i]);
+           cards.add(i, new JButton(tempIcon));
+       }
+       GridLayout myGridlayout = new GridLayout(0,separatedImageFilenames.length);
+//       this.add(myGridlayout)
+        setLayout(myGridlayout);
+        for (JButton card:
+             cards) {this.add(card);
+        }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(myImage1, 5,5, this);
-        g.drawImage(myImage2, 5,5, this);
-    }// paintComponent
+//        super(new GridLayout(2,2));
 
-}
+
+    }// MemoryPanel()
+
+// paintComponentet kivettem, mert nem azzal kell csinalni
+
+}// class MemoryPanel
