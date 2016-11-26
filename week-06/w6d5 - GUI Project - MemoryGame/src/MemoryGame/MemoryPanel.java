@@ -13,7 +13,7 @@ public class MemoryPanel extends JPanel {
 
     private ImageIcon closedCardIcon;
 
-    private String filePathNameSlash = "./images/";
+    private String imadeFilePath = "./images/";
     private String imageFileNames = ("image1.png,image2.png,image3.png,image4.png"); //ebben kell tarolni a kepneveket
     private ArrayList<JButton> cards = new ArrayList<>(); // kartyak = array list of buttons
 
@@ -23,7 +23,7 @@ public class MemoryPanel extends JPanel {
        String[] separatedImageFilenames = imageFileNames.split(",");
 
        for (int i = 0; i <separatedImageFilenames.length; i++){
-           Icon tempIcon = new ImageIcon(filePathNameSlash + separatedImageFilenames[i]);
+           Icon tempIcon = new ImageIcon(imadeFilePath + separatedImageFilenames[i]);
            cards.add(i, new JButton(tempIcon));
        }
        GridLayout myGridlayout = new GridLayout(0,separatedImageFilenames.length);
