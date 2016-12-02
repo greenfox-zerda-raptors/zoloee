@@ -20,13 +20,16 @@ public class MemoryPanel extends JPanel {
     private ImageIcon closedCardIcon = new ImageIcon(imageFilePath + "closed.JPG");            ;
     private ArrayList<JButton> cards = new ArrayList<>(); // kartyak = array list of buttons
     private ArrayList<ImageIcon> icons = new ArrayList<>(); // leforditott karyak kepeit tarolo arraylis
+    private int numOfClicks = 0;
+    private int indexOfCurrentClick = -1;
+    private int indexOfFormerClick = -1;
 
     public MemoryPanel(){
         // imageket berakni az iconarrayba
         //a kepnev stringet foldarabolom, hogy konnyebb legyen kezelni
         String[] separatedImageFilenames = imageFileNames.split(",");
 
-        int j = 0;       //dupla kartyakat kell csinalnunk, ehhez kell egy masik valtozo is
+        int j = 0;       //dupla kartyakat kell csinalnunk, egyik a felforditott, masik a leforditott "pakli" ehhez kell egy masik valtozo is
         for (int i = 0; i <separatedImageFilenames.length; i++){
             icons.add(j++, new ImageIcon(imageFilePath + separatedImageFilenames[i]));
             icons.add(j++, new ImageIcon(imageFilePath + separatedImageFilenames[i])); // igy lesz 2 egyforma ugyanoyan kep
@@ -37,19 +40,19 @@ public class MemoryPanel extends JPanel {
         for (int i = 0; i < separatedImageFilenames.length * 2; i++){
             cards.add(i, new JButton(closedCardIcon)); //leforditott keppel hozza letre
         }
-        //action listener hozzadasa a buttonokhoz:
+
         for (JButton card:
                 cards) {
             card.addActionListener(new ImageButtonListener());
         }
 
-        //kitalalni hogy hogy szamoljam ki hogy hany sor / oszlop legyen
+        //kiszamolni hogy hany sor / oszlop legyen
         int numOfrows = (separatedImageFilenames.length / 2);
         while (!(separatedImageFilenames.length % numOfrows == 0)){
             numOfrows--;
         }
 
-        GridLayout myGridlayout = new GridLayout(numOfrows,0);       //cols: 0 => ahny elem van, azt belefaszazza...
+        GridLayout myGridlayout = new GridLayout(numOfrows,0);       //cols: 0 => ahany elem van, azt belefaszazza...
 
         setLayout(myGridlayout);
         for (JButton card:
@@ -61,24 +64,73 @@ public class MemoryPanel extends JPanel {
 
     private class ImageButtonListener implements ActionListener {
                             // mi tortenik, ha megnyomjak?
-       private int numOfCliks = 0;
+
        private JButton tempCard;
 
         @Override
         public void actionPerformed(ActionEvent e) {
             //check if 1stclick
 
+//            System.out.println("num: " + numOfClicks);
+//            System.out.println("current: " + indexOfCurrentClick);
+//            System.out.println("former: " + indexOfFormerClick);
+//            System.out.println("==================");;
 
-//            if ( numOfCliks == 0 ){
+            if ( numOfClicks == 0 ){
+                indexOfCurrentClick = cards.indexOf(e.getSource());
+                cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
+                numOfClicks++;
+            }else if ( numOfClicks == 1 ) { //azaz egyet mar kattintottak korabban, tehat ez a masodik katt
+                indexOfFormerClick = indexOfCurrentClick;
+                indexOfCurrentClick = cards.indexOf(e.getSource());
+                cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
+                numOfClicks++;
+                if (icons.get(indexOfCurrentClick) == icons.get(indexOfFormerClick)){
+                    //a pair
+                    //reset
+                    numOfClicks = 0;
+                    indexOfCurrentClick = -1;
+                    indexOfFormerClick = -1;
+                }
+            }else if ( numOfClicks == 2 ) { //azaz mar kettot kattintottak korabban / ide csak akkor jutunk, ha nem volt par
+                cards.get(indexOfFormerClick).setIcon(closedCardIcon);
+                cards.get(indexOfCurrentClick).setIcon(closedCardIcon);
+                numOfClicks = 0;
+                indexOfCurrentClick = -1;
+                indexOfFormerClick = -1;
+            }
+            try {
+                System.out.println(icons.get(indexOfCurrentClick) == icons.get(indexOfFormerClick));
+            }catch(ArrayIndexOutOfBoundsException e1){
 
-            cards.get(cards.indexOf(e.getSource())).setIcon(icons.get(cards.indexOf(e.getSource())));
-            tempCard = cards.get(cards.indexOf(e.getSource()));
-            numOfCliks++;
-//            } if ( numOfCliks == 2){
-//                    cards.get(cards.indexOf(e.getSource())).setIcon(icons.get(cards.indexOf(e.getSource())));
-//                    if ( !(cards.get(cards.indexOf(e.getSource())) == tempCard)){
-//                        tempCard.setIcon(closedCardIcon);
-//                        cards.get(cards.indexOf(e.getSource()));
+            }
+            System.out.println("num: " + numOfClicks);
+            System.out.println("current: " + indexOfCurrentClick);
+            System.out.println("former: " + indexOfFormerClick);
+            System.out.println("==================");;
         }//actionPerformed
      }//ImageButtonListener
 }// class MemoryPanel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
