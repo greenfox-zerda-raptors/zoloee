@@ -29,10 +29,10 @@ public class MemoryPanel extends JPanel {
         //a kepnev stringet foldarabolom, hogy konnyebb legyen kezelni
         String[] separatedImageFilenames = imageFileNames.split(",");
 
-        int j = 0;       //dupla kartyakat kell csinalnunk, egyik a felforditott, masik a leforditott "pakli" ehhez kell egy masik valtozo is
-        for (int i = 0; i <separatedImageFilenames.length; i++){
+              //dupla kartyakat kell csinalnunk, egyik a felforditott, masik a leforditott "pakli" ehhez kell egy masik valtozo is
+        for (int i = 0, j = 0; i <separatedImageFilenames.length; i++){
             icons.add(j++, new ImageIcon(imageFilePath + separatedImageFilenames[i]));
-            icons.add(j++, new ImageIcon(imageFilePath + separatedImageFilenames[i])); // igy lesz 2 egyforma ugyanoyan kep
+            icons.add(j++, icons.get(i));
         }
         Collections.shuffle(icons); //megkeveri az arraylistet
 
