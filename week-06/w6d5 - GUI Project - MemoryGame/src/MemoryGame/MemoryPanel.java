@@ -16,23 +16,25 @@ public class MemoryPanel extends JPanel {
 
 
     private String imageFilePath = "./images/";
-    private String imageFileNames = ("image1.png,image2.png,image3.jpg,image4.png,duck2.jpg,duck.jpg"); //ebben kell tarolni a kepneveket
+    private String imageFileNames = ("image1.png,image2.png,zolo.jpg,smallDuck.png,duck2.jpg,duck.jpg"); //ebben kell tarolni a kepneveket
     private ImageIcon closedCardIcon = new ImageIcon(imageFilePath + "closed.JPG");            ;
     private ArrayList<JButton> cards = new ArrayList<>(); // kartyak = array list of buttons
     private ArrayList<ImageIcon> icons = new ArrayList<>(); // leforditott karyak kepeit tarolo arraylis
     private int numOfClicks = 0;
     private int indexOfCurrentClick = -1;
     private int indexOfFormerClick = -1;
+    private ArrayList<Integer> foundPairs = new ArrayList<>();
 
     public MemoryPanel(){
         // imageket berakni az iconarrayba
         //a kepnev stringet foldarabolom, hogy konnyebb legyen kezelni
         String[] separatedImageFilenames = imageFileNames.split(",");
 
-              //dupla kartyakat kell csinalnunk, egyik a felforditott, masik a leforditott "pakli" ehhez kell egy masik valtozo is
+        //dupla kartyakat kell csinalnunk, egyik a felforditott, masik a leforditott "pakli" ehhez kell egy masik valtozo is
         for (int i = 0, j = 0; i <separatedImageFilenames.length; i++){
-            icons.add(j++, new ImageIcon(imageFilePath + separatedImageFilenames[i]));
-            icons.add(j++, icons.get(i));
+            icons.add(j, new ImageIcon(imageFilePath + separatedImageFilenames[i]));
+            icons.add(j+1, icons.get(j));
+            j = j + 2;
         }
         Collections.shuffle(icons); //megkeveri az arraylistet
 
@@ -63,53 +65,66 @@ public class MemoryPanel extends JPanel {
     }// MemoryPanel()
 
     private class ImageButtonListener implements ActionListener {
-                            // mi tortenik, ha megnyomjak?
+        // mi tortenik, ha megnyomjak?
 
-       private JButton tempCard;
+        private JButton tempCard;
 
         @Override
         public void actionPerformed(ActionEvent e) {
             //check if 1stclick
+            if (!checkIfLocked(cards.indexOf(e.getSource()))) {
+                if (numOfClicks == 0) {
+                    indexOfCurrentClick = cards.indexOf(e.getSource());
+                    cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
+                    numOfClicks++;
+                } else if (numOfClicks == 1) { //azaz egyet mar kattintottak korabban, tehat ez a masodik katt
+                    if (!(indexOfCurrentClick == cards.indexOf(e.getSource()))) {
 
-//            System.out.println("num: " + numOfClicks);
-//            System.out.println("current: " + indexOfCurrentClick);
-//            System.out.println("former: " + indexOfFormerClick);
-//            System.out.println("==================");;
-
-            if ( numOfClicks == 0 ){
-                indexOfCurrentClick = cards.indexOf(e.getSource());
-                cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
-                numOfClicks++;
-            }else if ( numOfClicks == 1 ) { //azaz egyet mar kattintottak korabban, tehat ez a masodik katt
-                indexOfFormerClick = indexOfCurrentClick;
-                indexOfCurrentClick = cards.indexOf(e.getSource());
-                cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
-                numOfClicks++;
-                if (icons.get(indexOfCurrentClick) == icons.get(indexOfFormerClick)){
-                    //a pair
-                    //reset
+                        indexOfFormerClick = indexOfCurrentClick;
+                        indexOfCurrentClick = cards.indexOf(e.getSource());
+                        cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
+                        numOfClicks++;
+                        if (icons.get(indexOfCurrentClick) == icons.get(indexOfFormerClick)) {
+                            //a pair
+                            //reset
+                            foundPairs.add(indexOfFormerClick);
+                            foundPairs.add(indexOfCurrentClick);
+                            numOfClicks = 0;
+                            indexOfCurrentClick = -1;
+                            indexOfFormerClick = -1;
+                        }
+                    }
+                } else if (numOfClicks == 2) { //azaz mar kettot kattintottak korabban / ide csak akkor jutunk, ha nem volt par
+                    cards.get(indexOfFormerClick).setIcon(closedCardIcon);
+                    cards.get(indexOfCurrentClick).setIcon(closedCardIcon);
                     numOfClicks = 0;
                     indexOfCurrentClick = -1;
                     indexOfFormerClick = -1;
                 }
-            }else if ( numOfClicks == 2 ) { //azaz mar kettot kattintottak korabban / ide csak akkor jutunk, ha nem volt par
-                cards.get(indexOfFormerClick).setIcon(closedCardIcon);
-                cards.get(indexOfCurrentClick).setIcon(closedCardIcon);
-                numOfClicks = 0;
-                indexOfCurrentClick = -1;
-                indexOfFormerClick = -1;
-            }
-            try {
-                System.out.println(icons.get(indexOfCurrentClick) == icons.get(indexOfFormerClick));
-            }catch(ArrayIndexOutOfBoundsException e1){
+                try {
+                    System.out.println(icons.get(indexOfCurrentClick) == icons.get(indexOfFormerClick));
+                } catch (ArrayIndexOutOfBoundsException e1) {
 
-            }
-            System.out.println("num: " + numOfClicks);
-            System.out.println("current: " + indexOfCurrentClick);
-            System.out.println("former: " + indexOfFormerClick);
-            System.out.println("==================");;
+                }
+                System.out.println("num: " + numOfClicks);
+                System.out.println("current: " + indexOfCurrentClick);
+                System.out.println("former: " + indexOfFormerClick);
+                System.out.println(foundPairs.toString());
+                System.out.println("==================");
+                ;
+            }// if checkiflocked
         }//actionPerformed
-     }//ImageButtonListener
+        //        lockIndex()
+        private boolean checkIfLocked(int i){
+            for (int j:foundPairs
+                    ) {
+                if ( j == i ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }//ImageButtonListener
 }// class MemoryPanel
 
 
