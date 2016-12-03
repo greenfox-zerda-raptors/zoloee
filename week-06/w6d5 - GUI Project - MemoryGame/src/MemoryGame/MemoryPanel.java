@@ -14,7 +14,6 @@ public class MemoryPanel extends JPanel {
     // arraylist of images
     // majd kesobb megcsinalni, hogy magatol olvassa be a kepeket, es ahhoz igazitsa a meretet
 
-
     private String imageFilePath = "./images/";
     private String imageFileNames = ("image1.png,image2.png,zolo.jpg,smallDuck.png,duck2.jpg,duck.jpg"); //ebben kell tarolni a kepneveket
     private ImageIcon closedCardIcon = new ImageIcon(imageFilePath + "closed.JPG");            ;
@@ -65,13 +64,10 @@ public class MemoryPanel extends JPanel {
     }// MemoryPanel()
 
     private class ImageButtonListener implements ActionListener {
-        // mi tortenik, ha megnyomjak?
-
-        private JButton tempCard;
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //check if 1stclick
+
             if (!checkIfLocked(cards.indexOf(e.getSource()))) {
                 if (numOfClicks == 0) {
                     indexOfCurrentClick = cards.indexOf(e.getSource());
@@ -79,7 +75,6 @@ public class MemoryPanel extends JPanel {
                     numOfClicks++;
                 } else if (numOfClicks == 1) { //azaz egyet mar kattintottak korabban, tehat ez a masodik katt
                     if (!(indexOfCurrentClick == cards.indexOf(e.getSource()))) {
-
                         indexOfFormerClick = indexOfCurrentClick;
                         indexOfCurrentClick = cards.indexOf(e.getSource());
                         cards.get(indexOfCurrentClick).setIcon(icons.get(indexOfCurrentClick));
@@ -111,7 +106,6 @@ public class MemoryPanel extends JPanel {
                 System.out.println("former: " + indexOfFormerClick);
                 System.out.println(foundPairs.toString());
                 System.out.println("==================");
-                ;
             }// if checkiflocked
         }//actionPerformed
         //        lockIndex()
