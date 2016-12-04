@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Created by zoloe on 2016. 12. 03..
  */
-public class App {
+public class PirateApp {
     static Scanner userInput = new Scanner(System.in);
     static String commands = "l (ist), a (sk), d (rink), s (elect), q (uit), w (akeup) ";
 
@@ -14,7 +14,6 @@ public class App {
         pirates.add(new Pirate("Garrick Scoundrel Rattle"));
         pirates.add(new Pirate("Harlan Daffy Lancaster"));
         Pirate activePirate = null;
-
         System.out.println(commands);
         while (!command[0].equals("q")) {
             command = userInput.nextLine().split(" ", 2);
@@ -57,20 +56,9 @@ public class App {
                         System.out.println(" no such command. usage: " + commands);
                         break;
                     }
-
                 }// switch
-
             } catch (Exception e) {
-//            System.out.println();
             }// catch
         } //while not q
     }//Psvm
-
-
-
-
-
-
-
-
-}//App
+}//PirateApp
