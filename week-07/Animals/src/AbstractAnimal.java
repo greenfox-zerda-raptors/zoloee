@@ -26,8 +26,6 @@ public abstract class AbstractAnimal implements Animal {
 
     abstract int defaultFoodAmount();
 
-
-
     public String getName() {
         return name;
     }
