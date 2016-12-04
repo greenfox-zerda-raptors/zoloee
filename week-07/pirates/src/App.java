@@ -20,7 +20,7 @@ public class App {
             command = userInput.nextLine().split(" ", 2);
             System.out.println();
             try {
-                System.out.println(activePirate.getName() + ":");
+                System.out.println(activePirate.getName()":");
             }catch (Exception e){
                 System.out.println("no Pirate selected");
             }
