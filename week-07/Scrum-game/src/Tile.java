@@ -10,23 +10,22 @@ import java.io.IOException;
  */
 public class Tile {
 
-        BufferedImage image;
-        int posX, posY;
+    BufferedImage image;
+    int posX, posY;
 
-        public Tile(String filename, int posX, int posY) {
-            this.posX = posX;
-            this.posY = posY;
-            try {
-                image = ImageIO.read(new File(filename));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+    public Tile(String filename, int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
+        try {
+            image = ImageIO.read(new File(filename));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }// cons Tile
 
-        public void draw(Graphics graphics) {
-            if (image != null) {
-                graphics.drawImage(image, posX, posY, null);
-            }
+    public void draw(Graphics graphics) {
+        if (image != null) {
+            graphics.drawImage(image, posX, posY, null);
         }
-    }
+    }// draw
+}// Tile

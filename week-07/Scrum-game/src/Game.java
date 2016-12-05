@@ -21,6 +21,4 @@ public class Game extends JFrame {
         this.setVisible(true);
 
     }
-
-
 }
