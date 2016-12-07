@@ -14,27 +14,37 @@ public class Board extends JPanel implements KeyListener{
 
         myArea = new Area();
         myHero = new Hero(0,0);
+
         addKeyListener(this);
         setFocusable(true); //ez kell hogy a Jframe helyett a Jpanelen legyen a focus
         setPreferredSize(new Dimension(720, 900));
         setVisible(true);
+
     }
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP : {
-                myHero.moveUp();
+                if (myArea.getTileIsMoveable(myHero.getPosX(),myHero.getPosY()-1)) {
+                    myHero.moveUp();
+                }
                 break;
             }
             case KeyEvent.VK_DOWN : {
-                myHero.moveDown();
+                if (myArea.getTileIsMoveable(myHero.getPosX(),myHero.getPosY()+1)) {
+                    myHero.moveDown();
+                }
                 break;
             }
             case KeyEvent.VK_RIGHT : {
-                myHero.moveRight();
+                if (myArea.getTileIsMoveable(myHero.getPosX()+1,myHero.getPosY())) {
+                    myHero.moveRight();
+                }
                 break;
             }case KeyEvent.VK_LEFT : {
-                myHero.moveLeft();
+                if (myArea.getTileIsMoveable(myHero.getPosX()-1,myHero.getPosY())) {
+                    myHero.moveLeft();
+                }
                 break;
             }
             default:{
@@ -61,5 +71,7 @@ public class Board extends JPanel implements KeyListener{
         // you can create and draw an image using the class below e.g.
         myArea.draw(graphics);
         myHero.draw(graphics);
+        graphics.drawString(myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,730);
+
     }//paint
 }//Board
