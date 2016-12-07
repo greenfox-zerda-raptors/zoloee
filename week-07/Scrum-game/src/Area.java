@@ -43,14 +43,10 @@ public class Area {
 
     public boolean getTileIsMoveable (int posX, int posY){
         boolean out;
-        if ( posX >= 0 && posX <= 9){
-            if (posY >= 0 && posY <= 9){
-                out = tiles.get(10 * posY + posX).moveable;
+        if ( posX >= 0 && posX <= 9 && posY >= 0 && posY <= 9){ //check if we stay inside the board
+                out = tiles.get(10 * posY + posX).moveable; //check if its a wall or a floor
             }else {
-                out =false;
-            }
-        }else{
-            out = false;
+            out =false;
         }
         return out;
     }
