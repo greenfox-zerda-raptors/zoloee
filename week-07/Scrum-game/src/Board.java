@@ -32,6 +32,7 @@ public class Board extends JPanel{
                 }else if ( map[i][j] == 1 ){
                     tiles.add(new Wall(j,i)); // pos x is the horizontal axle
                 }else if ( map[i][j] == 2 ){
+                    tiles.add(new Floor(j,i));
                     tiles.add(new Hero(j,i));
                 }
             }
