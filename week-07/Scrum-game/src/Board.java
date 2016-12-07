@@ -15,20 +15,26 @@ public class Board extends JPanel implements KeyListener{
         myArea = new Area();
         myHero = new Hero(0,0);
         addKeyListener(this);
-        setFocusable(true);
-        // set the size of your draw board
+        setFocusable(true); //ez kell hogy a Jframe helyett a Jpanelen legyen a focus
         setPreferredSize(new Dimension(720, 900));
         setVisible(true);
     }
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
+            case KeyEvent.VK_UP : {
+                myHero = new Hero("images/hero-up.png",myHero.getPosX(),myHero.getPosY()-1);
+                break;
+            }
             case KeyEvent.VK_DOWN : {
-                System.out.println("down pressed ");
-//                    myHero = new Hero(1,0);
+                myHero = new Hero("images/hero-down.png",myHero.getPosX(),myHero.getPosY()+1);
                 break;
             }
             case KeyEvent.VK_RIGHT : {
+                myHero = new Hero("images/hero-right.png",myHero.getPosX()+1,myHero.getPosY());
+                break;
+            }case KeyEvent.VK_LEFT : {
+                myHero = new Hero("images/hero-left.png",myHero.getPosX()-1,myHero.getPosY());
                 break;
             }
             default:{

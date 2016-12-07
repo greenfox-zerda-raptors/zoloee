@@ -11,6 +11,15 @@ import java.io.IOException;
 public abstract class GameObject {
 
     BufferedImage image;
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
     int posX, posY;
 
     public GameObject(String filename, int posX, int posY) {
@@ -22,6 +31,7 @@ public abstract class GameObject {
             e.printStackTrace();
         }
     }// cons GameObject
+
 
     abstract public void draw(Graphics graphics);
 
