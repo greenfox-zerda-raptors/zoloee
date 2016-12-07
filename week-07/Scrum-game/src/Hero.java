@@ -1,9 +1,7 @@
-import java.awt.*;
-
 /**
  * Created by zoloe on 2016. 12. 07..
  */
-public class Hero extends Character {
+public class Hero extends MoveableThing {
     public Hero(int posX, int posY) {
         super("images/hero-down.png", posX, posY);
     }

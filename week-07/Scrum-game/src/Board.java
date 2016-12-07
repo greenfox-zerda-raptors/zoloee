@@ -23,6 +23,7 @@ public class Board extends JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP : {
+//                myHero.setImage("images/hero-up.png");
                 myHero = new Hero("images/hero-up.png",myHero.getPosX(),myHero.getPosY()-1);
                 break;
             }

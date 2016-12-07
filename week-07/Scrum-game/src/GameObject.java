@@ -9,17 +9,7 @@ import java.io.IOException;
  * Created by zoloe on 2016. 12. 05..
  */
 public abstract class GameObject {
-
     BufferedImage image;
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
     int posX, posY;
 
     public GameObject(String filename, int posX, int posY) {
@@ -30,9 +20,28 @@ public abstract class GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }// cons GameObject
-
+    }// cons MoveableThing
 
     abstract public void draw(Graphics graphics);
 
-}// GameObject
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+}// MoveableThing
