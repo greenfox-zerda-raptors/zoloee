@@ -1,9 +1,9 @@
 /**
  * Created by zoloe on 2016. 12. 07..
  */
-public class Wall extends GameObject {
+public class Wall extends Tile {
 
     public Wall(int posX, int posY) {
-        super("images/wall.png", posX, posY);
+        super("images/wall.png", posX, posY, false);
     }
 }

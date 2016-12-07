@@ -66,7 +66,7 @@ public class Board extends JPanel{
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_DOWN : {
-                    myHero = new Hero(0,0);
+                    myHero = new Hero(1,0);
                     break;
                 }
                 case KeyEvent.VK_RIGHT : {
