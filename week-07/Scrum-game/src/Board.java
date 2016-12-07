@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by zoloe on 2016. 12. 05..
  */
 public class Board extends JPanel implements KeyListener{
-    GameObject myHero;
+    MoveableThing myHero;
     Area myArea;
     public Board()  {
 
@@ -23,19 +23,18 @@ public class Board extends JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP : {
-//                myHero.setImage("images/hero-up.png");
-                myHero = new Hero("images/hero-up.png",myHero.getPosX(),myHero.getPosY()-1);
+                myHero.moveUp();
                 break;
             }
             case KeyEvent.VK_DOWN : {
-                myHero = new Hero("images/hero-down.png",myHero.getPosX(),myHero.getPosY()+1);
+                myHero.moveDown();
                 break;
             }
             case KeyEvent.VK_RIGHT : {
-                myHero = new Hero("images/hero-right.png",myHero.getPosX()+1,myHero.getPosY());
+                myHero.moveRight();
                 break;
             }case KeyEvent.VK_LEFT : {
-                myHero = new Hero("images/hero-left.png",myHero.getPosX()-1,myHero.getPosY());
+                myHero.moveLeft();
                 break;
             }
             default:{

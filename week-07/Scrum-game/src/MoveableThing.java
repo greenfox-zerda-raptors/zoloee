@@ -46,8 +46,6 @@ public class MoveableThing extends GameObject {
         setPosX(posX-1);
     }
 
-//    int posX, posY;
-
     public void draw(Graphics graphics){
         if (image != null) {
             graphics.drawImage(image, posX * 72, posY * 72, null);
