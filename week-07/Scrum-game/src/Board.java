@@ -8,37 +8,11 @@ import java.util.ArrayList;
  * Created by zoloe on 2016. 12. 05..
  */
 public class Board extends JPanel{
-
-    ArrayList<GameObject> tiles;
     GameObject myHero;
-    int[][] map = new int[][]{
-            {0,1,1,1,1,1,1,1,1,1},
-            {0,1,1,0,0,0,0,0,0,0},
-            {0,0,0,0,1,1,0,1,0,0},
-            {0,1,1,0,0,1,0,1,0,0},
-            {0,1,1,1,0,1,0,1,0,0},
-            {0,0,1,1,0,0,0,1,1,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,1,1,0,1,1,1,0,0},
-            {0,0,1,1,0,1,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0}
-    };
-
+    Area myArea;
     public Board() {
-        tiles = new ArrayList<>();
-//        tiles.add(new Wall(1,0));
-        for (int i = 0; i < 10; i += 1) {
-            for (int j = 0; j < 10; j += 1){
-                if ( map[i][j] == 0 ){
-                    tiles.add(new Floor(j,i));
-                }else if ( map[i][j] == 1 ){
-                    tiles.add(new Wall(j,i)); // pos x is the horizontal axle
-//                }else if ( map[i][j] == 2 ){
-//                    tiles.add(new Floor(j,i));
-//                    tiles.add(new Hero(j,i));
-                }
-            }
-        }
+
+        myArea = new Area();
         myHero = new Hero(0,0);
 
         // set the size of your draw board
@@ -49,14 +23,10 @@ public class Board extends JPanel{
 
     @Override
     public void paint(Graphics graphics){
-        super.paint(graphics);
+//        super.paint(graphics);
         // here you have a 720x900 canvas
         // you can create and draw an image using the class below e.g.
-
-        for (GameObject tile :
-                tiles) {
-            tile.draw(graphics);
-        }
+        myArea.draw(graphics);
         myHero.draw(graphics);
     }//paint
 

@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by zoloe on 2016. 12. 05..
  */
-public class GameObject {
+public abstract class GameObject {
 
     BufferedImage image;
     int posX, posY;
@@ -23,9 +23,6 @@ public class GameObject {
         }
     }// cons GameObject
 
-    public void draw(Graphics graphics) {
-        if (image != null) {
-            graphics.drawImage(image, posX * 72, posY * 72, null);
-        }
-    }// draw
+    abstract public void draw(Graphics graphics);
+
 }// GameObject
