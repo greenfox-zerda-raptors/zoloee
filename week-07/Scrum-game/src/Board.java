@@ -8,15 +8,32 @@ import java.util.ArrayList;
  */
 public class Board extends JPanel{
 
-    ArrayList<Tile> tiles;
+    ArrayList<GameObject> tiles;
+    int[][] map = new int[][]{
+            {2,1,1,1,1,1,1,1,1,1},
+            {0,1,1,0,0,0,0,0,0,0},
+            {0,0,0,0,1,1,0,1,0,0},
+            {0,1,1,0,0,1,0,1,0,0},
+            {0,1,1,1,0,1,0,1,0,0},
+            {0,0,1,1,0,0,0,1,1,0},
+            {0,0,0,0,0,0,0,0,0,0},
+            {0,0,1,1,0,1,1,1,0,0},
+            {0,0,1,1,0,1,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0}
+    };
 
     public Board() {
         tiles = new ArrayList<>();
-        for (int j = 0; j < 720; j += 72) {
-            for (int k = 0; k < 720; k += 72) {
-
-                Tile image = new Tile("images/floor.png", k, j);
-                tiles.add(image); // tiles.add(new Floor[k][j]
+//        tiles.add(new Wall(1,0));
+        for (int i = 0; i < 10; i += 1) {
+            for (int j = 0; j < 10; j += 1){
+                if ( map[i][j] == 0 ){
+                    tiles.add(new Floor(j,i));
+                }else if ( map[i][j] == 1 ){
+                    tiles.add(new Wall(j,i)); // pos x is the horizontal axle
+                }else if ( map[i][j] == 2 ){
+                    tiles.add(new Hero(j,i));
+                }
             }
         }
 
@@ -28,11 +45,11 @@ public class Board extends JPanel{
     @Override
     public void paint(Graphics graphics){
         super.paint(graphics);
-        // here you have a 700x900 canvas
+        // here you have a 720x900 canvas
         // you can create and draw an image using the class below e.g.
 
-        for (Tile tile :
-             tiles) {
+        for (GameObject tile :
+                tiles) {
             tile.draw(graphics);
         }
     }//paint

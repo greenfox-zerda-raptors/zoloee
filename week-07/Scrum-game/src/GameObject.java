@@ -8,24 +8,24 @@ import java.io.IOException;
 /**
  * Created by zoloe on 2016. 12. 05..
  */
-public class Tile {
+public class GameObject {
 
     BufferedImage image;
     int posX, posY;
 
-    public Tile(String filename, int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
+    public GameObject(String filename, int posX, int posY) {
+        this.posX = posX * 72;
+        this.posY = posY * 72;
         try {
             image = ImageIO.read(new File(filename));
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }// cons Tile
+    }// cons GameObject
 
     public void draw(Graphics graphics) {
         if (image != null) {
             graphics.drawImage(image, posX, posY, null);
         }
     }// draw
-}// Tile
+}// GameObject

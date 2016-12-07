@@ -16,8 +16,9 @@ public class Game extends JFrame {
         this.add(board);
 
         //Display the window.
+        this.pack(); //pack must be before setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
-        this.pack();
+
         this.setVisible(true);
 
     }
