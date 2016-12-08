@@ -38,8 +38,9 @@ public class Area {
         try {
             return Boolean.toString(tiles.get(10*y+x).moveable) + " " +
                     tiles.indexOf(tiles.get(10*y+x)) ;
-        }catch (Exception e){}
-        return "fuck";
+        }catch (Exception e) {
+            return "fuck";
+        } // needed for checking if arrayList is out of bounds when moving the character off the grid
     }
 
     public boolean getTileIsMoveable (int posX, int posY){
@@ -57,8 +58,5 @@ public class Area {
              tiles) {
             tile.draw(graphics);
         }
-
     }
 }//class Area
-
-// ebben kell lennie az alapterkepnek

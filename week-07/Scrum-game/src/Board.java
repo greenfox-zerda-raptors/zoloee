@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Board extends JPanel implements KeyListener{
     MoveableThing myHero;
     Area myArea;
+
     public Board()  {
 
         myArea = new Area();
@@ -19,8 +20,8 @@ public class Board extends JPanel implements KeyListener{
         setFocusable(true); //ez kell hogy a Jframe helyett a Jpanelen legyen a focus
         setPreferredSize(new Dimension(720, 900));
         setVisible(true);
-
     }
+
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -57,7 +58,6 @@ public class Board extends JPanel implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -68,7 +68,9 @@ public class Board extends JPanel implements KeyListener{
     public void paint(Graphics graphics){
         myArea.draw(graphics);
         myHero.draw(graphics);
-        graphics.drawString(myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,730);
-
+            graphics.drawString(myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,735);
+            graphics.drawString( "hero XY : " + myHero.getPosX() + " " +myHero.getPosY(), 10, 745); //kirajzolja az xy poziciojat
+            //        hibakereseshez
+        myHero.drawStats(graphics);
     }//paint
 }//Board
