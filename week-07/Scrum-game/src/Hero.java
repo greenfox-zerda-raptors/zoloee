@@ -13,7 +13,7 @@ public class Hero extends MoveableThing {
         this.DP = 2 * d6();
         this.SP = 5 + d6();
         this.posStatX = 10;
-        this.posStatY = 760; //hova irjuk a statot
+        this.posStatY = 765; //hova irjuk a statot
     }
 }
 //
