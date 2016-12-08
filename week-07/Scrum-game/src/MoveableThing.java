@@ -13,10 +13,6 @@ public class MoveableThing extends GameObject {
     BufferedImage imageRight;
     BufferedImage imageLeft;
 
-//    public GameObject(String filename, int posX, int posY) {
-//        this.posX = posX;
-//        this.posY = posY;
-//    }
     public MoveableThing(String filename, int posX, int posY) {
         super(filename, posX, posY);
         try {
@@ -51,6 +47,5 @@ public class MoveableThing extends GameObject {
             graphics.drawImage(image, posX * 72, posY * 72, null);
         }
         graphics.drawString("hero XY : " + posX + " " + posY , 10, 740);
-//        graphics.drawString("hero  :" + posY, 10, 740);
     }// draw
 }// MoveableThing

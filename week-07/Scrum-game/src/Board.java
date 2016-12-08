@@ -66,9 +66,6 @@ public class Board extends JPanel implements KeyListener{
 
     @Override
     public void paint(Graphics graphics){
-//        super.paint(graphics);
-        // here you have a 720x900 canvas
-        // you can create and draw an image using the class below e.g.
         myArea.draw(graphics);
         myHero.draw(graphics);
         graphics.drawString(myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,730);

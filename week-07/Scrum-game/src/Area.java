@@ -8,35 +8,36 @@ public class Area {
     ArrayList<Tile> tiles;
 
     public Area() {
-                int[][] map = new int[][]{
-                        {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                        {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
-                        {0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
-                        {0, 1, 1, 1, 0, 1, 0, 1, 0, 0},
-                        {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                        {0, 0, 1, 1, 0, 1, 1, 1, 0, 0},
-                        {0, 0, 1, 1, 0, 1, 0, 0, 0, 0},
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-                };
+        int[][] map = new int[][]{
+                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
+                {0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+                {0, 1, 1, 1, 0, 1, 0, 1, 0, 0},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 0, 1, 1, 1, 0, 0},
+                {0, 0, 1, 1, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        };
 
-                tiles = new ArrayList<>();
+        tiles = new ArrayList<>();
 
-                for (int i = 0; i < 10; i += 1) {
-                    for (int j = 0; j < 10; j += 1) {
-                if (map[i][j] == 0) {
-                    tiles.add(new Floor(j, i));
-                } else if (map[i][j] == 1) {
-                    tiles.add(new Wall(j, i)); // pos x is the horizontal axle
+        for (int j = 0; j < 10; j += 1) {
+            for (int i = 0; i < 10; i += 1) {
+                if (map[j][i] == 0) { // a matrixbejaras miatt kell "forditva" hasznalni az ingexet
+                    tiles.add(new Floor(i, j));
+                } else if (map[j][i] == 1) {
+                    tiles.add(new Wall(i, j)); // pos x is the horizontal axle
                 }
             }
         }
-    }
+    }// Area()
+
     public String getTilePositionAndisMoveable(int x, int y) {
         try {
-            return Boolean.toString(tiles.get(10*y+x).moveable) + " " +
-                    tiles.indexOf(tiles.get(10*y+x)) ;
+            return Boolean.toString(tiles.get(10*x+y).moveable) + " " +
+                    tiles.indexOf(tiles.get(10*x+y)) ;
         }catch (Exception e){}
         return "fuck";
     }
