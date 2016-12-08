@@ -36,8 +36,8 @@ public class Area {
 
     public String getTilePositionAndisMoveable(int x, int y) {
         try {
-            return Boolean.toString(tiles.get(10*x+y).moveable) + " " +
-                    tiles.indexOf(tiles.get(10*x+y)) ;
+            return Boolean.toString(tiles.get(10*y+x).moveable) + " " +
+                    tiles.indexOf(tiles.get(10*y+x)) ;
         }catch (Exception e){}
         return "fuck";
     }
@@ -45,7 +45,7 @@ public class Area {
     public boolean getTileIsMoveable (int posX, int posY){
         boolean out;
         if ( posX >= 0 && posX <= 9 && posY >= 0 && posY <= 9){ //check if we stay inside the board
-                out = tiles.get(10 * posY + posX).moveable; //check if its a wall or a floor
+                out = tiles.get(10 * posY + posX).moveable; //check if its a wall or a floor - forditva kell hasznalni az X es Y-t
             }else {
             out =false;
         }
