@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Created by zoloe on 2016. 12. 07..
  */
-public class MoveableThing extends GameObject {
+public class MovableThing extends GameObject {
     BufferedImage imageUp;
     BufferedImage imageDown;
     BufferedImage imageRight;
@@ -21,27 +21,35 @@ public class MoveableThing extends GameObject {
     protected int DP;
     protected int SP;
 
-    public MoveableThing(String imageDown,
-                         String imageUp,
-                         String imageRight,
-                         String imageLeft,
-                         String imageBattle,
-                         int posX,
-                         int posY,
-                         String name ) {
-        super(imageDown, posX, posY);
-
+    public MovableThing(String imageUpFilename,
+                        String imageDownFilename,
+                        String imageRightFileanme,
+                        String imageLeftFilename,
+                        String imageBattleFilename,//a Hero-nak negy fele kepe van, azert kell ez a constructor
+                        int posX,
+                        int posY,
+                        String name ){
+        super(imageDownFilename, posX, posY);
         try {
-            this.imageUp = ImageIO.read(new File(imageUp));
-            this.imageDown = ImageIO.read(new File(imageDown));
-            this.imageRight = ImageIO.read(new File(imageRight));
-            this.imageLeft = ImageIO.read(new File(imageLeft));
-            this.imageBattle = ImageIO.read(new File(imageBattle));
+            this.imageUp = ImageIO.read(new File(imageUpFilename));
+            this.imageDown = ImageIO.read(new File(imageDownFilename));
+            this.imageRight = ImageIO.read(new File(imageRightFileanme));
+            this.imageLeft = ImageIO.read(new File(imageLeftFilename));
+            this.imageBattle = ImageIO.read(new File(imageBattleFilename));
         } catch (IOException e) {
             e.printStackTrace();
         }
         this.name = name;
+        this.keyHolder = false;
     }
+
+    public MovableThing(String imageFilename, int posX, int posY, String name) {
+        //a skeletonnak es a bossnak egy fele kepe van egyelore, ezert kell ez a const.
+        super(imageFilename, posX, posY);
+        this.name = name;
+        this.keyHolder = false;
+    }
+
     public boolean isKeyHolder() {
         return keyHolder;
     }
@@ -112,11 +120,10 @@ public class MoveableThing extends GameObject {
                 "SP: " + Integer.toString(SP)  + " \n" +
                 "has the key: " + isKeyHolder()
                 ,posStatX, posStatY);
+                        //        Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6
     }// drawStats
 
-
-
-    //Battle
+//Battle
 //    the attacker strikes on the defender, then the defender
 // strikes and this continues until one of the characters dies
 //    after a won battle if the character is a hero, it levels up
@@ -137,9 +144,9 @@ public class MoveableThing extends GameObject {
 //his DP increases by d6
 //his SP increases by d6
 
-    public MoveableThing strike(MoveableThing enemy){
+    public MovableThing strike(MovableThing enemy){
         this.image = imageBattle;
-        MoveableThing winner = null;
+        MovableThing winner = null;
 //        enemy.setHP(enemy.getHP()-1); // egyszeru csatahoz
 
         strikeOne(this, enemy);
@@ -153,25 +160,23 @@ public class MoveableThing extends GameObject {
             }
         }else {
             strikeOne(enemy,this);
+
             if (this.getHP() <= 0 ){
                 System.out.println("game over");
                 winner = enemy;
             }
         }
-        return winner; //winner
+        return winner;
     }// strike
 
-    public void strikeOne(MoveableThing attacker, MoveableThing defender){
+    public void strikeOne(MovableThing attacker, MovableThing defender){
         int SV = 2 * d6() + attacker.getSP();
         if ( SV > defender.getDP() ){
             defender.setHP( defender.getHP()-(SV-defender.getDP()) );
         }
     }//strikeOne
 
-
-
     public int d6(){
         return (int) (Math.random() * (5) ) + 1;
     } //dobokocka az erokhoz
-
-}// MoveableThing
+}// MovableThing

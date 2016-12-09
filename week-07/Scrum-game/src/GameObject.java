@@ -1,5 +1,4 @@
 import javax.imageio.ImageIO;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,13 +19,9 @@ public abstract class GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }// cons MoveableThing
+    }// cons MovableThing
 
     abstract public void draw(Graphics graphics);
-
-//    public void setImage(BufferedImage image) {
-//        this.image = image;
-//    }
 
     public int getPosX() {
         return posX;
@@ -44,4 +39,4 @@ public abstract class GameObject {
         this.posY = posY;
     }
 
-}// MoveableThing
+}// MovableThing

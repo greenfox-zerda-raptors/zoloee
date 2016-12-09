@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.text.Position;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -10,20 +9,20 @@ import java.util.Random;
  * Created by zoloe on 2016. 12. 05..
  */
 public class Board extends JPanel implements KeyListener{
-    MoveableThing myHero;
-    ArrayList<MoveableThing> enemies;
+    Hero myHero;
+    ArrayList<MovableThing> enemies;
     Area myArea;
     Random myRandom = new Random();
     int numberOfEnemies;
     int level;
     boolean thereIsAbattle;
-    MoveableThing enemyToFight; 
+    MovableThing enemyToFight;
 
     public Board()  {
         level = 1;
         myArea = new Area();
         myHero = new Hero(0,0);
-        enemies = new ArrayList<MoveableThing>();
+        enemies = new ArrayList<MovableThing>();
         enemies = fillEnemies(level);
 
         addKeyListener(this);
@@ -69,12 +68,13 @@ public class Board extends JPanel implements KeyListener{
             }
             case KeyEvent.VK_SPACE : {
                 if (thereIsAbattle){
-                    MoveableThing winnerOfBattle = myHero.strike(enemyToFight);
+                    MovableThing winnerOfBattle = myHero.strike(enemyToFight);
 
                     if ( winnerOfBattle == myHero ) { //enemy Killed
                         enemies.remove(enemies.indexOf(enemyToFight));
                         thereIsAbattle = false;
                         myHero.setImageDown();
+                        myHero.levelUp();
                         enemyToFight = null;
                     } else if ( winnerOfBattle == enemyToFight ){ //GameOver
                         thereIsAbattle = false;
@@ -90,7 +90,7 @@ public class Board extends JPanel implements KeyListener{
         }
         repaint();
 
-        for (MoveableThing enemy: //check if there is a thereIsAbattle
+        for (MovableThing enemy: //check if there is a thereIsAbattle
              enemies) {
             if (enemy.getPosX() == myHero.getPosX()){
                 if (enemy.getPosY() == myHero.getPosY()) {
@@ -102,9 +102,9 @@ public class Board extends JPanel implements KeyListener{
         }// foreach
     }// keyPressed
 
-    protected ArrayList<MoveableThing> fillEnemies(int lev){
+    protected ArrayList<MovableThing> fillEnemies(int lev){
         int i = 1;
-        ArrayList<MoveableThing> generatedEnemies = new ArrayList<>();
+        ArrayList<MovableThing> generatedEnemies = new ArrayList<>();
         numberOfEnemies = myRandom.nextInt(4)+(lev * 3);
         do{
             int randX = myRandom.nextInt(10);
@@ -112,7 +112,7 @@ public class Board extends JPanel implements KeyListener{
             boolean occupiedSpace = false;
             if (myArea.tiles.get(10 * randY + randX).moveable){
                 try {
-                    for (MoveableThing enemy :
+                    for (MovableThing enemy :
                             generatedEnemies) {
                         if (enemy.getPosX() == randX) {
                             occupiedSpace = true;
@@ -124,7 +124,7 @@ public class Board extends JPanel implements KeyListener{
                 }catch (Exception e){}
 
                 if (!occupiedSpace) {
-                    generatedEnemies.add(new Skeleton(randX,randY,lev,"Sklelton" + Integer.toString(i)));
+                    generatedEnemies.add(new Skeleton(randX,randY,lev,"Skeleton" + Integer.toString(i)));
                     i++;
                 }
             }
@@ -135,7 +135,7 @@ public class Board extends JPanel implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
+
     }
 
     @Override
@@ -154,7 +154,7 @@ public class Board extends JPanel implements KeyListener{
             enemyToFight.drawStats(graphics);
         }
 
-        for (MoveableThing enemy :
+        for (MovableThing enemy :
                     enemies) {
                 enemy.draw(graphics);
         }

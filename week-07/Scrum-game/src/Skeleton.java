@@ -1,14 +1,14 @@
 /**
  * Created by zoloe on 2016. 12. 08..
  */
-public class Skeleton extends MoveableThing{
-    static String imageDown = "images/" + "skeleton.png";
-    static String imageUp = "images/" + "skeleton.png";
-    static String imageRight = "images/" + "skeleton.png";
-    static String imageLeft = "images/" + "skeleton.png";
+public class Skeleton extends MovableThing {
+    static String image = "images/" + "skeleton.png";
+//    static String imageUp = "images/" + "skeleton.png";
+//    static String imageRight = "images/" + "skeleton.png";
+//    static String imageLeft = "images/" + "skeleton.png";
 
     public Skeleton(int posX, int posY, int level, String name) {
-        super(imageDown,imageUp,imageRight,imageLeft,imageDown,posX, posY, name);
+        super( image, posX, posY, name);
         this.HP = 8 * level * d6();
         this.DP = level/2 * d6();
         this.SP = level * d6();
