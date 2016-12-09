@@ -114,11 +114,11 @@ public class MovableThing extends GameObject {
 
     public void drawStats(Graphics graphics){  //azert kell kulon, mert kulon helyre kell a szornyet + az emberet
         graphics.drawString(
-                name  + " \n" +
-                "HP: " + Integer.toString(HP) + " \n" +
-                "DP: " + Integer.toString(DP) + " \n" +
-                "SP: " + Integer.toString(SP)  + " \n" +
-                "has the key: " + isKeyHolder()
+                name +  " | " +
+                "HP: " + Integer.toString(HP) + " | " +
+                "DP: " + Integer.toString(DP) + " | " +
+                "SP: " + Integer.toString(SP) + " | "+
+                "has key: " + isKeyHolder() + " | "
                 ,posStatX, posStatY);
                         //        Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6
     }// drawStats
