@@ -16,6 +16,8 @@ public class Board extends JPanel implements KeyListener{
     Random myRandom = new Random();
     int numberOfEnemies;
     int level;
+    boolean thereIsAbattle;
+    MoveableThing enemyToFight; 
 
     public Board()  {
         level = 1;
@@ -34,25 +36,46 @@ public class Board extends JPanel implements KeyListener{
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP : {
-                if (myArea.getTileIsMoveable(myHero.getPosX(),myHero.getPosY()-1)) {
-                    myHero.moveUp();
+                if (!thereIsAbattle) {
+                    if (myArea.getTileIsMoveable(myHero.getPosX(), myHero.getPosY() - 1)) {
+                        myHero.moveUp();
+                    }
                 }
                 break;
             }
             case KeyEvent.VK_DOWN : {
-                if (myArea.getTileIsMoveable(myHero.getPosX(),myHero.getPosY()+1)) {
-                    myHero.moveDown();
+                if (!thereIsAbattle) {
+                    if (myArea.getTileIsMoveable(myHero.getPosX(),myHero.getPosY()+1)) {
+                        myHero.moveDown();
+                    }
                 }
                 break;
             }
             case KeyEvent.VK_RIGHT : {
-                if (myArea.getTileIsMoveable(myHero.getPosX()+1,myHero.getPosY())) {
-                    myHero.moveRight();
+                if (!thereIsAbattle) {
+                    if (myArea.getTileIsMoveable(myHero.getPosX()+1,myHero.getPosY())) {
+                        myHero.moveRight();
+                    }
                 }
                 break;
-            }case KeyEvent.VK_LEFT : {
-                if (myArea.getTileIsMoveable(myHero.getPosX()-1,myHero.getPosY())) {
-                    myHero.moveLeft();
+            }
+            case KeyEvent.VK_LEFT : {
+                if (!thereIsAbattle) {
+                    if (myArea.getTileIsMoveable(myHero.getPosX() - 1, myHero.getPosY())) {
+                        myHero.moveLeft();
+                    }
+                }
+                break;
+            }
+            case KeyEvent.VK_SPACE : {
+                if (thereIsAbattle){
+//                    MoveableThing winner = ;
+                    if (!( myHero.strike(enemyToFight) == null )) {
+                        enemies.remove(enemies.indexOf(enemyToFight));
+                        thereIsAbattle = false;
+                        myHero.setImageDown();
+                        enemyToFight = null;
+                    }
                 }
                 break;
             }
@@ -61,7 +84,19 @@ public class Board extends JPanel implements KeyListener{
             }
         }
         repaint();
-    }
+
+        for (MoveableThing enemy: //check if there is a thereIsAbattle
+             enemies) {
+            if (enemy.getPosX() == myHero.getPosX()){
+                if (enemy.getPosY() == myHero.getPosY()) {
+                    thereIsAbattle = true;
+                    enemyToFight = enemy;
+                    myHero.setImageBattle();
+                }
+            }
+        }// foreach
+    }// keyPressed
+
     protected ArrayList<MoveableThing> fillEnemies(int lev){
         int i = 1;
         ArrayList<MoveableThing> generatedEnemies = new ArrayList<>();
@@ -104,15 +139,20 @@ public class Board extends JPanel implements KeyListener{
     @Override
     public void paint(Graphics graphics){
         myArea.draw(graphics);
-        myHero.draw(graphics);
+
             graphics.drawString("Tile: " + myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,735);
             graphics.drawString( "Hero XY : " + myHero.getPosX() + " " +myHero.getPosY(), 10, 750); //kirajzolja az xy poziciojat
             //        hibakereseshez
         myHero.drawStats(graphics);
-        for (MoveableThing enemy :
-                enemies) {
-            enemy.draw(graphics);
+        if (!( enemyToFight == null )) {
+            enemyToFight.drawStats(graphics);
         }
+
+        for (MoveableThing enemy :
+                    enemies) {
+                enemy.draw(graphics);
+        }
+        myHero.draw(graphics);
         graphics.drawString("number of enemies: " + Integer.toString(numberOfEnemies), 10,780);
     }//paint
 

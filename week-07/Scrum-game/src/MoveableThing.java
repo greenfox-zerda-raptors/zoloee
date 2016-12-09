@@ -12,11 +12,23 @@ public class MoveableThing extends GameObject {
     BufferedImage imageDown;
     BufferedImage imageRight;
     BufferedImage imageLeft;
+    BufferedImage imageBattle;
     int posStatX;
     int posStatY;
+
+
+    boolean keyHolder;
     protected int HP;
     protected int DP;
     protected int SP;
+
+    public boolean isKeyHolder() {
+        return keyHolder;
+    }
+
+    public void setKeyHolder(boolean keyHolder) {
+        this.keyHolder = keyHolder;
+    }
 
     public int getHP() {
         return HP;
@@ -42,7 +54,11 @@ public class MoveableThing extends GameObject {
         this.SP = SP;
     }
 
-    public MoveableThing(String imageDown, String imageUp, String imageRight, String imageLeft, int posX, int posY) {
+    public MoveableThing(String imageDown,
+                         String imageUp,
+                         String imageRight,
+                         String imageLeft,
+                         String imageBattle, int posX, int posY) {
         super(imageDown, posX, posY);
 
         try {
@@ -50,6 +66,7 @@ public class MoveableThing extends GameObject {
             this.imageDown = ImageIO.read(new File(imageDown));
             this.imageRight = ImageIO.read(new File(imageRight));
             this.imageLeft = ImageIO.read(new File(imageLeft));
+            this.imageBattle = ImageIO.read(new File(imageBattle));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,6 +89,13 @@ public class MoveableThing extends GameObject {
         setPosX(posX-1);
     }
 
+    public void setImageBattle(){
+        this.image=imageBattle;
+    }
+    public void setImageDown(){
+        this.image=imageDown;
+    }
+
     public void draw(Graphics graphics){
         if (image != null) {
             graphics.drawImage(image, posX * 72, posY * 72, null);
@@ -84,6 +108,47 @@ public class MoveableThing extends GameObject {
                         "DP: " + Integer.toString(DP) + " \n" +
                         "SP: " + Integer.toString(SP), posStatX, posStatY);
     }// drawStats
+
+
+
+    //Battle
+//    the attacker strikes on the defender, then the defender
+// strikes and this continues until one of the characters dies
+//    after a won battle if the character is a hero, it levels up
+
+
+//Strike
+//
+//on a strike a strike value (SV) is calculated from SP and a d6 doubled
+//the strike is successful if 2*d6 + SP is higher than the other
+//  - character's DP
+//on a successful strike the other character's HP is decreased by the SV
+//  - the other character's DP
+
+//Leveling
+//
+//after successfully won battle the character is leveling up
+//his max HP increases by d6
+//his DP increases by d6
+//his SP increases by d6
+
+    public MoveableThing strike(MoveableThing enemy){
+        this.image = imageBattle;
+        MoveableThing winner = null;
+//        enemy.setHP(enemy.getHP()-1);
+        int SV = 2*d6() + this.getSP();
+        if ( SV > enemy.getDP()){
+            enemy.setHP(enemy.getHP()-SV);
+        }
+        if ( enemy.getHP() <= 0 ) {
+            winner = this;
+            this.image = imageDown;
+            if ( enemy.isKeyHolder() ){
+
+            }
+        }
+        return winner;
+    }// strike
 
     public int d6(){
         return (int) (Math.random()*(5))+1;

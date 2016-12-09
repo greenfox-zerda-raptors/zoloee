@@ -24,9 +24,9 @@ public abstract class GameObject {
 
     abstract public void draw(Graphics graphics);
 
-    public void setImage(BufferedImage image) {
-        this.image = image;
-    }
+//    public void setImage(BufferedImage image) {
+//        this.image = image;
+//    }
 
     public int getPosX() {
         return posX;

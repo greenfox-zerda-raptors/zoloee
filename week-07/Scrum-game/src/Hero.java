@@ -6,9 +6,10 @@ public class Hero extends MoveableThing {
     static String imageUp = "images/" + "hero-up.png";
     static String imageRight = "images/" + "hero-right.png";
     static String imageLeft = "images/" + "hero-left.png";
+    static String imageBattle = "images/" + "battle.png";
 
     public Hero(int posX, int posY) {
-        super(imageDown,imageUp,imageRight,imageLeft,posX, posY);
+        super(imageDown,imageUp,imageRight,imageLeft,imageBattle, posX, posY);
         this.HP = 20 + 3 * d6();
         this.DP = 2 * d6();
         this.SP = 5 + d6();
