@@ -15,13 +15,33 @@ public class MoveableThing extends GameObject {
     BufferedImage imageBattle;
     int posStatX;
     int posStatY;
-
-
+    String name;
     boolean keyHolder;
     protected int HP;
     protected int DP;
     protected int SP;
 
+    public MoveableThing(String imageDown,
+                         String imageUp,
+                         String imageRight,
+                         String imageLeft,
+                         String imageBattle,
+                         int posX,
+                         int posY,
+                         String name ) {
+        super(imageDown, posX, posY);
+
+        try {
+            this.imageUp = ImageIO.read(new File(imageUp));
+            this.imageDown = ImageIO.read(new File(imageDown));
+            this.imageRight = ImageIO.read(new File(imageRight));
+            this.imageLeft = ImageIO.read(new File(imageLeft));
+            this.imageBattle = ImageIO.read(new File(imageBattle));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.name = name;
+    }
     public boolean isKeyHolder() {
         return keyHolder;
     }
@@ -52,24 +72,6 @@ public class MoveableThing extends GameObject {
 
     public void setSP(int SP) {
         this.SP = SP;
-    }
-
-    public MoveableThing(String imageDown,
-                         String imageUp,
-                         String imageRight,
-                         String imageLeft,
-                         String imageBattle, int posX, int posY) {
-        super(imageDown, posX, posY);
-
-        try {
-            this.imageUp = ImageIO.read(new File(imageUp));
-            this.imageDown = ImageIO.read(new File(imageDown));
-            this.imageRight = ImageIO.read(new File(imageRight));
-            this.imageLeft = ImageIO.read(new File(imageLeft));
-            this.imageBattle = ImageIO.read(new File(imageBattle));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void moveUp(){
@@ -104,9 +106,12 @@ public class MoveableThing extends GameObject {
 
     public void drawStats(Graphics graphics){  //azert kell kulon, mert kulon helyre kell a szornyet + az emberet
         graphics.drawString(
+                name  + " \n" +
                 "HP: " + Integer.toString(HP) + " \n" +
-                        "DP: " + Integer.toString(DP) + " \n" +
-                        "SP: " + Integer.toString(SP), posStatX, posStatY);
+                "DP: " + Integer.toString(DP) + " \n" +
+                "SP: " + Integer.toString(SP)  + " \n" +
+                "has the key: " + isKeyHolder()
+                ,posStatX, posStatY);
     }// drawStats
 
 
@@ -135,23 +140,38 @@ public class MoveableThing extends GameObject {
     public MoveableThing strike(MoveableThing enemy){
         this.image = imageBattle;
         MoveableThing winner = null;
-//        enemy.setHP(enemy.getHP()-1);
-        int SV = 2*d6() + this.getSP();
-        if ( SV > enemy.getDP()){
-            enemy.setHP(enemy.getHP()-SV);
-        }
+//        enemy.setHP(enemy.getHP()-1); // egyszeru csatahoz
+
+        strikeOne(this, enemy);
+
         if ( enemy.getHP() <= 0 ) {
             winner = this;
             this.image = imageDown;
             if ( enemy.isKeyHolder() ){
-
+                this.setKeyHolder(true);
+                enemy.setKeyHolder(false);
+            }
+        }else {
+            strikeOne(enemy,this);
+            if (this.getHP() <= 0 ){
+                System.out.println("game over");
+                winner = enemy;
             }
         }
-        return winner;
+        return winner; //winner
     }// strike
 
+    public void strikeOne(MoveableThing attacker, MoveableThing defender){
+        int SV = 2 * d6() + attacker.getSP();
+        if ( SV > defender.getDP() ){
+            defender.setHP( defender.getHP()-(SV-defender.getDP()) );
+        }
+    }//strikeOne
+
+
+
     public int d6(){
-        return (int) (Math.random()*(5))+1;
+        return (int) (Math.random() * (5) ) + 1;
     } //dobokocka az erokhoz
 
 }// MoveableThing

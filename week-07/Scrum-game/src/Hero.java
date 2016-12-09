@@ -9,7 +9,7 @@ public class Hero extends MoveableThing {
     static String imageBattle = "images/" + "battle.png";
 
     public Hero(int posX, int posY) {
-        super(imageDown,imageUp,imageRight,imageLeft,imageBattle, posX, posY);
+        super(imageDown,imageUp,imageRight,imageLeft,imageBattle, posX, posY, "Hero");
         this.HP = 20 + 3 * d6();
         this.DP = 2 * d6();
         this.SP = 5 + d6();

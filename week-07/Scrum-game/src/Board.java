@@ -69,11 +69,16 @@ public class Board extends JPanel implements KeyListener{
             }
             case KeyEvent.VK_SPACE : {
                 if (thereIsAbattle){
-//                    MoveableThing winner = ;
-                    if (!( myHero.strike(enemyToFight) == null )) {
+                    MoveableThing winnerOfBattle = myHero.strike(enemyToFight);
+
+                    if ( winnerOfBattle == myHero ) { //enemy Killed
                         enemies.remove(enemies.indexOf(enemyToFight));
                         thereIsAbattle = false;
                         myHero.setImageDown();
+                        enemyToFight = null;
+                    } else if ( winnerOfBattle == enemyToFight ){ //GameOver
+                        thereIsAbattle = false;
+                        myHero.setImageDown(); // GameOverImagekell
                         enemyToFight = null;
                     }
                 }
@@ -119,11 +124,12 @@ public class Board extends JPanel implements KeyListener{
                 }catch (Exception e){}
 
                 if (!occupiedSpace) {
-                    generatedEnemies.add(new Skeleton(randX,randY,lev));
+                    generatedEnemies.add(new Skeleton(randX,randY,lev,"Sklelton" + Integer.toString(i)));
                     i++;
                 }
             }
         }while ( i <= numberOfEnemies );
+        generatedEnemies.get(0).setKeyHolder(true);  // az elso Skeleton legyen a keyholder
         return generatedEnemies;
     }// fillEnemies
 
@@ -143,7 +149,7 @@ public class Board extends JPanel implements KeyListener{
             graphics.drawString("Tile: " + myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,735);
             graphics.drawString( "Hero XY : " + myHero.getPosX() + " " +myHero.getPosY(), 10, 750); //kirajzolja az xy poziciojat
             //        hibakereseshez
-        myHero.drawStats(graphics);
+
         if (!( enemyToFight == null )) {
             enemyToFight.drawStats(graphics);
         }
@@ -153,7 +159,9 @@ public class Board extends JPanel implements KeyListener{
                 enemy.draw(graphics);
         }
         myHero.draw(graphics);
-        graphics.drawString("number of enemies: " + Integer.toString(numberOfEnemies), 10,780);
+        myHero.drawStats(graphics);
+        graphics.drawString("number of enemies: " + Integer.toString(numberOfEnemies), 300,735);
+//        graphics.drawString( );   // ki kell irni hogy ki nyert
     }//paint
 
 }//Board
