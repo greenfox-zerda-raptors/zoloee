@@ -17,10 +17,34 @@ public class Board extends JPanel implements KeyListener{
     int level;
     boolean thereIsAbattle;
     MovableThing enemyToFight;
+    final int[][] map1 = new int[][]{
+            {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
+            {0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+            {0, 1, 1, 1, 0, 1, 0, 1, 0, 0},
+            {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 1, 0, 1, 1, 1, 0, 0},
+            {0, 0, 1, 1, 0, 1, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
+    final int[][] map2 = new int[][]{
+            {0, 0, 0, 0, 1, 1, 1, 0, 0, 1},
+            {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
+            {0, 1, 1, 0, 1, 1, 0, 1, 0, 0},
+            {0, 1, 1, 1, 1, 1, 0, 1, 0, 0},
+            {0, 0, 1, 1, 1, 0, 0, 1, 1, 0},
+            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {1, 0, 1, 1, 0, 1, 1, 1, 0, 0},
+            {0, 0, 1, 1, 0, 1, 0, 0, 0, 1},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+    };
 
     public Board()  {
         level = 1;
-        myArea = new Area();
+        myArea = new Area(map1);
         myHero = new Hero(0,0);
         enemies = new ArrayList<MovableThing>();
         enemies = fillEnemies(level);
@@ -76,6 +100,14 @@ public class Board extends JPanel implements KeyListener{
                         myHero.setImageDown();
                         myHero.levelUp();
                         enemyToFight = null;
+                        if (myHero.isKeyHolder()){ //uj palya
+                            level ++;
+                            myHero.setKeyHolder(false);
+                            myArea = new Area(map2);
+                            myHero.setPosX(0);
+                            myHero.setPosY(0);
+                            enemies = fillEnemies(level);
+                        }
                     } else if ( winnerOfBattle == enemyToFight ){ //GameOver
                         thereIsAbattle = false;
                         myHero.setImageDown(); // GameOverImagekell
@@ -150,9 +182,9 @@ public class Board extends JPanel implements KeyListener{
 
     @Override
     public void paint(Graphics graphics){
-        myArea.draw(graphics);
         graphics.setFont(new Font("System", Font.BOLD, 13));
-
+        myArea.draw(graphics);
+        graphics.drawString("level: " + Integer.toString(level), 300,735);
             graphics.drawString("Tile: " + myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,735);
             graphics.drawString( "Hero XY : " + myHero.getPosX() + " " +myHero.getPosY(), 10, 750); //kirajzolja az xy poziciojat
             //        hibakereseshez

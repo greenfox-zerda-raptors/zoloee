@@ -7,20 +7,8 @@ import java.util.ArrayList;
 public class Area {
     ArrayList<Tile> tiles;
 
-    public Area() {
-        int[][] map = new int[][]{
-                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 1, 1, 0, 1, 0, 0},
-                {0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
-                {0, 1, 1, 1, 0, 1, 0, 1, 0, 0},
-                {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 1, 1, 0, 1, 1, 1, 0, 0},
-                {0, 0, 1, 1, 0, 1, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-        };
 
+    public Area(int[][] map) {
         tiles = new ArrayList<>();
 
         for (int j = 0; j < 10; j += 1) {
@@ -33,6 +21,7 @@ public class Area {
             }
         }
     }// Area()
+
 
     public String getTilePositionAndisMoveable(int x, int y) {
         try {
