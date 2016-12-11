@@ -13,7 +13,7 @@ public class Skeleton extends MovableThing {
         this.DP = level/2 * d6();
         this.SP = level * d6();
         this.posStatX = 180;
-        this.posStatY = 780; //hova irjuk a statot
+        this.posStatY = 790; //hova irjuk a statot
     }
     public String getName(){
         return this.name;

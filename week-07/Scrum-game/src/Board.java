@@ -105,26 +105,33 @@ public class Board extends JPanel implements KeyListener{
     protected ArrayList<MovableThing> fillEnemies(int lev){
         int i = 1;
         ArrayList<MovableThing> generatedEnemies = new ArrayList<>();
-        numberOfEnemies = myRandom.nextInt(4)+(lev * 3);
+        numberOfEnemies = myRandom.nextInt(4)+(lev * 3); // 3 es 6 kozotti skeleton legyen 1es palyan
         do{
-            int randX = myRandom.nextInt(10);
+            int randX = myRandom.nextInt(10); // 0 es 9 kozotti indexet generaljon
             int randY = myRandom.nextInt(10);
             boolean occupiedSpace = false;
-            if (myArea.tiles.get(10 * randY + randX).moveable){
+            if (myArea.tiles.get(10 * randY + randX).moveable){ //checking if tile is wall or floor
                 try {
-                    for (MovableThing enemy :
+                    for (MovableThing enemy : // checking is someone is standing on that tile already
                             generatedEnemies) {
-                        if (enemy.getPosX() == randX) {
-                            occupiedSpace = true;
-                        }
-                        if (enemy.getPosY() == randY) {
-                            occupiedSpace = true;
+                        if ( enemy.getPosX() == randX ) {
+                            if (enemy.getPosY() == randY) { //ne tegye ra masik enemyre
+                                occupiedSpace = true;
+                            } else if (myHero.getPosX() == randX) { // ne tegye ra a hero-ra
+                                if (myHero.getPosY() == randY) {
+                                    occupiedSpace = true;
+                                }
+                            }
                         }
                     }
                 }catch (Exception e){}
 
                 if (!occupiedSpace) {
-                    generatedEnemies.add(new Skeleton(randX,randY,lev,"Skeleton" + Integer.toString(i)));
+                    if ( i < numberOfEnemies ) {
+                        generatedEnemies.add(new Skeleton(randX, randY, lev, "Skeleton" + Integer.toString(i)));
+                    } else { // az utolso enemy egy Boss legyen
+                        generatedEnemies.add(new Boss(randX, randY, lev));
+                    }
                     i++;
                 }
             }
@@ -135,7 +142,6 @@ public class Board extends JPanel implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     @Override

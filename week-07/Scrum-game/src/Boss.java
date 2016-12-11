@@ -9,8 +9,8 @@ public class Boss extends MovableThing {
         this.HP = 2 * level * d6() + d6();
         this.DP = level/2 * d6() + d6()/2;
         this.SP = level * d6() + level;
-        this.posStatX = 500;
-        this.posStatY = 760; //hova irjuk a statot
+        this.posStatX = 180;
+        this.posStatY = 810; //hova irjuk a statot
     }
     public String getName(){
         return this.name;
