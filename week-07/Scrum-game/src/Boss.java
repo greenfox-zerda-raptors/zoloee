@@ -12,6 +12,9 @@ public class Boss extends MovableThing {
         this.posStatX = 500;
         this.posStatY = 760; //hova irjuk a statot
     }
+    public String getName(){
+        return this.name;
+    }
 }
 //        Monster Lvl x (if boss)
 //        HP: 2 * x * d6 (+d6)

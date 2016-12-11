@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Created by zoloe on 2016. 12. 07..
  */
-public class MovableThing extends GameObject {
+public abstract class MovableThing extends GameObject {
     BufferedImage imageUp;
     BufferedImage imageDown;
     BufferedImage imageRight;
@@ -25,11 +25,11 @@ public class MovableThing extends GameObject {
                         String imageDownFilename,
                         String imageRightFileanme,
                         String imageLeftFilename,
-                        String imageBattleFilename,//a Hero-nak negy fele kepe van, azert kell ez a constructor
+                        String imageBattleFilename,//a Hero-nak 5 fele kepe van, azert kell ez a constructor
                         int posX,
                         int posY,
                         String name ){
-        super(imageDownFilename, posX, posY);
+        this(imageDownFilename, posX,posY, name);  // ez meghivja az egyrszerubb constuctort
         try {
             this.imageUp = ImageIO.read(new File(imageUpFilename));
             this.imageDown = ImageIO.read(new File(imageDownFilename));
@@ -39,8 +39,6 @@ public class MovableThing extends GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.name = name;
-        this.keyHolder = false;
     }
 
     public MovableThing(String imageFilename, int posX, int posY, String name) {
@@ -49,6 +47,8 @@ public class MovableThing extends GameObject {
         this.name = name;
         this.keyHolder = false;
     }
+
+    abstract String getName();
 
     public boolean isKeyHolder() {
         return keyHolder;
@@ -112,9 +112,9 @@ public class MovableThing extends GameObject {
         } //kirajzolja a nyunyi kepet a tablara
     }// draw
 
-    public void drawStats(Graphics graphics){  //azert kell kulon, mert kulon helyre kell a szornyet + az emberet
+    public void drawStats(Graphics graphics){  //azert kell kulon, mert kulon helyre kell rajzolni a karaktert med a statot
         graphics.drawString(
-                name +  " | " +
+                getName() +  " | " +
                 "HP: " + Integer.toString(HP) + " | " +
                 "DP: " + Integer.toString(DP) + " | " +
                 "SP: " + Integer.toString(SP) + " | "+

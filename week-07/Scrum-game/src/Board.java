@@ -145,6 +145,7 @@ public class Board extends JPanel implements KeyListener{
     @Override
     public void paint(Graphics graphics){
         myArea.draw(graphics);
+        graphics.setFont(new Font("System", Font.BOLD, 13));
 
             graphics.drawString("Tile: " + myArea.getTilePositionAndisMoveable(myHero.getPosX(),myHero.getPosY()),10,735);
             graphics.drawString( "Hero XY : " + myHero.getPosX() + " " +myHero.getPosY(), 10, 750); //kirajzolja az xy poziciojat
@@ -160,7 +161,7 @@ public class Board extends JPanel implements KeyListener{
         }
         myHero.draw(graphics);
         myHero.drawStats(graphics);
-        graphics.drawString("number of enemies: " + Integer.toString(numberOfEnemies), 300,735);
+//        graphics.drawString("number of enemies: " + Integer.toString(numberOfEnemies), 300,735); // for error checking
 //        graphics.drawString( );   // ki kell irni hogy ki nyert
     }//paint
 

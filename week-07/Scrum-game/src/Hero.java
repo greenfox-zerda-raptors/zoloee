@@ -9,6 +9,7 @@ public class Hero extends MovableThing {
     static String imageLeftFilename = "images/" + "hero-left.png";
     static String imageBattleFilename = "images/" + "battle.png";
     int maxHP;
+    int level;
 
     public Hero(int posX, int posY) {
         super( imageUpFilename,
@@ -20,15 +21,20 @@ public class Hero extends MovableThing {
         this.HP = 20 + 3 * d6();
         this.DP = 2 * d6();
         this.SP = 5 + d6();
-        this.posStatX = 10;
+        this.posStatX = 180;
         this.posStatY = 765; //hova irjuk a statot
         this.maxHP = 10;
+        this.level = 1;
     }
 
     public void levelUp(){
+        this.level ++;
         this.maxHP += d6();
         this.DP += d6();
         this.SP += d6();
+    }
+    public String getName(){
+        return this.name + " (level " + level + ")";
     }
 }
 //

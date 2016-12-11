@@ -12,8 +12,11 @@ public class Skeleton extends MovableThing {
         this.HP = 8 * level * d6();
         this.DP = level/2 * d6();
         this.SP = level * d6();
-        this.posStatX = 320;
-        this.posStatY = 765; //hova irjuk a statot
+        this.posStatX = 180;
+        this.posStatY = 780; //hova irjuk a statot
+    }
+    public String getName(){
+        return this.name;
     }
 }
 //        Monster Lvl x (if boss)
