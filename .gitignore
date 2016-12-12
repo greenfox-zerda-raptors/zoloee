@@ -9,3 +9,5 @@
 
 # Now exclude our type
 !*.java
+!*.txt
+!*.sql

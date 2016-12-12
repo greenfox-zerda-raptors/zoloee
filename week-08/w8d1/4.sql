@@ -1,0 +1,1 @@
+select name from Reviewer re left join Rating ra on re.rid = ra.rid where ratingDate is null;

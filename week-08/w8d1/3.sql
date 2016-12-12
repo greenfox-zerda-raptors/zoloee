@@ -1,0 +1,1 @@
+select distinct title from Movie left join Rating on movie.mid = Rating.mid where stars is null;

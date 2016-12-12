@@ -1,0 +1,1 @@
+select distinct year from Movie left join Rating on movie.mid = Rating.mid where stars = 4 or stars = 5 order by year;
