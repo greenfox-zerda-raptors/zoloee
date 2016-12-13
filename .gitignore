@@ -11,3 +11,5 @@
 !*.java
 !*.txt
 !*.sql
+!*.gradle
+
