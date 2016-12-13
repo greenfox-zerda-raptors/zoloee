@@ -1,8 +1,10 @@
 package date;
 
+import java.text.ParseException;
+
 public interface BirthdayCalculator<T> {
 
-    T parseDate(String str);
+    T parseDate(String str) throws ParseException;
 
     String printMonthAndDay(T date);
 
