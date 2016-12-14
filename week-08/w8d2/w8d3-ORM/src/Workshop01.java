@@ -28,6 +28,7 @@ public class Workshop01 {
         // persist the account object to the database
         accountDao.create(myAccount);
 
+
         // retrieve the account from the database by its id field (name)
         Account account2 = accountDao.queryForId("Captain America");
         System.out.println("Account: " + account2.getName());

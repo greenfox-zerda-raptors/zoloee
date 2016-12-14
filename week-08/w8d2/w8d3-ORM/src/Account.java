@@ -6,9 +6,12 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 @DatabaseTable(tableName = "accounts")
 public class Account{
-    @DatabaseField(id = true)
+    public static final String PASSWORD_FIELD_NAME = "password";
+    public static final String NAME_FIELD_NAME = "name";
+
+    @DatabaseField(id = true, columnName = NAME_FIELD_NAME)
     private String name;
-    @DatabaseField
+    @DatabaseField(columnName = PASSWORD_FIELD_NAME)
     private String password;
 
     public Account(){
