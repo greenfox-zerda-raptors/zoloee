@@ -3,12 +3,14 @@ package lombok.foods;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.joda.time.LocalDate;
 
 /**
  * Created by kicsen on 2016. 12. 12..
  */
 @EqualsAndHashCode
+@ToString
 public abstract class AbstractFood implements Food {
     @Getter private String name;
     @Getter private Long weight;
@@ -52,9 +54,9 @@ public abstract class AbstractFood implements Food {
 //        this.qualityMultiplier = qualityMultiplier;
 //    }
 
-    public String toString() {
-        return "AbstractFood(name=" + this.getName() + ", weight=" + this.getWeight() + ", calories=" + this.getCalories() + ", creationDate=" + this.getCreationDate() + ", qualityMultiplier=" + this.getQualityMultiplier() + ")";
-    }
+//    public String toString() {
+//        return "AbstractFood(name=" + this.getName() + ", weight=" + this.getWeight() + ", calories=" + this.getCalories() + ", creationDate=" + this.getCreationDate() + ", qualityMultiplier=" + this.getQualityMultiplier() + ")";
+//    }
 
 //    public boolean equals(Object o) {
 //        if (o == this) {

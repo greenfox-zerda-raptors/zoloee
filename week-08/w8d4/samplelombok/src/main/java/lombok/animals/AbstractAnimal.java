@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.foods.Food;
 import org.joda.time.LocalDate;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by kicsen on 2016. 12. 12..
  */
 @EqualsAndHashCode
+@ToString
 public abstract class AbstractAnimal implements Animal {
     @Getter private String name;
     @Getter private LocalDate birthDate;
@@ -190,7 +192,7 @@ public abstract class AbstractAnimal implements Animal {
 //        return result1;
 //    }
 
-    public String toString() {
-        return "AbstractAnimal(name=" + this.getName() + ", birthDate=" + this.getBirthDate() + ", children=" + this.getChildren() + ", movedDistanceInMilliMeters=" + this.getMovedDistanceInMilliMeters() + ", happiness=" + this.getHappiness() + ", weightInGram=" + this.getWeightInGram() + ")";
-    }
+//    public String toString() {
+//        return "AbstractAnimal(name=" + this.getName() + ", birthDate=" + this.getBirthDate() + ", children=" + this.getChildren() + ", movedDistanceInMilliMeters=" + this.getMovedDistanceInMilliMeters() + ", happiness=" + this.getHappiness() + ", weightInGram=" + this.getWeightInGram() + ")";
+//    }
 }

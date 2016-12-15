@@ -2,12 +2,14 @@ package lombok.foods;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import org.joda.time.LocalDate;
 
 /**
  * Created by kicsen on 2016. 12. 12..
  */
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public abstract class AbstractHorseFood extends AbstractFood implements HorseFood {
     @Getter protected LocalDate expirationDate;
 
@@ -20,9 +22,9 @@ public abstract class AbstractHorseFood extends AbstractFood implements HorseFoo
 //        return this.expirationDate;
 //    }
 
-    public String toString() {
-        return "AbstractHorseFood(super=" + super.toString() + ", expirationDate=" + this.getExpirationDate() + ")";
-    }
+//    public String toString() {
+//        return "AbstractHorseFood(super=" + super.toString() + ", expirationDate=" + this.getExpirationDate() + ")";
+//    }
 
 //    public boolean equals(Object o) {
 //        if (o == this) {
