@@ -1,8 +1,11 @@
 package lombok.foods;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * Created by kicsen on 2016. 12. 12..
  */
+@EqualsAndHashCode(callSuper = true)
 public class Cheese extends AbstractFood {
     protected Cheese(Long weight, Long calories, Float qualityMultiplier) {
         super("Cheese", weight, calories, qualityMultiplier);
@@ -16,27 +19,27 @@ public class Cheese extends AbstractFood {
         return "Cheese(super=" + super.toString() + ")";
     }
 
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        } else if (!(o instanceof Cheese)) {
-            return false;
-        } else {
-            Cheese other = (Cheese) o;
-            return !other.canEqual(this) ? false : super.equals(o);
-        }
-    }
+//    public boolean equals(Object o) {
+//        if (o == this) {
+//            return true;
+//        } else if (!(o instanceof Cheese)) {
+//            return false;
+//        } else {
+//            Cheese other = (Cheese) o;
+//            return !other.canEqual(this) ? false : super.equals(o);
+//        }
+//    }
 
     protected boolean canEqual(Object other) {
         return other instanceof Cheese;
     }
-
-    public int hashCode() {
-        boolean PRIME = true;
-        byte result = 1;
-        int result1 = result * 59 + super.hashCode();
-        return result1;
-    }
+//
+//    public int hashCode() {
+//        boolean PRIME = true;
+//        byte result = 1;
+//        int result1 = result * 59 + super.hashCode();
+//        return result1;
+//    }
 
     public static class CheeseBuilder {
         private Long weight;

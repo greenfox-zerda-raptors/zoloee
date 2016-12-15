@@ -1,5 +1,6 @@
 package lombok.animals;
 
+import lombok.EqualsAndHashCode;
 import lombok.foods.Food;
 
 import java.util.logging.Logger;
@@ -7,6 +8,7 @@ import java.util.logging.Logger;
 /**
  * Created by kicsen on 2016. 12. 12..
  */
+@EqualsAndHashCode(callSuper = true)
 public class Mouse extends AbstractAnimal {
     private static final Logger log = Logger.getLogger(Mouse.class.getName());
 
@@ -34,27 +36,27 @@ public class Mouse extends AbstractAnimal {
         return "Mouse(super=" + super.toString() + ")";
     }
 
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        } else if (!(o instanceof Mouse)) {
-            return false;
-        } else {
-            Mouse other = (Mouse) o;
-            return !other.canEqual(this) ? false : super.equals(o);
-        }
-    }
+//    public boolean equals(Object o) {
+//        if (o == this) {
+//            return true;
+//        } else if (!(o instanceof Mouse)) {
+//            return false;
+//        } else {
+//            Mouse other = (Mouse) o;
+//            return !other.canEqual(this) ? false : super.equals(o);
+//        }
+//    }
 
     protected boolean canEqual(Object other) {
         return other instanceof Mouse;
     }
 
-    public int hashCode() {
-        boolean PRIME = true;
-        byte result = 1;
-        int result1 = result * 59 + super.hashCode();
-        return result1;
-    }
+//    public int hashCode() {
+//        boolean PRIME = true;
+//        byte result = 1;
+//        int result1 = result * 59 + super.hashCode();
+//        return result1;
+//    }
 
     public static class MouseBuilder {
         private String name;

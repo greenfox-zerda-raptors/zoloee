@@ -1,10 +1,12 @@
 package lombok.foods;
 
+import lombok.EqualsAndHashCode;
 import org.joda.time.LocalDate;
 
 /**
  * Created by kicsen on 2016. 12. 12..
  */
+@EqualsAndHashCode(callSuper = true)
 public class LumpSugar extends AbstractHorseFood {
     protected LumpSugar(Long weight, Float qualityMultiplier, LocalDate expirationDate) {
         super("LumpSugar", weight, Long.valueOf(weight.longValue() * 13L), qualityMultiplier, expirationDate);
@@ -18,27 +20,27 @@ public class LumpSugar extends AbstractHorseFood {
         return "LumpSugar(super=" + super.toString() + ")";
     }
 
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        } else if (!(o instanceof LumpSugar)) {
-            return false;
-        } else {
-            LumpSugar other = (LumpSugar) o;
-            return !other.canEqual(this) ? false : super.equals(o);
-        }
-    }
+//    public boolean equals(Object o) {
+//        if (o == this) {
+//            return true;
+//        } else if (!(o instanceof LumpSugar)) {
+//            return false;
+//        } else {
+//            LumpSugar other = (LumpSugar) o;
+//            return !other.canEqual(this) ? false : super.equals(o);
+//        }
+//    }
 
     protected boolean canEqual(Object other) {
         return other instanceof LumpSugar;
     }
 
-    public int hashCode() {
-        boolean PRIME = true;
-        byte result = 1;
-        int result1 = result * 59 + super.hashCode();
-        return result1;
-    }
+//    public int hashCode() {
+//        boolean PRIME = true;
+//        byte result = 1;
+//        int result1 = result * 59 + super.hashCode();
+//        return result1;
+//    }
 
     public static class LumpSugarBuilder {
         private Long weight;
