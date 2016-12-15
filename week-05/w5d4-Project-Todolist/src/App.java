@@ -10,9 +10,12 @@ public class App {
     static Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String commands = " l to List, q to quit, a to add: ";
+        String commands = " l to List, q to quit, a {description} to add, r {i} to remove,"; // c {i} to mark complete:"
         TodoList myList = new TodoList(); //igy feltolti a delfault listaval
 //        myList.listTodos();
+
+
+
 
         String[] command = {" "," "};
             //initialize commands string to get it empty for  the while condition
