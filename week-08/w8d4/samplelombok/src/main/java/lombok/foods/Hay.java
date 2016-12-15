@@ -1,5 +1,6 @@
 package lombok.foods;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.joda.time.LocalDate;
@@ -10,13 +11,14 @@ import org.joda.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class Hay extends AbstractHorseFood {
+    @Builder
     protected Hay(Long weight, Float qualityMultiplier, LocalDate expirationDate) {
         super("Hay", weight, Long.valueOf(weight.longValue() * 2L), qualityMultiplier, expirationDate);
     }
 
-    public static Hay.HayBuilder builder() {
-        return new Hay.HayBuilder();
-    }
+//    public static Hay.HayBuilder builder() {
+//        return new Hay.HayBuilder();
+//    }
 
 //    public String toString() {
 //        return "Hay(super=" + super.toString() + ")";

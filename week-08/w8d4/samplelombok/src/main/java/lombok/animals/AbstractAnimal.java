@@ -2,10 +2,7 @@ package lombok.animals;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.foods.Food;
 import org.joda.time.LocalDate;
 
@@ -16,6 +13,7 @@ import java.util.List;
  */
 @EqualsAndHashCode
 @ToString
+
 public abstract class AbstractAnimal implements Animal {
     @Getter private String name;
     @Getter private LocalDate birthDate;
@@ -24,6 +22,7 @@ public abstract class AbstractAnimal implements Animal {
     @Getter @Setter protected Long movedDistanceInMilliMeters = 0L;
     @Getter @Setter protected Double happiness;
     @Getter @Setter protected Long weightInGram;
+
 
     public AbstractAnimal(String name, long weightInGram, double happiness) {
         this.name = name;

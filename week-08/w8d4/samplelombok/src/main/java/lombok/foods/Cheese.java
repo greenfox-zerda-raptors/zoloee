@@ -1,5 +1,6 @@
 package lombok.foods;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -9,13 +10,14 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class Cheese extends AbstractFood {
+    @Builder
     protected Cheese(Long weight, Long calories, Float qualityMultiplier) {
         super("Cheese", weight, calories, qualityMultiplier);
     }
 
-    public static Cheese.CheeseBuilder builder() {
-        return new Cheese.CheeseBuilder();
-    }
+//    public static Cheese.CheeseBuilder builder() {
+//        return new Cheese.CheeseBuilder();
+//    }
 
 //    public String toString() {
 //        return "Cheese(super=" + super.toString() + ")";
@@ -43,35 +45,35 @@ public class Cheese extends AbstractFood {
 //        return result1;
 //    }
 
-    public static class CheeseBuilder {
-        private Long weight;
-        private Long calories;
-        private Float qualityMultiplier;
-
-        CheeseBuilder() {
-        }
-
-        public Cheese.CheeseBuilder weight(Long weight) {
-            this.weight = weight;
-            return this;
-        }
-
-        public Cheese.CheeseBuilder calories(Long calories) {
-            this.calories = calories;
-            return this;
-        }
-
-        public Cheese.CheeseBuilder qualityMultiplier(Float qualityMultiplier) {
-            this.qualityMultiplier = qualityMultiplier;
-            return this;
-        }
-
-        public Cheese build() {
-            return new Cheese(this.weight, this.calories, this.qualityMultiplier);
-        }
-
-        public String toString() {
-            return "Cheese.CheeseBuilder(weight=" + this.weight + ", calories=" + this.calories + ", qualityMultiplier=" + this.qualityMultiplier + ")";
-        }
-    }
+//    public static class CheeseBuilder {
+//        private Long weight;
+//        private Long calories;
+//        private Float qualityMultiplier;
+//
+//        CheeseBuilder() {
+//        }
+//
+//        public Cheese.CheeseBuilder weight(Long weight) {
+//            this.weight = weight;
+//            return this;
+//        }
+//
+//        public Cheese.CheeseBuilder calories(Long calories) {
+//            this.calories = calories;
+//            return this;
+//        }
+//
+//        public Cheese.CheeseBuilder qualityMultiplier(Float qualityMultiplier) {
+//            this.qualityMultiplier = qualityMultiplier;
+//            return this;
+//        }
+//
+//        public Cheese build() {
+//            return new Cheese(this.weight, this.calories, this.qualityMultiplier);
+//        }
+//
+//        public String toString() {
+//            return "Cheese.CheeseBuilder(weight=" + this.weight + ", calories=" + this.calories + ", qualityMultiplier=" + this.qualityMultiplier + ")";
+//        }
+//    }
 }

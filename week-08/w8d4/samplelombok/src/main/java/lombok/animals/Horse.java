@@ -1,5 +1,6 @@
 package lombok.animals;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -13,9 +14,11 @@ import java.util.logging.Logger;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Log
+
 public class Horse extends AbstractAnimal {
 //    private static final Logger log = Logger.getLogger(Horse.class.getName());
 
+    @Builder
     public Horse(String name, long weightInGram, double happiness) {
         super(name, weightInGram, happiness);
     }
@@ -32,9 +35,9 @@ public class Horse extends AbstractAnimal {
         return 1;
     }
 
-    public static Horse.HorseBuilder builder() {
-        return new Horse.HorseBuilder();
-    }
+//    public static Horse.HorseBuilder builder() {
+//        return new Horse.HorseBuilder();
+//    }
 
 //    public String toString() {
 //        return "Horse(super=" + super.toString() + ")";
@@ -62,35 +65,35 @@ public class Horse extends AbstractAnimal {
 //        return result1;
 //    }
 
-    public static class HorseBuilder {
-        private String name;
-        private long weightInGram;
-        private double happiness;
-
-        HorseBuilder() {
-        }
-
-        public Horse.HorseBuilder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Horse.HorseBuilder weightInGram(long weightInGram) {
-            this.weightInGram = weightInGram;
-            return this;
-        }
-
-        public Horse.HorseBuilder happiness(double happiness) {
-            this.happiness = happiness;
-            return this;
-        }
-
-        public Horse build() {
-            return new Horse(this.name, this.weightInGram, this.happiness);
-        }
-
-        public String toString() {
-            return "Horse.HorseBuilder(name=" + this.name + ", weightInGram=" + this.weightInGram + ", happiness=" + this.happiness + ")";
-        }
-    }
+//    public static class HorseBuilder {
+//        private String name;
+//        private long weightInGram;
+//        private double happiness;
+//
+//        HorseBuilder() {
+//        }
+//
+//        public Horse.HorseBuilder name(String name) {
+//            this.name = name;
+//            return this;
+//        }
+//
+//        public Horse.HorseBuilder weightInGram(long weightInGram) {
+//            this.weightInGram = weightInGram;
+//            return this;
+//        }
+//
+//        public Horse.HorseBuilder happiness(double happiness) {
+//            this.happiness = happiness;
+//            return this;
+//        }
+//
+//        public Horse build() {
+//            return new Horse(this.name, this.weightInGram, this.happiness);
+//        }
+//
+//        public String toString() {
+//            return "Horse.HorseBuilder(name=" + this.name + ", weightInGram=" + this.weightInGram + ", happiness=" + this.happiness + ")";
+//        }
+//    }
 }

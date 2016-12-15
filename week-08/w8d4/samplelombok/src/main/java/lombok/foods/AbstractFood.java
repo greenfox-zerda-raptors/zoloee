@@ -1,9 +1,6 @@
 package lombok.foods;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.joda.time.LocalDate;
 
 /**
@@ -17,6 +14,7 @@ public abstract class AbstractFood implements Food {
     @Getter private Long calories;
     @Getter private LocalDate creationDate;
     @Getter @Setter protected Float qualityMultiplier;
+
 
     public AbstractFood(String name, Long weight, Long calories, Float qualityMultiplier) {
         this(name, weight, calories, new LocalDate(), qualityMultiplier);
