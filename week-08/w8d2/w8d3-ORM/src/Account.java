@@ -1,6 +1,5 @@
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import
 
 /**
  * Created by zoloe on 2016. 12. 14..
@@ -15,19 +14,21 @@ public class Account{
     @DatabaseField(columnName = PASSWORD_FIELD_NAME)
     private String password;
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
     private Address address;
-
-
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private int address_id;
 
     public Account(){
         // ORMLite needs a no-arg constructor
     }
 
-    public Account(String name, String password) {
+    public Account(String name, String password, Address address) {
         this.name = name;
         this.password = password;
+        this.address = address;
     }
 
 
@@ -46,14 +47,12 @@ public class Account{
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getAddress_id() {
-        return address_id;
-    }
+
 
     @Override
     public String toString() {
         return "Account{" +
                 "name='" + name + '\'' +
-                '}' + address.toString;
+                '}' + address.toString();
     }
 }
