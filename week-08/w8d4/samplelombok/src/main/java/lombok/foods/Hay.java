@@ -1,12 +1,14 @@
 package lombok.foods;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.joda.time.LocalDate;
 
 /**
  * Created by kicsen on 2016. 12. 12..
  */
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Hay extends AbstractHorseFood {
     protected Hay(Long weight, Float qualityMultiplier, LocalDate expirationDate) {
         super("Hay", weight, Long.valueOf(weight.longValue() * 2L), qualityMultiplier, expirationDate);
@@ -16,9 +18,9 @@ public class Hay extends AbstractHorseFood {
         return new Hay.HayBuilder();
     }
 
-    public String toString() {
-        return "Hay(super=" + super.toString() + ")";
-    }
+//    public String toString() {
+//        return "Hay(super=" + super.toString() + ")";
+//    }
 
 //    public boolean equals(Object o) {
 //        if (o == this) {

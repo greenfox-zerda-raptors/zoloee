@@ -1,12 +1,14 @@
 package lombok.foods;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.joda.time.LocalDate;
 
 /**
  * Created by kicsen on 2016. 12. 12..
  */
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class LumpSugar extends AbstractHorseFood {
     protected LumpSugar(Long weight, Float qualityMultiplier, LocalDate expirationDate) {
         super("LumpSugar", weight, Long.valueOf(weight.longValue() * 13L), qualityMultiplier, expirationDate);
@@ -16,9 +18,9 @@ public class LumpSugar extends AbstractHorseFood {
         return new LumpSugar.LumpSugarBuilder();
     }
 
-    public String toString() {
-        return "LumpSugar(super=" + super.toString() + ")";
-    }
+//    public String toString() {
+//        return "LumpSugar(super=" + super.toString() + ")";
+//    }
 
 //    public boolean equals(Object o) {
 //        if (o == this) {

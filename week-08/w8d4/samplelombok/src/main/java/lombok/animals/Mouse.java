@@ -1,6 +1,7 @@
 package lombok.animals;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.foods.Food;
 
 import java.util.logging.Logger;
@@ -9,6 +10,7 @@ import java.util.logging.Logger;
  * Created by kicsen on 2016. 12. 12..
  */
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Mouse extends AbstractAnimal {
     private static final Logger log = Logger.getLogger(Mouse.class.getName());
 
@@ -32,9 +34,9 @@ public class Mouse extends AbstractAnimal {
         return new Mouse.MouseBuilder();
     }
 
-    public String toString() {
-        return "Mouse(super=" + super.toString() + ")";
-    }
+//    public String toString() {
+//        return "Mouse(super=" + super.toString() + ")";
+//    }
 
 //    public boolean equals(Object o) {
 //        if (o == this) {
