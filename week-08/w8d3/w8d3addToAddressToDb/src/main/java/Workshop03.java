@@ -36,7 +36,7 @@ public class Workshop03 {
         // create an instance of Account
         Address myAddress = new Address();
         myAddress.setCity("Bp");
-        myAddress.setCountry("HL");
+        myAddress.setCountry("HU");
         myAddress.setPostCode(1037);
         myAddress.setStreet("Kinizsi 2/B");
 
@@ -56,6 +56,5 @@ public class Workshop03 {
         // close the connection source
         connectionSource.close();
     }
+}
 
-}
-}

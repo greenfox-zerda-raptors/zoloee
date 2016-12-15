@@ -11,8 +11,8 @@ public class Address {
     public static final String POSTCODE_FIELD_NAME = "postCode";
     public static final String COUNTRY_FIELD_NAME = "country";
 
-//    @DatabaseField(id = true)
-//    private int aId;
+    @DatabaseField(generatedId = true)
+    private int id;
     @DatabaseField(columnName = STREET_FIELD_NAME)
     private String street;
     @DatabaseField(columnName = CITY_FIELD_NAME)
