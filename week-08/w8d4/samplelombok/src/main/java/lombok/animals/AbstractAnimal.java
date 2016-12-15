@@ -2,6 +2,8 @@ package lombok.animals;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.foods.Food;
 import org.joda.time.LocalDate;
 
@@ -11,13 +13,13 @@ import java.util.List;
  * Created by kicsen on 2016. 12. 12..
  */
 public abstract class AbstractAnimal implements Animal {
-    private String name;
-    private LocalDate birthDate;
+    @Getter private String name;
+    @Getter private LocalDate birthDate;
 
     protected List<? extends Animal> children = Lists.newArrayList();
-    protected Long movedDistanceInMilliMeters = 0L;
-    protected Double happiness;
-    protected Long weightInGram;
+    @Getter @Setter protected Long movedDistanceInMilliMeters = 0L;
+    @Getter @Setter protected Double happiness;
+    @Getter @Setter protected Long weightInGram;
 
     public AbstractAnimal(String name, long weightInGram, double happiness) {
         this.name = name;
@@ -47,37 +49,37 @@ public abstract class AbstractAnimal implements Animal {
         return this.children.size();
     }
 
-    public String getName() {
-        return this.name;
-    }
+//    public String getName() {
+//        return this.name;
+//    }
 
-    public LocalDate getBirthDate() {
-        return this.birthDate;
-    }
+//    public LocalDate getBirthDate() {
+//        return this.birthDate;
+//    }
 
-    public Long getMovedDistanceInMilliMeters() {
-        return this.movedDistanceInMilliMeters;
-    }
+//    public Long getMovedDistanceInMilliMeters() {
+//        return this.movedDistanceInMilliMeters;
+//    }
 
-    public Double getHappiness() {
-        return this.happiness;
-    }
+//    public Double getHappiness() {
+//        return this.happiness;
+//    }
 
-    public Long getWeightInGram() {
-        return this.weightInGram;
-    }
+//    public Long getWeightInGram() {
+//        return this.weightInGram;
+//    }
 
-    public void setMovedDistanceInMilliMeters(Long movedDistanceInMilliMeters) {
-        this.movedDistanceInMilliMeters = movedDistanceInMilliMeters;
-    }
+//    public void setMovedDistanceInMilliMeters(Long movedDistanceInMilliMeters) {
+//        this.movedDistanceInMilliMeters = movedDistanceInMilliMeters;
+//    }
 
-    public void setHappiness(Double happiness) {
-        this.happiness = happiness;
-    }
+//    public void setHappiness(Double happiness) {
+//        this.happiness = happiness;
+//    }
 
-    public void setWeightInGram(Long weightInGram) {
-        this.weightInGram = weightInGram;
-    }
+//    public void setWeightInGram(Long weightInGram) {
+//        this.weightInGram = weightInGram;
+//    }
 
     public boolean equals(Object o) {
         if (o == this) {

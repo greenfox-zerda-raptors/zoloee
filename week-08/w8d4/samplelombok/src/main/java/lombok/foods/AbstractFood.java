@@ -1,16 +1,18 @@
 package lombok.foods;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.joda.time.LocalDate;
 
 /**
  * Created by kicsen on 2016. 12. 12..
  */
 public abstract class AbstractFood implements Food {
-    private String name;
-    private Long weight;
-    private Long calories;
-    private LocalDate creationDate;
-    protected Float qualityMultiplier;
+    @Getter private String name;
+    @Getter private Long weight;
+    @Getter private Long calories;
+    @Getter private LocalDate creationDate;
+    @Getter @Setter protected Float qualityMultiplier;
 
     public AbstractFood(String name, Long weight, Long calories, Float qualityMultiplier) {
         this(name, weight, calories, new LocalDate(), qualityMultiplier);
@@ -24,29 +26,29 @@ public abstract class AbstractFood implements Food {
         this.qualityMultiplier = qualityMultiplier;
     }
 
-    public String getName() {
-        return this.name;
-    }
+//    public String getName() {
+//        return this.name;
+//    }
 
-    public Long getWeight() {
-        return this.weight;
-    }
+//    public Long getWeight() {
+//        return this.weight;
+//    }
 
-    public Long getCalories() {
-        return this.calories;
-    }
+//    public Long getCalories() {
+//        return this.calories;
+//    }
 
-    public LocalDate getCreationDate() {
-        return this.creationDate;
-    }
+//    public LocalDate getCreationDate() {
+//        return this.creationDate;
+//    }
 
-    public Float getQualityMultiplier() {
-        return this.qualityMultiplier;
-    }
+//    public Float getQualityMultiplier() {
+//        return this.qualityMultiplier;
+//    }
 
-    public void setQualityMultiplier(Float qualityMultiplier) {
-        this.qualityMultiplier = qualityMultiplier;
-    }
+//    public void setQualityMultiplier(Float qualityMultiplier) {
+//        this.qualityMultiplier = qualityMultiplier;
+//    }
 
     public String toString() {
         return "AbstractFood(name=" + this.getName() + ", weight=" + this.getWeight() + ", calories=" + this.getCalories() + ", creationDate=" + this.getCreationDate() + ", qualityMultiplier=" + this.getQualityMultiplier() + ")";
