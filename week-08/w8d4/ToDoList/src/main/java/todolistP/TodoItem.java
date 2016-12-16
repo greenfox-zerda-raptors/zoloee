@@ -43,10 +43,7 @@ public class TodoItem {
 
     @Override
     public String toString() {
-        return "TodoItem{" +
-                "id=" + id +
-                ", isDone=" + isDone +
-                ", Description='" + Description + '\'' +
-                '}';
+        return id + " " + Description ;
+//        + isDone + " " +
     }
 }

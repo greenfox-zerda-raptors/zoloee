@@ -5,7 +5,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
-
+import java.util.List;
 
 /**
  * Created by zoloe on 2016. 12. 16..
@@ -34,6 +34,14 @@ public class TodoListDB {
     public void removeTodo(int index)throws Exception{
         TodoItem curTodo = todos.queryForId(Integer.toString(index));
                 todos.delete(curTodo);
+
+        List<TodoItem> tempTodoList = todos.queryForAll();
+        TableUtils.dropTable(todos,true);
+        TableUtils.createTable(connectionSource, TodoItem.class);
+        for (TodoItem t:
+             tempTodoList) {
+            todos.create(new TodoItem(t.getDescription()));
+        }
     }//removeTodo
 
     public void closeDB() throws Exception{

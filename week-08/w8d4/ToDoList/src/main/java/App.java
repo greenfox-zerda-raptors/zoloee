@@ -1,14 +1,5 @@
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.logger.LocalLog;
-import com.j256.ormlite.support.ConnectionSource;
 import todolistP.*;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,11 +9,11 @@ public class App {
     static Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        String commands = " l to List, q to quit, a {description} to add, r {i} to remove,"; // c {i} to mark complete:"
+        String commands = " l to List, q to quit, a [description] to add, r [i] to remove, "; // c {i} to mark complete:"
         System.setProperty(LocalLog.LOCAL_LOG_LEVEL_PROPERTY, "ERROR");
 //        TodoList myList = new TodoList(); //igy feltolti a delfault listaval
-//        TodoListDB myList = new TodoListDB();
-        TodoList myList = new TodoList();
+        TodoListDB myList = new TodoListDB();
+//        TodoList myList = new TodoList();
 
         String[] command = {" "," "};
             //initialize commands string to get it empty for  the while condition
