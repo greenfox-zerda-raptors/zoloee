@@ -1,3 +1,9 @@
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
+import todolistP.TodoList;
+
 /**
  * Created by zoloe on 2016. 11. 20..
  */
@@ -12,9 +18,6 @@ public class AppMethods {
                 return "pls use a valid index";
             }
 
-        }return "fuckit. Unhandled: " + e;
+        }return "Unhandled: " + e;
     }
-
-
-
-}
+}// appMethods

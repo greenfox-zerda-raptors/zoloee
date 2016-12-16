@@ -1,6 +1,13 @@
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
 import todolistP.*;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -9,12 +16,22 @@ import java.util.Scanner;
 public class App {
     static Scanner userInput = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String commands = " l to List, q to quit, a {description} to add, r {i} to remove,"; // c {i} to mark complete:"
-        TodoList myList = new TodoList(); //igy feltolti a delfault listaval
+//        TodoList myList = new TodoList(); //igy feltolti a delfault listaval
 //        myList.listTodos();
+                TodoListDB myList = new TodoListDB();
 
+//        String databaseUrl = "jdbc:mysql://127.0.0.1:3306/todolist?user=user1&password=12345&useSSL=false";
 
+        // create a connection source to our database
+//        ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl);
+        // instantiate the dao
+
+//            Dao<TodoItem, String> todoListDao =
+//                    DaoManager.createDao(connectionSource, TodoItem.class);
+//                List<TodoItem> readTodoItemList = todoListDao.queryForAll();
+//            TodoList myList = new TodoList(readTodoItemList);
 
 
         String[] command = {" "," "};
@@ -40,10 +57,11 @@ public class App {
                     }
                     case "q": {
                         System.out.println("quitting");
+                        myList.closeDB();
                         break;
                     }
                     case "r": {
-                        myList.removeTodo(Integer.parseInt(command[1])-1);
+                        myList.removeTodo(Integer.parseInt(command[1]));
                         break;
                     }
                     default: {
@@ -53,7 +71,7 @@ public class App {
                 }// switch
             }catch (Exception e){
                 System.out.println(AppMethods.ErrHand(e));
-                System.out.println("valid indexes: 1 - " + myList.size() );
+                System.out.println(" out of valid indexes ");
 
             }//catch
 

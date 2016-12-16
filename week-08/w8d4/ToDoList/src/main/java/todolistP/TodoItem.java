@@ -1,19 +1,28 @@
 package todolistP;
 
+import com.j256.ormlite.field.DatabaseField;
+
 /**
  * Created by zoloe on 2016. 11. 17..
  */
 public class TodoItem {
-    boolean isDone;
-    String Desc;
+    @DatabaseField(generatedId = true)
+    private int id;
+    @DatabaseField
+    private boolean isDone;
+    @DatabaseField
+    private String Description;
 
-    public TodoItem(String desc) {
-        this(false, desc);
+    public TodoItem() {
     }
 
-    public TodoItem(boolean isDone, String desc) {
+    public TodoItem(String Description) {
+        this(false, Description);
+    }
+
+    public TodoItem(boolean isDone, String Description) {
         this.isDone = isDone;
-        Desc = desc;
+        this.Description = Description;
     }
 
     public boolean isDone() {
@@ -24,11 +33,20 @@ public class TodoItem {
         isDone = done;
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDesc(String desc) {
-        Desc = desc;
+    public void setDescription(String Description) {
+        Description = Description;
+    }
+
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", isDone=" + isDone +
+                ", Description='" + Description + '\'' +
+                '}';
     }
 }

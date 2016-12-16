@@ -1,13 +1,14 @@
 package todolistP;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zoloe on 2016. 11. 17..
  */
 public class TodoList {
-    public ArrayList<TodoItem> todos = new ArrayList<TodoItem>();
+    public List<TodoItem> todos = new ArrayList<>();
 
-    public TodoList(ArrayList<TodoItem> todos) {
+    public TodoList(List<TodoItem> todos) {
         this.todos = todos;
     }
         //ezt majd filebetoltesnel lehet hasznalni
@@ -25,7 +26,7 @@ public class TodoList {
         } else {
             int i = 1;
             for (TodoItem curTodo : todos) {
-                System.out.println(i + " - " + curTodo.getDesc());
+                System.out.println(i + " - " + curTodo.getDescription());
                 i++;
             }
         }
@@ -36,8 +37,8 @@ public class TodoList {
     }
 
     public void removeTodo(int index){
-        todos.remove(index);
-    }
+        todos.remove(index - 1);
+    } // 0tol indul az indexeles
 
     public String size(){
         return Integer.toString(todos.size());
