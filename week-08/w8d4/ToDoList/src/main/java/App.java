@@ -1,4 +1,4 @@
-import com.j256.ormlite.logger.LocalLog;
+
 import todolistP.*;
 import java.util.Scanner;
 
@@ -9,9 +9,8 @@ public class App {
     static Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        String commands = " l to List, q to quit, a [description] to add, r [i] to remove, "; // c {i} to mark complete:"
-        System.setProperty(LocalLog.LOCAL_LOG_LEVEL_PROPERTY, "ERROR");
-//        TodoList myList = new TodoList(); //igy feltolti a delfault listaval
+        String commands = " l to List, q to quit, a [description] to add, r [i] to remove, c [i] to mark complete";
+
         TodoListDB myList = new TodoListDB();
 //        TodoList myList = new TodoList();
 
@@ -36,13 +35,17 @@ public class App {
                         myList.addTodo(command[1]);
                         break;
                     }
-                    case "q": {
-                        System.out.println("quitting");
-                        myList.closeDB();
+                    case "c":{
+                        myList.setCompleteTodoItem(command[1]);
+//                        getTodoItem(command[1]).setDone(true);
                         break;
                     }
                     case "r": {
-                        myList.removeTodo(Integer.parseInt(command[1]));
+                        if (command[1].equals("done")){
+                            myList.removeDone();
+                        }else{
+                            myList.removeTodo(Integer.parseInt(command[1]));
+                        }
                         break;
                     }
                     case "reset":{
@@ -53,12 +56,16 @@ public class App {
                         System.out.println(" no such command. usage: " + commands);
                         break;
                     }
+                    case "q": {
+                        System.out.println("quitting");
+                        myList.closeDB();
+                        break;
+                    }
                 }// switch
             }catch (Exception e){
                 System.out.println(AppMethods.ErrHand(e));
                 System.out.println(" out of valid indexes ");
-
-            }//catch
+            }// catch
         }// while command[0]
     }// main
 }//app

@@ -4,6 +4,8 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.sun.tools.javac.comp.Todo;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -35,14 +37,28 @@ public class TodoListDB {
         TodoItem curTodo = todos.queryForId(Integer.toString(index));
                 todos.delete(curTodo);
 
+        reorder();
+    }//removeTodo
+    protected void reorder() throws Exception{
         List<TodoItem> tempTodoList = todos.queryForAll();
         TableUtils.dropTable(todos,true);
         TableUtils.createTable(connectionSource, TodoItem.class);
         for (TodoItem t:
-             tempTodoList) {
-            todos.create(new TodoItem(t.getDescription()));
+                tempTodoList) {
+
+            todos.create(new TodoItem(t.isDone(),t.getDescription()));
         }
-    }//removeTodo
+    }
+
+    public void removeDone() throws Exception{
+        for (TodoItem t:
+             todos) {
+            if (t.isDone()){
+                todos.delete(t);
+            }
+        reorder();
+        }
+    }
 
     public void closeDB() throws Exception{
         connectionSource.close();
@@ -55,4 +71,14 @@ public class TodoListDB {
         addTodo("Buy Milk");
         addTodo("Do homework");
     }
+
+    public TodoItem getTodoItem(String index) throws Exception{
+        return todos.queryForId(index);
+    }
+    public void setCompleteTodoItem(String index) throws Exception{
+        TodoItem t = getTodoItem(index);
+        t.setDone(true);
+        todos.update(t);
+    }
+
 }// TodoListDB

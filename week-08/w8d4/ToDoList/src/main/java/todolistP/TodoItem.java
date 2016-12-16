@@ -43,7 +43,10 @@ public class TodoItem {
 
     @Override
     public String toString() {
-        return id + " " + Description ;
+        String doneCharacter = "[ ]";
+        if (isDone) {doneCharacter = "[X]"; }
+
+        return id + " " + doneCharacter + " " + Description ;
 //        + isDone + " " +
     }
 }
