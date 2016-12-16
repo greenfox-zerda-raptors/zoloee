@@ -8,16 +8,8 @@ import java.util.List;
 public class TodoList {
     public List<TodoItem> todos = new ArrayList<>();
 
-    public TodoList(List<TodoItem> todos) {
-        this.todos = todos;
-    }
-        //ezt majd filebetoltesnel lehet hasznalni
-
     public TodoList() {
-        todos.add(0,new TodoItem("Walk the dog"));
-        todos.add(1,new TodoItem("Buy Milk"));
-        todos.add(2,new TodoItem("Do homework"));
-        System.out.println("list initialized with 3 example values");
+        resetList();
     }
 
     public void listTodos(){
@@ -44,6 +36,14 @@ public class TodoList {
         return Integer.toString(todos.size());
     }
 
+    public void closeDB(){}
+    public void resetList(){
+        todos.clear();
+        todos.add(0,new TodoItem("Walk the dog"));
+        todos.add(1,new TodoItem("Buy Milk"));
+        todos.add(2,new TodoItem("Do homework"));
+        System.out.println("list initialized with 3 example values");
+    }
 
 }
 

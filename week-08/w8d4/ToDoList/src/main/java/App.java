@@ -1,6 +1,7 @@
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.logger.LocalLog;
 import com.j256.ormlite.support.ConnectionSource;
 import todolistP.*;
 
@@ -18,21 +19,10 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         String commands = " l to List, q to quit, a {description} to add, r {i} to remove,"; // c {i} to mark complete:"
+        System.setProperty(LocalLog.LOCAL_LOG_LEVEL_PROPERTY, "ERROR");
 //        TodoList myList = new TodoList(); //igy feltolti a delfault listaval
-//        myList.listTodos();
-                TodoListDB myList = new TodoListDB();
-
-//        String databaseUrl = "jdbc:mysql://127.0.0.1:3306/todolist?user=user1&password=12345&useSSL=false";
-
-        // create a connection source to our database
-//        ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl);
-        // instantiate the dao
-
-//            Dao<TodoItem, String> todoListDao =
-//                    DaoManager.createDao(connectionSource, TodoItem.class);
-//                List<TodoItem> readTodoItemList = todoListDao.queryForAll();
-//            TodoList myList = new TodoList(readTodoItemList);
-
+//        TodoListDB myList = new TodoListDB();
+        TodoList myList = new TodoList();
 
         String[] command = {" "," "};
             //initialize commands string to get it empty for  the while condition
@@ -49,7 +39,7 @@ public class App {
                         break;
                     }
                     case "a": {
-                        if (command[1].equals("")) { //azert kell hogy ha ures stringet ad meg, ne jojjon letre uj todo item ures desccel
+                        if (command[1].equals("")) { //azert kell hogy ha ures stringet ad meg, ne jojjon letre uj todoitem ures desccel
                             throw new ArrayIndexOutOfBoundsException();
                         }
                         myList.addTodo(command[1]);
@@ -64,6 +54,10 @@ public class App {
                         myList.removeTodo(Integer.parseInt(command[1]));
                         break;
                     }
+                    case "reset":{
+                        myList.resetList();
+                        break;
+                    }
                     default: {
                         System.out.println(" no such command. usage: " + commands);
                         break;
@@ -74,14 +68,6 @@ public class App {
                 System.out.println(" out of valid indexes ");
 
             }//catch
-
-
         }// while command[0]
-
-
-
     }// main
-
 }//app
-
-// || command != "l"
