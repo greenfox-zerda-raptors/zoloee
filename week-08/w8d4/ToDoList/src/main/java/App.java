@@ -1,4 +1,5 @@
 
+import com.j256.ormlite.logger.LocalLog;
 import todolistP.*;
 import java.util.Scanner;
 
@@ -9,8 +10,8 @@ public class App {
     static Scanner userInput = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        String commands = " l to List, q to quit, a [description] to add, r [i] to remove, c [i] to mark complete";
-
+        System.setProperty(LocalLog.LOCAL_LOG_LEVEL_PROPERTY, "ERROR"); // to avid sql commands to console
+        String commands = " l to List, q to quit, a [description] to add, r [i] to remove, c [i] to mark colmplete";
         TodoListDB myList = new TodoListDB();
 //        TodoList myList = new TodoList();
 

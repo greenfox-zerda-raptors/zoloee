@@ -4,8 +4,6 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.sun.tools.javac.comp.Todo;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,13 +18,17 @@ public class TodoListDB {
             DaoManager.createDao(connectionSource, TodoItem.class);
 
     public TodoListDB() throws SQLException {
-
     }
 
     public void listTodos(){
-            for (TodoItem curTodo : todos) {
-                System.out.println(curTodo);
-            }
+//            int i=1;
+//            for (TodoItem curTodo : todos) {
+//                System.out.println(i + " " +  curTodo);
+//                i++;
+//            }
+        for (TodoItem curTodo : todos) {
+            System.out.println(curTodo);
+        }
     }// listTodos
 
     public void addTodo(String description) throws SQLException {
@@ -36,16 +38,16 @@ public class TodoListDB {
     public void removeTodo(int index)throws Exception{
         TodoItem curTodo = todos.queryForId(Integer.toString(index));
                 todos.delete(curTodo);
-
         reorder();
     }//removeTodo
+
     protected void reorder() throws Exception{
         List<TodoItem> tempTodoList = todos.queryForAll();
+        tempTodoList.size();
         TableUtils.dropTable(todos,true);
         TableUtils.createTable(connectionSource, TodoItem.class);
         for (TodoItem t:
                 tempTodoList) {
-
             todos.create(new TodoItem(t.isDone(),t.getDescription()));
         }
     }
