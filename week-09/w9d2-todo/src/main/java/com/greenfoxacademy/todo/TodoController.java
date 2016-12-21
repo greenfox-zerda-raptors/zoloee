@@ -21,10 +21,15 @@ public class TodoController {
     }
 
     @RequestMapping(value = { "/" , "/list"})
-    public String list(Model model){
-        model.addAttribute("todos",todoService.getTodos());
+    public String list(Model model, @RequestParam(required = false, defaultValue = "x") String queryString){
+
+//        model.addAttribute("querystring",querystring);
+        model.addAttribute("todos",todoService.getTodos(queryString));
         return "todo";
     }
 }
 
 //Create a new controller called TodoController which maps to /todo (hint: @RequestMapping to Controller?)
+
+//Extend the previous listing action with a parameter (querystring)
+// for listing the active todos (parameter name can be active; active means !isDone)
