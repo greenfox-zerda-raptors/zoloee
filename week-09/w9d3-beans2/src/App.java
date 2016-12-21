@@ -13,7 +13,7 @@ public class App {
         ApplicationContext ctx =
                 new AnnotationConfigApplicationContext(HelloWorldConfig.class);
 
-        HelloWorld helloWorld = (HelloWorld) ctx.getBean(HelloWorld.class);
+        HelloWorld helloWorld = ctx.getBean(HelloWorld.class);
 
         helloWorld.setMessage("Hello World!");
         helloWorld.getMessage();
