@@ -1,4 +1,6 @@
-import com.gf.*;
+import com.com.greenfoxacademy.java.lesson.beans.HelloWorld;
+import com.com.greenfoxacademy.java.lesson.beans.HelloWorldConfig;
+import com.com.greenfoxacademy.java.lesson.beans.WithFries;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -11,7 +13,7 @@ public class App {
         ApplicationContext ctx =
                 new AnnotationConfigApplicationContext(HelloWorldConfig.class);
 
-        HelloWorld helloWorld = ctx.getBean(HelloWorld.class);
+        HelloWorld helloWorld = (HelloWorld) ctx.getBean(HelloWorld.class);
 
         helloWorld.setMessage("Hello World!");
         helloWorld.getMessage();

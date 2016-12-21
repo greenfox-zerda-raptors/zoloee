@@ -1,4 +1,4 @@
-package com.gf;
+package com.com.greenfoxacademy.java.lesson.beans;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

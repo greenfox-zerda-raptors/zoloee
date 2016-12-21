@@ -1,4 +1,4 @@
-package com.gf;
+package com.com.greenfoxacademy.java.lesson.beans;
 
 /**
  * Created by zoloe on 2016. 12. 21..
