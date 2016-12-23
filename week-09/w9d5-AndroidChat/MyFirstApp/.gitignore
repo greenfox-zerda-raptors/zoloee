@@ -1,0 +1,14 @@
+
+# Do nod Ignore everything /because in the root, everything was indored
+!*
+
+#ignore these things
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
