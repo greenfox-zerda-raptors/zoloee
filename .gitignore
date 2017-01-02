@@ -4,6 +4,9 @@
 # Don't ignore directories, so we can recurse into them
 !*/
 
+# Ignore Library
+/Library
+
 # Don't ignore .gitignore
 !.gitignore
 
