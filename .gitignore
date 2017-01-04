@@ -8,8 +8,8 @@
 /Library
 
 # Ignore hidden ones
-/.gradle
-/.m2
+.gradle
+.m2/
 
 # Don't ignore .gitignore
 !.gitignore

@@ -25,3 +25,4 @@ nbdist/
 .nb-gradle/
 ### want to add resource files###
 !src/main/resources/*/
+
