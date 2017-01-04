@@ -4,6 +4,9 @@
 # Don't ignore directories, so we can recurse into them
 !*/
 
+# Ignore gradle
+.gradle
+
 # Ignore Library
 /Library
 
@@ -15,4 +18,5 @@
 !*.txt
 !*.sql
 !*.gradle
+!*.html
 

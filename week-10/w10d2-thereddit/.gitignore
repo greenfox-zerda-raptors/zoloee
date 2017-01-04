@@ -1,4 +1,4 @@
-.gradle
+
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
@@ -23,3 +23,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+### want to add resource files###
+!src/main/resources/*/
