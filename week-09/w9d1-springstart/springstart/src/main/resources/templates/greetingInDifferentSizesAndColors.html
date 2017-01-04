@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+    <body>
+        <!--<ul>-->
+            <!--<li th:each="hello, i : ${hellos}" th:style="|color:${colors[i.index]}|" th:text="${hello}"/>-->
+            <!--<p th:text="'Hello, ' + ${name} + '! This site was loaded ' + ${count} + ' times.'"/>-->
+            <!--&lt;!&ndash;<li th:each="hello: ${hellos}" th:text="${hello}"/>&ndash;&gt;-->
+        <!--</ul>-->
+        <!--<div th:style="|position: absolute; left: 0px; top: 0px; transform: translate(${x}, ${y})|">-->
+
+        <span th:each="hello, i : ${hellos}" th:style="|color:${colors[i.index]};font-size:${sizes[i.index]}px|" th:text="${hello}"/>
+    </body>
+</html>
