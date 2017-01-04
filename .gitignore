@@ -4,11 +4,12 @@
 # Don't ignore directories, so we can recurse into them
 !*/
 
-# Ignore gradle
-.gradle
-
 # Ignore Library
 /Library
+
+# Ignore hidden ones
+/.gradle
+/.m2
 
 # Don't ignore .gitignore
 !.gitignore
