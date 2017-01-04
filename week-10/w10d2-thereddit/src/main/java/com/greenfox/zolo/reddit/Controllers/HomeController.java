@@ -1,6 +1,7 @@
 package com.greenfox.zolo.reddit.Controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,4 +16,11 @@ public class HomeController {
     public String hello(){
         return "redirect:posts";
     }
+
+//    @RequestMapping(value = "", method = RequestMethod.GET)
+//    public String index(Model model){
+//        model.addAttribute("posts", repository.findAll());
+//        return "posts/index";
+//    }
+
 }
