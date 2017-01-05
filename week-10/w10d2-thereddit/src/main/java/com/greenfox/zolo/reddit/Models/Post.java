@@ -1,8 +1,9 @@
 package com.greenfox.zolo.reddit.Models;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,9 +14,7 @@ import javax.persistence.Id;
  * Created by zoloe on 2017. 01. 04..
  */
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 public class Post {
 
     @Id
@@ -29,6 +28,15 @@ public class Post {
 
     public Post(String content) {
         this.content = content;
+    }
+
+    public void incrementScore(){
+        score++;
+    }
+
+    public void decrementScore(){
+        score--;
+//        return this;
     }
 
 }
