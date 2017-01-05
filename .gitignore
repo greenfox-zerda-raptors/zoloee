@@ -4,15 +4,9 @@
 # Don't ignore directories, so we can recurse into them
 !*/
 
+
 # Ignore Library
-/Library
-
-# Ignore hidden ones
-.gradle
-.m2/
-
-# Don't ignore .gitignore
-!.gitignore
+/Library/
 
 # Now exclude our type
 !*.java
@@ -20,4 +14,8 @@
 !*.sql
 !*.gradle
 !*.html
+
+# Don't ignore .gitignore
+!.gitignore
+
 
