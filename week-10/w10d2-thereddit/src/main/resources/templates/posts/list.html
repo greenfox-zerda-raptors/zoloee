@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>indeX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table border="1" style="width:300px">
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}"></td>
+           <td th:text="${post.content}"></td>
+           <td th:text="${post.score}"></td>
+        </tr>
+    </table>
+
+    <a href="/posts/add">Add new post</a>
+</body>
+</html>

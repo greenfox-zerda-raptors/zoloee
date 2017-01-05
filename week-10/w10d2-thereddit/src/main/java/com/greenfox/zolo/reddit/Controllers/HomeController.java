@@ -13,14 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/")
 public class HomeController {
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String hello(){
+    public String index(){
         return "redirect:posts";
     }
-
-//    @RequestMapping(value = "", method = RequestMethod.GET)
-//    public String index(Model model){
-//        model.addAttribute("posts", repository.findAll());
-//        return "posts/index";
-//    }
 
 }

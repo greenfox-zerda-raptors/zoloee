@@ -19,13 +19,13 @@ public class PostsController
     private PostRepository repository;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String index(Model model){
+    public String list(Model model){
         model.addAttribute("posts", repository.findAll());
-        return "posts/index";
+        return "posts/list";
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String newPost(Model model){
-        return "posts/newpost";
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(Model model){
+        return "posts/add";
     }
 }
