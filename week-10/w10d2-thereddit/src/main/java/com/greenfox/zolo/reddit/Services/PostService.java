@@ -16,16 +16,9 @@ public class PostService {
     private PostRepository postRepository;
     // constructorba kell mar rakni az autowiret igazibol
 
-    public Iterable<Post> getAllPosts() {
-        return postRepository.findAll();
-    }
-    //page-esre at kell irni
-
     public Page<Post> getAllPosts(Integer page, Integer limit) {
         return postRepository.findByOrderByScoreDesc(new PageRequest(page, limit));
     }
-
-
 
     public Post getNewPost(){
         return new Post();
