@@ -1,6 +1,8 @@
 package com.greenfox.zolo.reddit.Services;
 import com.greenfox.zolo.reddit.Models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
@@ -18,6 +20,12 @@ public class PostService {
         return postRepository.findAll();
     }
     //page-esre at kell irni
+
+    public Page<Post> getAllPosts(Integer page, Integer limit) {
+        return postRepository.findByOrderByScoreDesc(new PageRequest(page, limit));
+    }
+
+
 
     public Post getNewPost(){
         return new Post();

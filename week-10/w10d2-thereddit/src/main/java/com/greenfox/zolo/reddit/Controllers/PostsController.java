@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.*;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String list(Model model){
-//        post postService
-//        model.addAttribute("posts", repository.findAll());
-        model.addAttribute("posts", postService.getAllPosts());
+        int page = 0;
+        int limit =3;
+        model.addAttribute("posts", postService.getAllPosts(page, limit));
         return "posts/list";
     }
 

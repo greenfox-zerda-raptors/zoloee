@@ -1,6 +1,8 @@
 package com.greenfox.zolo.reddit.Services;
 
 import com.greenfox.zolo.reddit.Models.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +11,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
+
+    Page<Post> findByOrderByScoreDesc(Pageable pageable);
+
 }
