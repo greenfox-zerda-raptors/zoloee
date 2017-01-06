@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.*;
     private PostService postService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String list(Model model, @RequestParam(name = "page") String page, @RequestParam(name = "limit") String limit){
-        model.addAttribute("posts", postService.getAllPosts(Integer.valueOf(page), Integer.valueOf(limit)));
+    public String list(Model model, @RequestParam(name = "page", defaultValue = "0") String page, @RequestParam(name = "limit", defaultValue = "5") String limit){
+            int pageChecked = Integer.valueOf(page);
+//            if ( pageChecked < 0 ){
+//                pageChecked = 0;
+//            }
+        model.addAttribute("posts", postService.getAllPosts(pageChecked, Integer.valueOf(limit)));
         return "posts/list";
     }
     @RequestMapping(value = "/add", method = RequestMethod.GET)

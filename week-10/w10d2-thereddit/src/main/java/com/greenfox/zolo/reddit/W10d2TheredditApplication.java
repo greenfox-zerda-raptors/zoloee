@@ -20,7 +20,7 @@ public class W10d2TheredditApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			repository.save(new Post("mycontent" + (i+1)));
 		}
 	}

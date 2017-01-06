@@ -19,7 +19,38 @@
             </td>
         </tr>
     </table>
+    <div>
+        <br/>
+            <!--add "first" link-->
+        <a href="#" th:href="@{'/posts/?page=0'}">&lt;&lt;first</a>
+            <!--<a th:if="${posts.hasPrevious()}" href="#" th:href="@{'/posts/?page=0&amp;limit=5'}">&lt;&lt;first</a>-->
 
+                 <!--add "previous" and "next" links-->
+        <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1}}"
+           th:rel="${posts.previousPageable()}">&lt;previous</a>
+        <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1}}"
+            th:rel="${posts.nextPageable()}">next&gt;</a>
+
+                 <!--&lt;!&ndash;add "previous" link if page exists&ndash;&gt;-->
+        <!--<a th:if="${posts.hasPrevious()}"-->
+           <!--href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1}}"-->
+           <!--th:rel="${posts.previousPageable()}">&lt;previous</a>-->
+                     <!--&lt;!&ndash;azert kell unless, mert kiakad, ha nincs prev&ndash;&gt;-->
+        <!--<a th:unless="${posts.previousPageable()}"-->
+           <!--href="#">&lt;previous</a>-->
+
+                <!--&lt;!&ndash;add "next" link if page exists&ndash;&gt;-->
+        <!--<a th:if="${posts.hasNext()}"-->
+           <!--href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1}}"-->
+           <!--th:rel="${posts.nextPageable()}">next&gt;</a>-->
+                    <!--&lt;!&ndash;azert kell unless, mert elmegy barmeddig, de ures a lap&ndash;&gt;-->
+        <!--<a th:unless="${posts.nextPageable()}" href="#">next&gt;</a>-->
+
+            <!--add "last" link -->
+        <a href="#" th:href="@{'/posts/?page=' + ${posts.getTotalPages()-1}}">last&gt;&gt;</a>
+
+    </div>
+    <br/>
     <a href="/posts/add">Add new post</a>
 </body>
 </html>

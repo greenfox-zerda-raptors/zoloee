@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(){
-        return "redirect:posts?page=0&limit=5";
+        return "redirect:posts";
+//        ?page=0&limit=5"
     }
 
 }
