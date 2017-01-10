@@ -9,11 +9,14 @@
 
     <!--ide be kell raki a bootstrappes headert inkabb-->
 
-
+<!--/*@thymesVar id="posts" type="com.greenfox.zolo.reddit"*/-->
+<!--/*@thymesVar id="post" type="com.greenfox.zolo.reddit.Models.Post"*/-->
 <body>
 <!--align="center"-->
     <table border="1" style="width:300px; text-align:center">
+
         <tr th:each="post : ${posts}">
+            <td th:text="${post.id}""></td>
             <td th:text="${post.id}"></td>
            <td th:text="${post.content}"></td>
            <td th:text="${post.score}"></td>

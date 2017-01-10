@@ -1,0 +1,53 @@
+<html layout:decorator="layout" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<div layout:fragment="content">
+
+    <div class="container theme-showcase" role="main">
+        <div class="jumbotron">
+            <h1>You're in The Reddit</h1>
+        </div>
+        <div class="new_post">
+            <a th:href="@{'add'}"><button type="button" class="btn btn-lg btn-info">Add new post</button></a>
+        </div>
+        <div class="page-header">
+            <h2>Posts</h2>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <th><h3>score</h3></th>
+            <th colspan="2"><h3>vote!</h3></th>
+            <th colspan="2"><h3>title</h3></th>
+            <th><h3>post</h3></th>
+            </thead>
+            <tbody>
+            <tr data-th-each="post : ${posts}">
+                <td data-th-text="${post.score}"></td>
+                <td><a th:href="@{'/posts/{id}/upvote'(id=${post.id})}">+</a></td>
+                <td><a th:href="@{'/posts/{id}/downvote' (id=${post.id})}">-</a></td>
+                <td data-th-text="${post.postTitle}"></td>
+                <td data-th-text="${post.getFormattedDateTime()}"></td>
+                <td data-th-text="${post.postMessage}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" th:href="@{/posts/?page=0&amp;count=5}">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" th:href="@{/posts/?page=1&amp;count=5}">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</html>
