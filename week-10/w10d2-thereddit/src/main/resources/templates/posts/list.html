@@ -46,10 +46,9 @@
 
     </div>
     <div>
-
-            <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()} + '&amp;limit=2'}">2</a>
-            <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()} + '&amp;limit=5'}">5</a>
-            <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()} + '&amp;limit=10'}">10</a>
+            <a href="#" th:href="@{'/posts/?page=0&amp;limit=2'}">2</a>
+            <a href="#" th:href="@{'/posts/?page=0&amp;limit=5'}">5</a>
+            <a href="#" th:href="@{'/posts/?page=0&amp;limit=10'}">10</a>
         <br/>
         <a href="/posts/add">Add new post</a>
     </div>
