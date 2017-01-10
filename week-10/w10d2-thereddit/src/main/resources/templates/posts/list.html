@@ -1,56 +1,52 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>indeX</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <table border="1" style="width:300px">
+<!--align="center"-->
+    <table border="1" style="width:300px; text-align:center">
         <tr th:each="post : ${posts}">
             <td th:text="${post.id}"></td>
            <td th:text="${post.content}"></td>
            <td th:text="${post.score}"></td>
             <td>
-                <a href="#" th:href="@{'/posts/{id}/upvote'(id=${post.id})}"> + </a>
-                <p> </p>
-                <a href="#" th:href="@{'/posts/{id}/downvote'(id=${post.id})}"> - </a>
-
+                <a href="#" th:href="@{'/posts/{id}/upvote'(id=${post.id})}" style="text-decoration:none"> + </a>
+                <a href="#" th:href="@{'/posts/{id}/downvote'(id=${post.id})}" style="text-decoration:none"> - </a>
             </td>
         </tr>
     </table>
     <div>
-        <br/>
+        <!--/*@thymesVar id="posts" type="com.greenfox.zolo.reddit.Controllers.PostsController"*/-->
             <!--add "first" link-->
-        <a href="#" th:href="@{'/posts/?page=0'}">&lt;&lt;first</a>
-            <!--<a th:if="${posts.hasPrevious()}" href="#" th:href="@{'/posts/?page=0&amp;limit=5'}">&lt;&lt;first</a>-->
-
-                 <!--add "previous" and "next" links-->
-        <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1}}"
-           th:rel="${posts.previousPageable()}">&lt;previous</a>
-        <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1}}"
-            th:rel="${posts.nextPageable()}">next&gt;</a>
-
+        <a href="#" th:href="@{'/posts/?page=0&amp;limit=' + ${posts.getSize()}}">&lt;&lt;first</a>
                  <!--&lt;!&ndash;add "previous" link if page exists&ndash;&gt;-->
-        <!--<a th:if="${posts.hasPrevious()}"-->
-           <!--href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1}}"-->
-           <!--th:rel="${posts.previousPageable()}">&lt;previous</a>-->
-                     <!--&lt;!&ndash;azert kell unless, mert kiakad, ha nincs prev&ndash;&gt;-->
-        <!--<a th:unless="${posts.previousPageable()}"-->
-           <!--href="#">&lt;previous</a>-->
+        <a th:if="${posts.hasPrevious()}"
+           href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1} + '&amp;limit=' + ${posts.getSize()}}"
+           th:rel="${posts.previousPageable()}">&lt;previous</a>
+                     <!--azert kell unless, mert kiakad, ha nincs prev-->
+        <a th:unless="${posts.previousPageable()}" href="#">&lt;previous</a>
 
-                <!--&lt;!&ndash;add "next" link if page exists&ndash;&gt;-->
-        <!--<a th:if="${posts.hasNext()}"-->
-           <!--href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1}}"-->
-           <!--th:rel="${posts.nextPageable()}">next&gt;</a>-->
-                    <!--&lt;!&ndash;azert kell unless, mert elmegy barmeddig, de ures a lap&ndash;&gt;-->
-        <!--<a th:unless="${posts.nextPageable()}" href="#">next&gt;</a>-->
+                <!--add "next" link if page exists-->
+        <a th:if="${posts.hasNext()}"
+           href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1} + '&amp;limit=' + ${posts.getSize()}}"
+           th:rel="${posts.nextPageable()}">next&gt;</a>
+                    <!--azert kell unless, mert elmegy barmeddig, de ures a lap-->
+        <a th:unless="${posts.nextPageable()}" href="#">next&gt;</a>
 
             <!--add "last" link -->
-        <a href="#" th:href="@{'/posts/?page=' + ${posts.getTotalPages()-1}}">last&gt;&gt;</a>
+        <a href="#" th:href="@{'/posts/?page=' + ${posts.getTotalPages()-1} + '&amp;limit=' + ${posts.getSize()}}">last&gt;&gt;</a>
 
     </div>
-    <br/>
-    <a href="/posts/add">Add new post</a>
+    <div>
+
+            <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()} + '&amp;limit=2'}">2</a>
+            <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()} + '&amp;limit=5'}">5</a>
+            <a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()} + '&amp;limit=10'}">10</a>
+        <br/>
+        <a href="/posts/add">Add new post</a>
+    </div>
 </body>
 </html>
