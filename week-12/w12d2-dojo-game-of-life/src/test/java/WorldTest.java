@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import static com.sun.tools.attach.VirtualMachine.list;
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Created by zoloe on 2017. 01. 17..
@@ -21,14 +22,15 @@ public class WorldTest {
     public void checkEvolution() {
         char[][] testAgainst = new char[][]{
                 {'.', '.', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '*', '.', '.', '.'},
+                {'.', '.', '.', '*', '*', '.', '.', '.'},
                 {'.', '.', '.', '*', '*', '.', '.', '.'},
                 {'.', '.', '.', '.', '.', '.', '.', '.'}
         };
-        System.out.println(Arrays.asList(testAgainst));
-        assertEquals(Arrays.asList(testWorld.runEvolution()), Arrays.asList(testAgainst) );
-
-
+        assertArrayEquals(testWorld.runEvolution(), testAgainst);
+    }
+    @Test
+    public void checkNeighbours(){
+        assertEquals(testWorld.checkCell(1,4),2 );
     }
 }
 
