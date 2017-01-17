@@ -6,52 +6,67 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-
-    <!--ide be kell raki a bootstrappes headert inkabb-->
-
 <!--/*@thymesVar id="posts" type="com.greenfox.zolo.reddit"*/-->
 <!--/*@thymesVar id="post" type="com.greenfox.zolo.reddit.Models.Post"*/-->
 <body>
-<!--align="center"-->
     <table border="1" style="width:300px; text-align:center">
-
         <tr th:each="post : ${posts}">
-            <td th:text="${post.id}""></td>
             <td th:text="${post.id}"></td>
-           <td th:text="${post.content}"></td>
-           <td th:text="${post.score}"></td>
+            <td th:text="${post.content}"></td>
+            <td th:text="${post.score}"></td>
             <td>
                 <a href="#" th:href="@{'/posts/{id}/upvote'(id=${post.id})}" style="text-decoration:none"> + </a>
                 <a href="#" th:href="@{'/posts/{id}/downvote'(id=${post.id})}" style="text-decoration:none"> - </a>
             </td>
         </tr>
     </table>
-    <div>
-        <!--/*@thymesVar id="posts" type="com.greenfox.zolo.reddit.Controllers.PostsController"*/-->
-            <!--add "first" link-->
+    <div class="pagination">
+
+        <!--<br/>-->
+        <!--&lt;!&ndash;add "first" link&ndash;&gt;-->
+        <!--<a href="#" th:href="@{'/posts/?page=0&amp;limit=' + ${posts.getSize()}}">&lt;&lt;first</a>-->
+
+        <!--&lt;!&ndash;add "previous"&ndash;&gt;-->
+        <!--<a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1} + '&amp;limit=' + ${posts.getSize()}}"-->
+           <!--th:rel="${posts.previousPageable()}">&lt;previous</a>-->
+
+        <!--&lt;!&ndash;add "next" link&ndash;&gt;-->
+        <!--<a href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1} + '&amp;limit=' + ${posts.getSize()}}"-->
+           <!--th:rel="${posts.nextPageable()}">next&gt;</a>-->
+
+        <!--&lt;!&ndash;add "last" link &ndash;&gt;-->
+        <!--<a href="#" th:href="@{'/posts/?page=' + ${posts.getTotalPages()-1} + '&amp;limit=' + ${posts.getSize()}}">last&gt;&gt;</a>-->
+
+            <!--========================-->
+
+        <br/>
+        <!--add "first" link-->
         <a href="#" th:href="@{'/posts/?page=0&amp;limit=' + ${posts.getSize()}}">&lt;&lt;first</a>
-                 <!--&lt;!&ndash;add "previous" link if page exists&ndash;&gt;-->
+
+        <!--add "previous" link if page exists-->
         <a th:if="${posts.hasPrevious()}"
            href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()-1} + '&amp;limit=' + ${posts.getSize()}}"
            th:rel="${posts.previousPageable()}">&lt;previous</a>
                      <!--azert kell unless, mert kiakad, ha nincs prev-->
         <a th:unless="${posts.previousPageable()}" href="#">&lt;previous</a>
 
-                <!--add "next" link if page exists-->
+        <!--add "next" link if page exists-->
         <a th:if="${posts.hasNext()}"
            href="#" th:href="@{'/posts/?page=' + ${posts.getNumber()+1} + '&amp;limit=' + ${posts.getSize()}}"
            th:rel="${posts.nextPageable()}">next&gt;</a>
                     <!--azert kell unless, mert elmegy barmeddig, de ures a lap-->
         <a th:unless="${posts.nextPageable()}" href="#">next&gt;</a>
 
-            <!--add "last" link -->
+        <!--add "last" link-->
         <a href="#" th:href="@{'/posts/?page=' + ${posts.getTotalPages()-1} + '&amp;limit=' + ${posts.getSize()}}">last&gt;&gt;</a>
 
     </div>
     <div>
+        <br/>
             <a href="#" th:href="@{'/posts/?page=0&amp;limit=2'}">2</a>
             <a href="#" th:href="@{'/posts/?page=0&amp;limit=5'}">5</a>
             <a href="#" th:href="@{'/posts/?page=0&amp;limit=10'}">10</a>
+        <br/>
         <br/>
         <a href="/posts/add">Add new post</a>
     </div>
