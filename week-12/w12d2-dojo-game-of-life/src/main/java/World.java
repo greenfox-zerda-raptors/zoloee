@@ -6,26 +6,42 @@ import java.util.Arrays;
  */
 public class World {
     char playground[][];
+    ArrayList<Cell> livingCellArrayList = new ArrayList<>();
+    ArrayList<Cell> cellArrayList = new ArrayList<>();
+    Cell cellArray[][];
 
     public World(char[][] initMatrix) {
         this.playground =initMatrix;
     }
+
+    public void getCellArray(){
+        for (int i = 0; i < playground.length; i++) {
+            for (int j = 0; j < playground[0].length; j++) {
+                cellArray[i][j].setCoordinateX(i);
+                cellArray[i][j].setCoordinateY(j);
+                cellArray[i][j].setType(playground[i][j]);
+            }
+        }
+    }
+
+    public void setNumberOfLivingNeigbours(){
+
+    }
+
+
 
     public char[][] runEvolution(){
         return playground;
     }
 
     public int checkCell(int x, int y){
-
         int numberOfNeighbours = 0;
-//        if ( playground[x][y-1] == playground[x][y]) neighbours++;
-//        if ( playground[x-1][y-1] == playground[x][y]) neighbours++;
         ArrayList<Character> neighbours = new ArrayList<>(Arrays.asList(
-                playground[x][y-1],
-                playground[x-1][y-1],
-                playground[x-1][y],
-                playground[x-1][y+1],
-                playground[x][y+1],
+                    playground[x][y-1],
+                    playground[x-1][y-1],
+                    playground[x-1][y],
+                    playground[x-1][y+1],
+                    playground[x][y+1],
                 playground[x+1][y+1],
                 playground[x+1][y],
                 playground[x+1][y-1]));
@@ -38,6 +54,43 @@ public class World {
         return numberOfNeighbours;
 
     }
+    public void getLivingCellArrayList() {
+        livingCellArrayList = null;
+        for (int i = 0; i < playground.length; i++) {
+            for (int j = 0; j < playground[0].length; j++) {
+                if (playground[i][j] == '*') {
+                    livingCellArrayList.add(cellArray[i][j]);
+//                            new Cell(i, j, playground[i][j]));
+                }
+            }
+        }
+    }
+    public int checkCellFromList(int x, int y){
+        int numberOfNeighbours = 0;
+
+        for (Cell cell: livingCellArrayList
+             ) {
+            if ( cell.getCoordinateX() == x ){
+                if ((cell.getCoordinateY() == (y-1)) || cell.getCoordinateY() == (y+1) ){
+                    numberOfNeighbours++;
+                }
+            } else if ( cell.getCoordinateX() == (x-1)){
+                if (cell.getCoordinateY() == (y-1) ||
+                    cell.getCoordinateY() == y ||
+                    cell.getCoordinateY() == (y+1)) {
+                        numberOfNeighbours++;
+                }
+            } else if ( cell.getCoordinateX() == (x+1)){
+                if (cell.getCoordinateY() == (y+1) ||
+                    cell.getCoordinateY() == y ||
+                    cell.getCoordinateY() == (y-1)){
+                        numberOfNeighbours++;
+                }
+            }
+        }
+        return numberOfNeighbours;
+    }
+
     public void printWorld(){
         for (int i = 0; i < playground.length ; i++) {
             for (int j = 0; j < playground[0].length; j++) {

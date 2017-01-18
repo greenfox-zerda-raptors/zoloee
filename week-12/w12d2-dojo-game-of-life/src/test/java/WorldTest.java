@@ -32,6 +32,19 @@ public class WorldTest {
     public void checkNeighbours(){
         assertEquals(testWorld.checkCell(1,4),2 );
     }
+
+    @Test
+    public void checkNeighboursFromList() {
+        assertEquals(testWorld.checkCellFromList(1, 4), 2);
+    }
+    @Test
+    public void checkNeighboursFromList2(){
+        assertEquals(testWorld.checkCellFromList(0,0),0);
+    }
+    @Test
+    public void checkNeighboursFromList3(){
+        assertEquals(testWorld.checkCellFromList(1,3),3);
+    }
 }
 
 

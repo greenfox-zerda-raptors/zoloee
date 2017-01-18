@@ -13,7 +13,11 @@ public class runner {
 
         World world = new World(testPlayground);
 //        world.printWorld();
-        System.out.println(world.checkCell(1,4));
+
+        world.getCellList();
+        System.out.println(world.livingCellArrayList.toString());
+
+
 
 
     }
