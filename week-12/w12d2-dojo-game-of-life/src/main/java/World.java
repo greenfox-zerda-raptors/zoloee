@@ -56,15 +56,25 @@ public class World {
     }
     public void getLivingCellArrayList() {
         livingCellArrayList = null;
-        for (int i = 0; i < playground.length; i++) {
-            for (int j = 0; j < playground[0].length; j++) {
-                if (playground[i][j] == '*') {
+        for (int i = 0; i < cellArray.length; i++) {
+            for (int j = 0; j < cellArray[0].length; j++) {
+                if (cellArray[i][j].getType() == '*') {
                     livingCellArrayList.add(cellArray[i][j]);
 //                            new Cell(i, j, playground[i][j]));
                 }
             }
         }
     }
+
+    public void setNumberOfNeighboursForAllCells{
+        for (int i = 0; i < cellArray.length ; i++) {
+            for (int j = 0; j < cellArray[0].length; j++) {
+                cellArray[i][j].setNumberOfNeighbours(checkCellFromList(i,j));
+            }
+
+        }
+    }
+
     public int checkCellFromList(int x, int y){
         int numberOfNeighbours = 0;
 
@@ -90,6 +100,8 @@ public class World {
         }
         return numberOfNeighbours;
     }
+
+
 
     public void printWorld(){
         for (int i = 0; i < playground.length ; i++) {
