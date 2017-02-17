@@ -12,13 +12,17 @@ public class Util {
 
     public Integer getBiggestFromPairs(int[] ints){
         int length = ints.length;
-        int biggest = ints[0];
+        int biggest = ints[1];
 
         for (int i = 1; i < length-2; i=i+2){
             if (ints[i] > ints[i+2]) {
-                biggest = ints[i];
+                if (ints[i] > biggest) {
+                    biggest = ints[i];
+                }
             }else {
-                biggest = ints[i+2];
+                if (ints[i+2] > biggest) {
+                    biggest = ints[i + 2];
+                }
             }
         }
         return biggest;
