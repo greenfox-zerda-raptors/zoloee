@@ -14,15 +14,9 @@ public class Util {
         int length = ints.length;
         int biggest = ints[1];
 
-        for (int i = 1; i < length-2; i=i+2){
-            if (ints[i] > ints[i+2]) {
+        for (int i = 1; i < length; i=i+2){
                 if (ints[i] > biggest) {
                     biggest = ints[i];
-                }
-            }else {
-                if (ints[i+2] > biggest) {
-                    biggest = ints[i + 2];
-                }
             }
         }
         return biggest;
